@@ -32,7 +32,12 @@ section{padding:72px 0}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid transparent;transition:border-color 200ms ease}
 .site-header.scrolled{border-bottom-color:var(--border-subtle)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:22px;letter-spacing:-0.02em;color:var(--text-primary)}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:22px;letter-spacing:-0.02em;color:var(--text-primary);display:inline-flex;align-items:center;gap:10px}
+.logo-mark{width:30px;height:30px;color:var(--accent-primary);flex-shrink:0}
+.whatsapp-fab{position:fixed;bottom:24px;right:24px;z-index:40;display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;background:#25D366;color:#fff;border-radius:999px;box-shadow:0 6px 16px rgba(37,211,102,0.3);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;transition:transform 200ms ease,box-shadow 200ms ease}
+.whatsapp-fab:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.4)}
+.whatsapp-fab svg{width:20px;height:20px;flex-shrink:0}
+@media(max-width:600px){.whatsapp-fab span{display:none}.whatsapp-fab{padding:14px;border-radius:50%}}
 .nav-primary{display:none;align-items:center;gap:20px}
 @media(min-width:1024px){.nav-primary{display:flex}}
 .nav-primary a{font-size:14px;color:var(--text-secondary);transition:color 200ms ease;letter-spacing:-0.005em}
