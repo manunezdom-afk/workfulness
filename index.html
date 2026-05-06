@@ -8,30 +8,30 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
     /* Fondos */
     --bg-primary:#FFFFFF;
-    --bg-secondary:#F7F7F8;
-    --bg-accent-soft:#F0FDF4;
+    --bg-secondary:#F1F0E2;
+    --bg-accent-soft:#E8E6D4;
 
     /* Texto */
-    --text-primary:#0F0F12;
-    --text-secondary:#5B5B66;
-    --text-tertiary:#8A8A95;
+    --text-primary:#4C4B4B;
+    --text-secondary:#666666;
+    --text-tertiary:#8A8A8A;
 
     /* Bordes */
-    --border-subtle:#E5E5EA;
-    --border-medium:#D1D1D6;
+    --border-subtle:#E0DDD0;
+    --border-medium:#C8C5B5;
 
     /* Acento */
-    --accent-primary:#166534;
-    --accent-hover:#14532D;
-    --accent-bright:#15803D;
+    --accent-primary:#6C7E77;
+    --accent-hover:#59675A;
+    --accent-bright:#5A7268;
 
-    --success:#065F46;
+    --success:#3D5A50;
 
     --container:1200px;
   }
@@ -40,7 +40,7 @@
   html{scroll-behavior:smooth}
   body{
     margin:0;
-    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-family:'Poppins',system-ui,-apple-system,sans-serif;
     font-size:16px;
     line-height:1.65;
     color:var(--text-primary);
@@ -55,11 +55,11 @@
 
   /* ---------- Tipografía ---------- */
   .serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;letter-spacing:-0.02em}
-  .display{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-0.025em;color:var(--text-primary)}
-  .h1{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:48px;line-height:1.1;letter-spacing:-0.02em;margin:0}
+  .display{font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-0.02em;color:var(--text-primary)}
+  .h1{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:48px;line-height:1.1;letter-spacing:-0.015em;margin:0}
   .h1.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto}
-  .h2{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:36px;line-height:1.15;letter-spacing:-0.02em;margin:0}
-  .h3{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:24px;line-height:1.3;letter-spacing:-0.01em;margin:0}
+  .h2{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:36px;line-height:1.15;letter-spacing:-0.015em;margin:0}
+  .h3{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:24px;line-height:1.3;letter-spacing:-0.01em;margin:0}
   .body-l{font-size:19px;line-height:1.6;color:var(--text-secondary);letter-spacing:-0.005em}
   .body{font-size:16px;line-height:1.65;color:var(--text-secondary)}
   .eyebrow{
@@ -299,7 +299,7 @@
   .step-card:hover::before{transform:scaleX(1)}
   .step-card:hover{background:var(--bg-secondary)!important}
   .step-n{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-primary);margin:0 0 20px}
-  .step-card h4{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
+  .step-card h4{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
   .step-card p{margin:0;font-size:14px;line-height:1.6;color:var(--text-secondary)}
 
   /* ---------- Logros list ---------- */
@@ -311,7 +311,7 @@
   @media (min-width:768px){.logro-row{grid-template-columns:72px 1fr 24px;gap:40px;padding:28px 0}}
   .logro-num{font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--accent-primary);text-align:right;opacity:0.5;transition:opacity 200ms ease}
   .logro-row:hover .logro-num{opacity:1}
-  .logro-text{margin:0;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
+  .logro-text{margin:0;font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
   @media (min-width:768px){.logro-text{font-size:24px}}
   .logro-row:hover .logro-text{color:var(--accent-primary)}
   .logro-arrow{font-size:16px;color:var(--accent-primary);opacity:0;transform:translateX(-6px);transition:opacity 200ms ease,transform 200ms ease}
@@ -345,7 +345,7 @@
   }
   .ail-card:hover{box-shadow:0 1px 2px rgba(0,0,0,0.04);border-color:var(--border-medium)}
   .ail-card .label{
-    font-family:'Inter',system-ui,sans-serif;
+    font-family:'Poppins',system-ui,sans-serif;
     font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);
     display:block;
   }
@@ -371,7 +371,7 @@
     text-transform:uppercase;
   }
   .service-row .name{
-    font-family:'Inter',system-ui,sans-serif;
+    font-family:'Poppins',system-ui,sans-serif;
     font-weight:700;
     font-size:26px;line-height:1.2;letter-spacing:-0.015em;
     color:var(--text-primary);
@@ -499,7 +499,7 @@
   }
 
   /* ---------- Stats ---------- */
-  .stats-section{background:#0F3D20;padding:80px 0}
+  .stats-section{background:#3D4B44;padding:80px 0}
   .stats-grid{display:grid;grid-template-columns:1fr;gap:48px}
   @media (min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
   .stat-item{text-align:left}
@@ -512,7 +512,7 @@
   .program-card{background:var(--bg-primary);padding:40px 32px;display:flex;flex-direction:column;transition:background 200ms ease}
   .program-card:hover{background:var(--bg-accent-soft)}
   .program-card .num{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px}
-  .program-card .name{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-0.015em;margin:0 0 16px;color:var(--text-primary)}
+  .program-card .name{font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-0.015em;margin:0 0 16px;color:var(--text-primary)}
   .program-card .pitch{font-size:15px;line-height:1.55;color:var(--text-secondary);margin:0 0 24px}
   .program-card .meta{margin-top:auto;padding-top:24px;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text-secondary)}
   .program-card .meta span{display:grid;grid-template-columns:88px 1fr;gap:8px;align-items:baseline}
@@ -536,7 +536,7 @@
   }
   .include-item{padding-top:24px;border-top:1px solid var(--border-subtle)}
   .include-item .num{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--accent-primary);margin-bottom:16px;letter-spacing:0.02em}
-  .include-item h4{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
+  .include-item h4{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
   .include-item p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0}
 
   /* ---------- Founder section ---------- */

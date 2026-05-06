@@ -1,26 +1,26 @@
 :root{
   --bg-primary:#FFFFFF;
-  --bg-secondary:#F7F7F8;
-  --bg-accent-soft:#F0FDF4;
-  --text-primary:#0F0F12;
-  --text-secondary:#5B5B66;
-  --text-tertiary:#8A8A95;
-  --border-subtle:#E5E5EA;
-  --border-medium:#D1D1D6;
-  --accent-primary:#166534;
-  --accent-hover:#14532D;
-  --accent-bright:#15803D;
+  --bg-secondary:#F1F0E2;
+  --bg-accent-soft:#E8E6D4;
+  --text-primary:#4C4B4B;
+  --text-secondary:#666666;
+  --text-tertiary:#8A8A8A;
+  --border-subtle:#E0DDD0;
+  --border-medium:#C8C5B5;
+  --accent-primary:#6C7E77;
+  --accent-hover:#59675A;
+  --accent-bright:#5A7268;
   --container:1200px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:var(--text-primary);background:var(--bg-primary);-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.65;color:var(--text-primary);background:var(--bg-primary);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.display{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-0.025em;color:var(--text-primary)}
-.h1{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:48px;line-height:1.1;letter-spacing:-0.02em;margin:0}
+.display{font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-0.02em;color:var(--text-primary)}
+.h1{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:48px;line-height:1.1;letter-spacing:-0.015em;margin:0}
 .h1.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto}
-.h2{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:36px;line-height:1.15;letter-spacing:-0.02em;margin:0}
+.h2{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:36px;line-height:1.15;letter-spacing:-0.015em;margin:0}
 .body-l{font-size:19px;line-height:1.6;color:var(--text-secondary);letter-spacing:-0.005em}
 .eyebrow{font-family:'Inter',sans-serif;font-weight:500;font-size:12px;line-height:1.4;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary)}
 .eyebrow.with-rule{display:inline-flex;align-items:center;gap:14px;color:var(--text-primary)}
