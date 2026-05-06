@@ -274,27 +274,52 @@
   .section-head .eyebrow{margin-bottom:20px;display:inline-block}
 
   /* ---------- Contexto: 3 columnas con número ---------- */
-  .context-grid{
-    display:grid;grid-template-columns:1fr;gap:48px;
+  /* ---------- Steps timeline ---------- */
+  .steps-2x2{
+    display:grid;grid-template-columns:1fr;
+    gap:1px;background:var(--border-subtle);
+    border:1px solid var(--border-subtle);border-radius:6px;overflow:hidden;
+    margin-top:56px;
   }
-  @media (min-width:768px){.context-grid{grid-template-columns:repeat(3,1fr);gap:48px}}
-  @media (min-width:768px){.context-grid-4{grid-template-columns:repeat(2,1fr);gap:40px}}
-  @media (min-width:1100px){.context-grid-4{grid-template-columns:repeat(4,1fr);gap:32px}}
-  .context-item .num{
-    font-family:'Fraunces',Georgia,serif;
-    font-size:64px;line-height:1;letter-spacing:-0.03em;
-    color:var(--accent-primary);
-    margin-bottom:20px;
-    font-weight:400;
+  @media (min-width:600px){.steps-2x2{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1100px){.steps-2x2{grid-template-columns:repeat(4,1fr)}}
+  .step-card{
+    background:var(--bg-primary);padding:36px 28px;
+    position:relative;overflow:hidden;
+    transition:background 220ms ease;
   }
-  .context-item .context-title{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:400;
-    font-size:20px;line-height:1.3;letter-spacing:-0.01em;
-    color:var(--text-primary);
-    margin:0 0 10px;
+  .step-card:nth-child(even){background:var(--bg-accent-soft)}
+  .step-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--accent-primary);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 400ms cubic-bezier(0.25,0.46,0.45,0.94);
   }
-  .context-item p{margin:0;color:var(--text-secondary);font-size:16px;line-height:1.55;max-width:34ch}
+  .step-card:hover::before{transform:scaleX(1)}
+  .step-card:hover{background:var(--bg-secondary)!important}
+  .step-n{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-primary);margin:0 0 20px}
+  .step-card h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
+  .step-card p{margin:0;font-size:14px;line-height:1.6;color:var(--text-secondary)}
+
+  /* ---------- Logros list ---------- */
+  .logros-list{border-top:1px solid var(--border-subtle);margin-top:0}
+  .logro-row{
+    display:grid;grid-template-columns:52px 1fr 24px;align-items:center;gap:24px;
+    padding:22px 0;border-bottom:1px solid var(--border-subtle);cursor:default;
+  }
+  @media (min-width:768px){.logro-row{grid-template-columns:72px 1fr 24px;gap:40px;padding:28px 0}}
+  .logro-num{font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--accent-primary);text-align:right;opacity:0.5;transition:opacity 200ms ease}
+  .logro-row:hover .logro-num{opacity:1}
+  .logro-text{margin:0;font-family:'Fraunces',Georgia,serif;font-size:22px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
+  @media (min-width:768px){.logro-text{font-size:26px}}
+  .logro-row:hover .logro-text{color:var(--accent-primary)}
+  .logro-arrow{font-size:16px;color:var(--accent-primary);opacity:0;transform:translateX(-6px);transition:opacity 200ms ease,transform 200ms ease}
+  .logro-row:hover .logro-arrow{opacity:1;transform:none}
+
+  /* ---------- Reveal on scroll ---------- */
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity 580ms cubic-bezier(0.25,0.46,0.45,0.94),transform 580ms cubic-bezier(0.25,0.46,0.45,0.94);transition-delay:var(--delay,0ms)}
+  [data-reveal].is-visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}}
 
   /* ---------- AIL Teaser ---------- */
   .ail-section{background:var(--bg-secondary)}
@@ -681,25 +706,25 @@
       <p class="body-l" style="margin-top:24px;max-width:62ch">Diseñamos experiencias aplicadas para líderes y equipos, combinando diagnóstico, entrenamiento, coaching y transferencia al trabajo real.</p>
       <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65;max-width:62ch">Nuestro enfoque permite llevar el mindfulness y el coaching organizacional a situaciones concretas: reuniones, feedback, conversaciones difíciles, toma de decisiones, gestión de presión y coordinación de equipos.</p>
     </div>
-    <div class="context-grid context-grid-4">
-      <div class="context-item">
-        <div class="num">01</div>
-        <h4 class="context-title">Diagnóstico organizacional</h4>
+    <div class="steps-2x2">
+      <div class="step-card" data-reveal>
+        <p class="step-n">01</p>
+        <h4>Diagnóstico organizacional</h4>
         <p>Levantamos desafíos de liderazgo, equipo, comunicación, presión operativa y cultura.</p>
       </div>
-      <div class="context-item">
-        <div class="num">02</div>
-        <h4 class="context-title">Diseño de la experiencia</h4>
+      <div class="step-card" data-reveal style="--delay:100ms">
+        <p class="step-n">02</p>
+        <h4>Diseño de la experiencia</h4>
         <p>Diseñamos una intervención a medida basada en el Modelo AIL™, coaching organizacional y mindfulness aplicado.</p>
       </div>
-      <div class="context-item">
-        <div class="num">03</div>
-        <h4 class="context-title">Entrenamiento aplicado</h4>
+      <div class="step-card" data-reveal style="--delay:200ms">
+        <p class="step-n">03</p>
+        <h4>Entrenamiento aplicado</h4>
         <p>Trabajamos con líderes y equipos sobre situaciones reales del trabajo.</p>
       </div>
-      <div class="context-item">
-        <div class="num">04</div>
-        <h4 class="context-title">Transferencia y medición</h4>
+      <div class="step-card" data-reveal style="--delay:300ms">
+        <p class="step-n">04</p>
+        <h4>Transferencia y medición</h4>
         <p>Acompañamos la aplicación práctica y evaluamos avances en capacidades, hábitos e impacto percibido.</p>
       </div>
     </div>
@@ -708,18 +733,21 @@
       <span class="eyebrow">Qué logramos</span>
       <h2 class="h2" style="margin-top:20px">Qué logramos</h2>
     </div>
-    <div class="context-grid">
-      <div class="context-item">
-        <div class="num">01</div>
-        <p>Líderes con mayor claridad bajo presión.</p>
+    <div class="logros-list">
+      <div class="logro-row" data-reveal>
+        <span class="logro-num">01</span>
+        <p class="logro-text">Líderes con mayor claridad bajo presión.</p>
+        <span class="logro-arrow" aria-hidden="true">→</span>
       </div>
-      <div class="context-item">
-        <div class="num">02</div>
-        <p>Equipos con mejores conversaciones y coordinación.</p>
+      <div class="logro-row" data-reveal style="--delay:80ms">
+        <span class="logro-num">02</span>
+        <p class="logro-text">Equipos con mejores conversaciones y coordinación.</p>
+        <span class="logro-arrow" aria-hidden="true">→</span>
       </div>
-      <div class="context-item">
-        <div class="num">03</div>
-        <p>Culturas con mayor conciencia, foco y efectividad.</p>
+      <div class="logro-row" data-reveal style="--delay:160ms">
+        <span class="logro-num">03</span>
+        <p class="logro-text">Culturas con mayor conciencia, foco y efectividad.</p>
+        <span class="logro-arrow" aria-hidden="true">→</span>
       </div>
     </div>
   </div>
