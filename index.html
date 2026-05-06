@@ -122,6 +122,8 @@
     align-items:center;
     gap:10px;
   }
+  .logo-img{height:36px;width:auto;display:block}
+  @media (max-width:600px){.logo-img{height:30px}}
   .logo-mark{width:38px;height:38px;color:var(--accent-primary);flex-shrink:0}
   @keyframes leafShimmer{0%,100%{opacity:1}50%{opacity:0.45}}
   @keyframes treeSway{0%,100%{transform:rotate(-0.8deg)}50%{transform:rotate(0.8deg)}}
@@ -276,6 +278,8 @@
     display:grid;grid-template-columns:1fr;gap:48px;
   }
   @media (min-width:768px){.context-grid{grid-template-columns:repeat(3,1fr);gap:48px}}
+  @media (min-width:768px){.context-grid-4{grid-template-columns:repeat(2,1fr);gap:40px}}
+  @media (min-width:1100px){.context-grid-4{grid-template-columns:repeat(4,1fr);gap:32px}}
   .context-item .num{
     font-family:'Fraunces',Georgia,serif;
     font-size:64px;line-height:1;letter-spacing:-0.03em;
@@ -283,7 +287,14 @@
     margin-bottom:20px;
     font-weight:400;
   }
-  .context-item p{margin:0;color:var(--text-secondary);font-size:17px;line-height:1.55;max-width:32ch}
+  .context-item .context-title{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:400;
+    font-size:20px;line-height:1.3;letter-spacing:-0.01em;
+    color:var(--text-primary);
+    margin:0 0 10px;
+  }
+  .context-item p{margin:0;color:var(--text-secondary);font-size:16px;line-height:1.55;max-width:34ch}
 
   /* ---------- AIL Teaser ---------- */
   .ail-section{background:var(--bg-secondary)}
@@ -295,11 +306,13 @@
     display:grid;grid-template-columns:1fr;gap:16px;
   }
   @media (min-width:600px){.ail-cards{grid-template-columns:repeat(3,1fr)}}
+  @media (min-width:768px){.ail-cards-4{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1100px){.ail-cards-4{grid-template-columns:repeat(4,1fr)}}
   .ail-card{
     border:1px solid var(--border-subtle);
     background:var(--bg-primary);
     border-radius:6px;
-    padding:32px 24px;
+    padding:24px;
     min-height:140px;
     display:flex;align-items:flex-end;
     transition:box-shadow 200ms ease, border-color 200ms ease;
@@ -308,6 +321,11 @@
   .ail-card .label{
     font-family:'Fraunces',Georgia,serif;
     font-size:20px;line-height:1.25;letter-spacing:-0.01em;color:var(--text-primary);
+    display:block;
+  }
+  .ail-card .ail-desc{
+    margin:10px 0 0;
+    font-size:14px;line-height:1.5;color:var(--text-secondary);
   }
 
   /* ---------- Servicios ---------- */
@@ -362,6 +380,18 @@
   }
   .logo-cell:hover{color:var(--text-primary)}
 
+  /* ---------- Casos ---------- */
+  .cases-grid{
+    display:grid;grid-template-columns:1fr;gap:32px;
+  }
+  @media (min-width:900px){.cases-grid{grid-template-columns:repeat(2,1fr);gap:40px}}
+  .case-card{
+    background:var(--bg-primary);
+    border:1px solid var(--border-subtle);
+    border-radius:6px;
+    padding:32px;
+  }
+
   /* ---------- Alianza ---------- */
   .alianza-grid{
     display:grid;grid-template-columns:1fr;gap:48px;align-items:start;
@@ -369,6 +399,14 @@
   @media (min-width:900px){.alianza-grid{grid-template-columns:5fr 7fr;gap:80px}}
   .alianza-grid .text > *+*{margin-top:20px}
   .alianza-grid h2{margin-top:24px}
+  .alianza-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid var(--border-subtle);
+    display:block;
+  }
 
   /* ---------- Testimonios ---------- */
   .testimonials-grid{
@@ -457,6 +495,18 @@
   .includes-grid{display:grid;grid-template-columns:1fr;gap:32px}
   @media (min-width:768px){.includes-grid{grid-template-columns:repeat(2,1fr);gap:40px}}
   @media (min-width:1024px){.includes-grid{grid-template-columns:repeat(4,1fr);gap:32px}}
+  @media (min-width:1024px){.includes-grid-6{grid-template-columns:repeat(3,1fr);gap:40px}}
+
+  /* ---------- Contemplativo ---------- */
+  .contemplativo-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  .contemplativo-grid .img-ph:first-child{grid-column:1/-1}
+  .contemplativo-caption{
+    margin:16px 0 0;
+    font-size:13px;color:var(--text-tertiary);letter-spacing:0.02em;text-align:center;
+    font-style:italic;
+  }
   .include-item{padding-top:24px;border-top:1px solid var(--border-subtle)}
   .include-item .num{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--accent-primary);margin-bottom:16px;letter-spacing:0.02em}
   .include-item h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
@@ -494,48 +544,15 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Workfulness — inicio">
-      <svg class="logo-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1.2"/>
-        <g class="branches">
-          <path d="M32 24L32 54" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M32 38C24 36 16 36 10 36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 38C40 36 48 36 54 36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 32C24 28 18 24 12 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 32C40 28 46 24 52 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 26C26 22 22 18 18 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M32 26C38 22 42 18 46 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M32 22C30 16 28 12 28 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M32 22C34 16 36 12 36 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M32 20L32 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          <g class="leaves" fill="currentColor">
-            <circle cx="32" cy="6" r="2.4"/>
-            <circle cx="28" cy="8" r="2"/>
-            <circle cx="36" cy="8" r="2"/>
-            <circle cx="18" cy="14" r="2.3"/>
-            <circle cx="46" cy="14" r="2.3"/>
-            <circle cx="22" cy="18" r="1.8"/>
-            <circle cx="42" cy="18" r="1.8"/>
-            <circle cx="12" cy="22" r="2.3"/>
-            <circle cx="52" cy="22" r="2.3"/>
-            <circle cx="10" cy="36" r="2.4"/>
-            <circle cx="54" cy="36" r="2.4"/>
-            <circle cx="20" cy="36" r="1.7"/>
-            <circle cx="44" cy="36" r="1.7"/>
-            <circle cx="32" cy="14" r="1.6"/>
-            <circle cx="32" cy="32" r="1.4"/>
-          </g>
-        </g>
-      </svg>
-      <span>Workfulness</span>
+      <img src="assets/logo/workfulness-logo-full.png" alt="Workfulness" class="logo-img" />
     </a>
 
     <nav class="nav-primary" aria-label="Principal">
-      <a href="modelo-ail.html">Modelo AIL</a>
+      <a href="modelo-ail.html">Modelo AIL™</a>
       <a href="programas.html">Programas</a>
-      <a href="coaching-ejecutivo.html">Coaching Ejecutivo</a>
-      <a href="coaching-equipos.html">Coaching de Equipos</a>
       <a href="clientes.html">Clientes</a>
       <a href="alianza.html">Alianza</a>
+      <a href="index.html#equipo">Equipo</a>
       <a href="contacto.html">Contacto</a>
       <a href="contacto.html" class="btn btn-primary" style="padding:10px 18px;font-size:14px">Agendar conversación</a>
     </nav>
@@ -550,12 +567,11 @@
 <aside class="drawer" id="drawer" aria-hidden="true">
   <button class="close" id="drawerClose" aria-label="Cerrar menú">×</button>
   <nav aria-label="Móvil">
-    <a href="modelo-ail.html">Modelo AIL</a>
+    <a href="modelo-ail.html">Modelo AIL™</a>
     <a href="programas.html">Programas</a>
-    <a href="coaching-ejecutivo.html">Coaching Ejecutivo</a>
-    <a href="coaching-equipos.html">Coaching de Equipos</a>
     <a href="clientes.html">Clientes</a>
     <a href="alianza.html">Alianza</a>
+    <a href="index.html#equipo">Equipo</a>
     <a href="contacto.html">Contacto</a>
   </nav>
   <a href="contacto.html" class="btn btn-primary">Agendar conversación</a>
@@ -568,12 +584,13 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow with-rule hero-eyebrow">Arquitectura interna del liderazgo</span>
-        <h1 class="display">Mindfulness y coaching aplicados al desempeño sostenible de líderes y equipos.</h1>
-        <p class="body-l lead">En Workfulness acompañamos a organizaciones a desarrollar líderes más conscientes, regulados y efectivos. Entrenamos la arquitectura interna que sostiene la toma de decisiones, la calidad de las conversaciones, la gestión emocional y el impacto cultural.</p>
+        <span class="eyebrow with-rule hero-eyebrow">Workfulness</span>
+        <h1 class="display">Arquitectura Interna del Liderazgo</h1>
+        <p class="body-l lead" style="margin-top:24px">Mindfulness y coaching organizacional aplicados al liderazgo, los equipos y la cultura.</p>
+        <p class="body" style="font-size:17px;line-height:1.65;margin-top:20px;max-width:58ch">En Workfulness acompañamos a organizaciones a desarrollar líderes más conscientes, presentes y efectivos. Integramos coaching organizacional, mindfulness aplicado y liderazgo contemplativo para fortalecer la forma en que las personas observan, deciden, conversan e impactan en sus equipos.</p>
         <div class="hero-cta">
-          <a href="contacto.html" class="btn btn-primary">Quiero desarrollar a mis líderes</a>
-          <a href="programas.html" class="btn btn-secondary">Ver programas para equipos <span class="arrow">→</span></a>
+          <a href="programas.html" class="btn btn-primary">Conocer programas</a>
+          <a href="contacto.html" class="btn btn-secondary">Agendar conversación <span class="arrow">→</span></a>
         </div>
       </div>
       <div>
@@ -585,44 +602,44 @@
   </div>
 </section>
 
-<!-- ============ 02 EL CONTEXTO ============ -->
-<section>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">01 / El contexto</span>
-      <h2 class="h1" style="margin-top:20px">Liderar hoy exige más que estrategia.</h2>
-    </div>
-    <div class="context-grid">
-      <div class="context-item">
-        <div class="num">01</div>
-        <p>Equipos saturados que pierden foco y calidad de decisión bajo presión sostenida.</p>
-      </div>
-      <div class="context-item">
-        <div class="num">02</div>
-        <p>Conversaciones difíciles que se evitan o se gestionan mal, erosionando la confianza.</p>
-      </div>
-      <div class="context-item">
-        <div class="num">03</div>
-        <p>Líderes técnicamente sólidos que no logran sostener su impacto en contextos exigentes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 03 MODELO AIL TEASER ============ -->
-<section class="ail-section">
+<!-- ============ 02 MODELO AIL TEASER ============ -->
+<section class="ail-section" id="modelo-ail">
   <div class="container">
     <div class="ail-grid">
       <div>
         <span class="eyebrow">02 / Modelo propio</span>
-        <h2 class="h1 serif" style="margin-top:20px">AIL™ — Arquitectura Interna del Liderazgo</h2>
+        <h2 class="h1 serif" style="margin-top:20px">Modelo AIL™</h2>
+        <p class="body-l" style="margin-top:16px;color:var(--text-secondary)">Arquitectura Interna del Liderazgo</p>
+        <p class="body" style="margin-top:16px;font-size:15px;line-height:1.55;color:var(--text-tertiary)">Una metodología propia para sostener claridad, presencia y efectividad en contextos exigentes.</p>
       </div>
       <div>
-        <p class="body-l" style="margin-top:0;color:var(--text-secondary)">Una metodología propia de Workfulness para desarrollar líderes y equipos capaces de sostener claridad, presencia y efectividad en contextos de alta exigencia. Integra mindfulness aplicado, coaching organizacional y conciencia sistémica.</p>
-        <div class="ail-cards" style="margin-top:40px">
-          <div class="ail-card"><span class="label">Liderar bajo presión</span></div>
-          <div class="ail-card"><span class="label">Conversar con presencia</span></div>
-          <div class="ail-card"><span class="label">Generar impacto sistémico</span></div>
+        <p class="body-l" style="margin-top:0;color:var(--text-secondary)">El Modelo AIL™ es una metodología propia de Workfulness para desarrollar líderes y equipos capaces de sostener claridad, presencia y efectividad en contextos de alta exigencia.</p>
+        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">Trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden, conversan y actúan. Su aplicación permite fortalecer capacidades críticas para el liderazgo actual: autorregulación, calidad conversacional, toma de decisiones e impacto sistémico.</p>
+        <div class="ail-cards ail-cards-4" style="margin-top:40px">
+          <div class="ail-card">
+            <div>
+              <span class="label">Liderar bajo presión</span>
+              <p class="ail-desc">Responder con mayor claridad en escenarios exigentes.</p>
+            </div>
+          </div>
+          <div class="ail-card">
+            <div>
+              <span class="label">Conversar con presencia</span>
+              <p class="ail-desc">Mejorar escucha, feedback, confianza y coordinación.</p>
+            </div>
+          </div>
+          <div class="ail-card">
+            <div>
+              <span class="label">Observar sistémicamente</span>
+              <p class="ail-desc">Comprender cómo el liderazgo impacta en equipos, cultura y resultados.</p>
+            </div>
+          </div>
+          <div class="ail-card">
+            <div>
+              <span class="label">Actuar con conciencia</span>
+              <p class="ail-desc">Tomar decisiones más lúcidas, responsables y sostenibles.</p>
+            </div>
+          </div>
         </div>
         <div style="margin-top:40px">
           <a href="modelo-ail.html" class="btn-ghost-link">Conocer el Modelo AIL™ <span aria-hidden="true">→</span></a>
@@ -632,8 +649,84 @@
   </div>
 </section>
 
+<!-- ============ 03 LIDERAZGO CONTEMPLATIVO ============ -->
+<section id="contemplativo" style="padding:80px 0">
+  <div class="container">
+    <div class="founder-grid" style="align-items:center">
+      <div>
+        <span class="eyebrow with-rule">03 / Plum Village</span>
+        <h2 class="h1" style="margin-top:20px">Liderazgo contemplativo aplicado</h2>
+        <p class="body-l" style="margin-top:24px;color:var(--text-secondary)">Parte del desarrollo de Workfulness se ha nutrido de experiencias de profundización en mindfulness y práctica contemplativa en espacios internacionales como Plum Village, Francia.</p>
+        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">Esta experiencia fortalece una mirada de liderazgo basada en presencia, escucha profunda, regulación interna y acción consciente.</p>
+        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">En Workfulness llevamos estos aprendizajes al mundo organizacional de forma práctica, simple y aplicada a los desafíos reales de líderes y equipos.</p>
+      </div>
+      <div>
+        <div class="contemplativo-grid">
+          <div class="img-ph r-3-2" role="img" aria-label="Christian en Plum Village, Francia">[Foto en Plum Village · 3:2]</div>
+          <div class="img-ph r-1-1" role="img" aria-label="Entorno de Plum Village">[Entorno Plum Village · 1:1]</div>
+          <div class="img-ph r-1-1" role="img" aria-label="Práctica contemplativa">[Práctica contemplativa · 1:1]</div>
+        </div>
+        <p class="contemplativo-caption">Profundización en liderazgo contemplativo — Plum Village, Francia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 CÓMO TRABAJAMOS ============ -->
+<section style="background:var(--bg-secondary);padding-top:96px;padding-bottom:96px">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">04 / Cómo trabajamos</span>
+      <h2 class="h1" style="margin-top:20px">Cómo trabajamos</h2>
+      <p class="body-l" style="margin-top:24px;max-width:62ch">Diseñamos experiencias aplicadas para líderes y equipos, combinando diagnóstico, entrenamiento, coaching y transferencia al trabajo real.</p>
+      <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65;max-width:62ch">Nuestro enfoque permite llevar el mindfulness y el coaching organizacional a situaciones concretas: reuniones, feedback, conversaciones difíciles, toma de decisiones, gestión de presión y coordinación de equipos.</p>
+    </div>
+    <div class="context-grid context-grid-4">
+      <div class="context-item">
+        <div class="num">01</div>
+        <h4 class="context-title">Diagnóstico organizacional</h4>
+        <p>Levantamos desafíos de liderazgo, equipo, comunicación, presión operativa y cultura.</p>
+      </div>
+      <div class="context-item">
+        <div class="num">02</div>
+        <h4 class="context-title">Diseño de la experiencia</h4>
+        <p>Diseñamos una intervención a medida basada en el Modelo AIL™, coaching organizacional y mindfulness aplicado.</p>
+      </div>
+      <div class="context-item">
+        <div class="num">03</div>
+        <h4 class="context-title">Entrenamiento aplicado</h4>
+        <p>Trabajamos con líderes y equipos sobre situaciones reales del trabajo.</p>
+      </div>
+      <div class="context-item">
+        <div class="num">04</div>
+        <h4 class="context-title">Transferencia y medición</h4>
+        <p>Acompañamos la aplicación práctica y evaluamos avances en capacidades, hábitos e impacto percibido.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:96px;margin-bottom:48px">
+      <span class="eyebrow">Qué logramos</span>
+      <h2 class="h2" style="margin-top:20px">Qué logramos</h2>
+    </div>
+    <div class="context-grid">
+      <div class="context-item">
+        <div class="num">01</div>
+        <p>Líderes con mayor claridad bajo presión.</p>
+      </div>
+      <div class="context-item">
+        <div class="num">02</div>
+        <p>Equipos con mejores conversaciones y coordinación.</p>
+      </div>
+      <div class="context-item">
+        <div class="num">03</div>
+        <p>Culturas con mayor conciencia, foco y efectividad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ STATS ============ -->
-<section class="stats-section">
+<section class="stats-section" style="background:var(--bg-primary)">
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
@@ -656,68 +749,74 @@
   </div>
 </section>
 
-<!-- ============ 04 PROGRAMAS ============ -->
-<section>
+<!-- ============ 05 PROGRAMAS ============ -->
+<section id="programas">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">03 / Programas</span>
-      <h2 class="h1" style="margin-top:20px">Cinco líneas de trabajo para organizaciones</h2>
-      <p class="body-l" style="margin-top:24px;max-width:62ch">Diseñamos experiencias que combinan mindfulness aplicado, coaching organizacional y liderazgo consciente — adaptadas al contexto y los desafíos reales de cada organización.</p>
+      <span class="eyebrow">05 / Programas</span>
+      <h2 class="h1" style="margin-top:20px">Programas y acompañamientos</h2>
+      <p class="body-l" style="margin-top:24px;max-width:62ch">Desarrollamos programas para líderes, equipos y organizaciones que necesitan mejorar presencia, regulación, conversaciones críticas, coordinación y toma de decisiones.</p>
+      <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65;max-width:62ch">Cada experiencia se diseña a medida, integrando coaching organizacional, mindfulness aplicado, liderazgo contemplativo y transferencia al trabajo real.</p>
     </div>
 
     <div class="programs-grid">
       <article class="program-card">
         <span class="num">A · Liderazgo</span>
-        <h3 class="name">Liderazgo Consciente</h3>
-        <p class="pitch">Líderes presentes, regulados y estratégicos para contextos de alta exigencia. Mindfulness aplicado al liderazgo, gestión emocional, feedback consciente y toma de decisiones con propósito.</p>
+        <h3 class="name">Programas de Liderazgo AIL™</h3>
+        <p class="pitch"><strong>Para líderes que necesitan sostener claridad, presencia y efectividad en contextos exigentes.</strong></p>
+        <p class="pitch">Experiencias aplicadas para gerentes, jefaturas y mandos medios que buscan fortalecer autorregulación, foco, comunicación, feedback, toma de decisiones e impacto en sus equipos.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Taller + coaching individual</span>
-          <span><strong>Duración</strong> Flexible</span>
-          <span><strong>Dirigido a</strong> Equipos directivos y mandos medios</span>
+          <span><strong>Modalidad</strong> Programa modular + experiencias aplicadas + coaching individual opcional</span>
+          <span><strong>Duración</strong> Flexible según diagnóstico</span>
+          <span><strong>Dirigido a</strong> Equipos directivos, gerencias, jefaturas y mandos medios</span>
         </div>
       </article>
 
       <article class="program-card">
-        <span class="num">B · Coaching</span>
-        <h3 class="name">Coaching Organizacional</h3>
-        <p class="pitch">Procesos de cambio desde la conversación transformadora. Coaching individual y grupal, exploración de modelos mentales, liderazgo desde la coherencia personal y organizacional.</p>
+        <span class="num">B · Coaching individual</span>
+        <h3 class="name">Coaching Ejecutivo Individual</h3>
+        <p class="pitch"><strong>Para líderes que necesitan fortalecer su claridad, presencia y capacidad de acción.</strong></p>
+        <p class="pitch">Procesos 1:1 orientados a desarrollar autoconciencia, regulación emocional, liderazgo conversacional y toma de decisiones. Acompañamos al líder a observar sus patrones, ampliar su mirada y actuar con mayor efectividad en situaciones críticas.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> 1:1 + sesiones grupales</span>
-          <span><strong>Duración</strong> Personalizada</span>
-          <span><strong>Dirigido a</strong> Líderes, equipos clave, comités ejecutivos</span>
+          <span><strong>Modalidad</strong> Sesiones individuales + plan de desarrollo</span>
+          <span><strong>Duración</strong> 6 a 10 sesiones</span>
+          <span><strong>Dirigido a</strong> Gerentes, líderes clave, talentos críticos y profesionales en transición de rol</span>
         </div>
       </article>
 
       <article class="program-card">
-        <span class="num">C · Diversidad</span>
-        <h3 class="name">Diversidad e Inclusión con Sentido</h3>
-        <p class="pitch">Convierte la diversidad en ventaja competitiva sostenible: diagnóstico cultural, liderazgo inclusivo, desarrollo de empatía y diseño participativo de estrategias.</p>
+        <span class="num">C · Coaching de equipos</span>
+        <h3 class="name">Coaching de Equipos</h3>
+        <p class="pitch"><strong>Para equipos que necesitan mejorar coordinación, confianza y conversaciones críticas.</strong></p>
+        <p class="pitch">Acompañamos a equipos directivos, comités y áreas clave a observar cómo conversan, cómo deciden, cómo regulan la presión y cómo generan resultados juntos. El trabajo combina coaching sistémico, mindfulness aplicado y prácticas de presencia en situaciones reales del equipo.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Programa modular + asesoría</span>
-          <span><strong>Duración</strong> 4 a 8 semanas</span>
-          <span><strong>Dirigido a</strong> Alta dirección, líderes de equipo, áreas de personas</span>
+          <span><strong>Modalidad</strong> Diagnóstico de equipo + sesiones grupales + transferencia al trabajo real</span>
+          <span><strong>Duración</strong> 4 a 8 sesiones</span>
+          <span><strong>Dirigido a</strong> Comités ejecutivos, equipos directivos, áreas críticas y equipos en transformación</span>
         </div>
       </article>
 
       <article class="program-card">
         <span class="num">D · Conversación</span>
         <h3 class="name">Conversaciones Conscientes</h3>
-        <p class="pitch">Eleva la calidad de las conversaciones críticas. Escucha generativa, lenguaje emocional, indagación apreciativa y entrenamiento en diálogo consciente.</p>
+        <p class="pitch"><strong>Eleva la calidad de las conversaciones en tu organización.</strong></p>
+        <p class="pitch">Entrenamiento aplicado para mejorar escucha, feedback, conversaciones difíciles, coordinación y confianza. Trabajamos la conversación como una capacidad crítica para liderar, alinear equipos y generar resultados.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Entrenamiento práctico</span>
+          <span><strong>Modalidad</strong> Entrenamiento práctico + ejercicios aplicados</span>
           <span><strong>Duración</strong> 4 a 6 sesiones</span>
-          <span><strong>Dirigido a</strong> Líderes, equipos de alto desempeño, RRHH</span>
+          <span><strong>Dirigido a</strong> Líderes, equipos de alto desempeño, áreas de personas y equipos en cambio</span>
         </div>
       </article>
 
       <article class="program-card" style="grid-column:1/-1">
-        <span class="num">E · Sostenibilidad</span>
-        <h3 class="name">Gestión del Estrés y Autocuidado</h3>
-        <p class="pitch">Herramientas para sostener la energía, la atención y la regulación emocional en el trabajo. Respiración consciente, neurociencia aplicada y prácticas de autocuidado integradas a la operación.</p>
+        <span class="num">E · Regulación</span>
+        <h3 class="name">Regulación emocional bajo presión</h3>
+        <p class="pitch"><strong>Herramientas para responder con claridad en contextos de alta exigencia.</strong></p>
+        <p class="pitch">Entrenamiento práctico para reconocer señales de presión, regular el estado interno y responder con mayor lucidez en conversaciones, reuniones y decisiones relevantes.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Talleres breves o programa intensivo</span>
+          <span><strong>Modalidad</strong> Experiencias breves o programa modular</span>
           <span><strong>Duración</strong> Desde 4 sesiones</span>
-          <span><strong>Dirigido a</strong> Todos los niveles organizacionales</span>
+          <span><strong>Dirigido a</strong> Líderes, equipos operativos, áreas de servicio y equipos bajo alta presión</span>
         </div>
       </article>
     </div>
@@ -728,52 +827,109 @@
 <section style="background:var(--bg-secondary);padding:80px 0">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">04 / Qué incluyen</span>
-      <h2 class="h2" style="margin-top:20px">Cada programa entrega una arquitectura completa</h2>
+      <span class="eyebrow">05b / Qué incluyen</span>
+      <h2 class="h2" style="margin-top:20px">¿Qué incluyen nuestros programas?</h2>
     </div>
-    <div class="includes-grid">
+    <div class="includes-grid includes-grid-6">
       <div class="include-item">
         <div class="num">01</div>
         <h4>Diagnóstico inicial</h4>
-        <p>Medición de clima, bienestar y coherencia previa al diseño del programa.</p>
+        <p>Diagnóstico inicial de liderazgo, equipo o cultura.</p>
       </div>
       <div class="include-item">
         <div class="num">02</div>
-        <h4>Facilitadores expertos</h4>
-        <p>Equipo con trayectoria ejecutiva y formación académica internacional.</p>
+        <h4>Diseño a medida</h4>
+        <p>Diseño a medida según desafíos reales de la organización.</p>
       </div>
       <div class="include-item">
         <div class="num">03</div>
-        <h4>Plataforma con recursos</h4>
-        <p>Audios, materiales descargables y prácticas para integrar entre sesiones.</p>
+        <h4>Experiencias aplicadas</h4>
+        <p>Experiencias aplicadas y prácticas transferibles al trabajo diario.</p>
       </div>
       <div class="include-item">
         <div class="num">04</div>
-        <h4>Seguimiento y evaluación</h4>
-        <p>Indicadores de impacto, ajustes iterativos y acompañamiento continuo.</p>
+        <h4>Coaching individual o grupal</h4>
+        <p>Coaching individual o grupal según necesidad.</p>
+      </div>
+      <div class="include-item">
+        <div class="num">05</div>
+        <h4>Material práctico</h4>
+        <p>Material práctico para líderes y equipos.</p>
+      </div>
+      <div class="include-item">
+        <div class="num">06</div>
+        <h4>Seguimiento y medición</h4>
+        <p>Seguimiento y medición de avances.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 05 LOGOS CLIENTES ============ -->
-<section class="logos-section" style="background:var(--bg-secondary)">
+<!-- ============ 06 CLIENTES Y CASOS ============ -->
+<section id="clientes" class="logos-section">
   <div class="container">
-    <div class="logos-head">
-      <span class="eyebrow">Confían en nosotros</span>
-      <h3>Organizaciones donde hemos trabajado</h3>
+    <div class="section-head" style="text-align:left;margin-bottom:48px">
+      <span class="eyebrow">06 / Clientes y casos</span>
+      <h2 class="h1" style="margin-top:20px">Aplicación en organizaciones</h2>
+      <p class="body-l" style="margin-top:24px;max-width:62ch">Workfulness ha acompañado procesos de liderazgo, coaching y mindfulness aplicado en organizaciones que enfrentan contextos de alta exigencia, coordinación operativa y transformación cultural.</p>
     </div>
-    <div class="logos-grid" role="list">
+    <div class="logos-grid" role="list" style="margin-bottom:64px">
       <div class="logo-cell" role="listitem">Sodimac</div>
       <div class="logo-cell" role="listitem">Menzies Aviation</div>
       <div class="logo-cell" role="listitem">Agunsa</div>
     </div>
+
+    <div class="cases-grid">
+      <article class="case-card">
+        <span class="eyebrow">Caso aplicado</span>
+        <h3 class="h3" style="margin-top:14px">Liderazgo Consciente en Logística</h3>
+        <p class="body" style="margin-top:16px;font-size:16px;line-height:1.65">Programa desarrollado con líderes de la unidad logística de Sodimac, orientado a fortalecer presencia, autorregulación, foco, comunicación consciente y conciencia sistémica en contextos operativos exigentes.</p>
+        <p class="body" style="margin-top:12px;font-size:16px;line-height:1.65">La experiencia integró entrenamiento práctico, reflexión aplicada y herramientas transferibles al trabajo diario.</p>
+      </article>
+      <article class="case-card">
+        <span class="eyebrow">Programa con equipo directivo</span>
+        <h3 class="h3" style="margin-top:14px">Menzies Aviation y Agunsa</h3>
+        <p class="body" style="margin-top:16px;font-size:16px;line-height:1.65">Acompañamiento realizado con líderes de Menzies Aviation y Agunsa, orientado a fortalecer liderazgo, coordinación, conversaciones de equipo y capacidad de respuesta en contextos organizacionales exigentes.</p>
+      </article>
+    </div>
+
+    <div style="margin-top:40px">
+      <a href="clientes.html" class="btn-ghost-link">Ver todos los clientes y casos <span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </section>
 
-<!-- ============ FUNDADOR ============ -->
-<section>
+<!-- ============ 07 ALIANZA INTERNACIONAL ============ -->
+<section id="alianza" style="background:var(--bg-secondary)">
   <div class="container">
+    <div class="alianza-grid">
+      <div>
+        <img src="assets/img/cristina-cama-garcia.jpg" alt="Cristina Cama García — Directora del Máster en Mindfulness en Organizaciones Conscientes, Universidad de Barcelona" class="alianza-photo" />
+        <p class="contemplativo-caption" style="margin-top:14px;text-align:left">Alianza Workfulness + Cristina Cama García para el desarrollo de liderazgo consciente y mindfulness organizacional en Latinoamérica.</p>
+      </div>
+      <div class="text">
+        <span class="eyebrow with-rule">07 / Alianza internacional</span>
+        <h2 class="h1">Cristina Cama García</h2>
+        <p class="body-l" style="margin-top:8px;color:var(--text-secondary)">Directora del Máster en Mindfulness en Organizaciones Conscientes — Universidad de Barcelona</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Psicóloga empresarial, consultora y coach con más de 30 años de experiencia impulsando el talento humano. Como fundadora de DEYGEconsultores, lidera procesos de transformación organizacional que integran con éxito el bienestar personal con la eficacia profesional.</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Combina su visión estratégica con la docencia como Directora del Máster de Mindfulness en Organizaciones Conscientes (Universidad de Barcelona) y su compromiso solidario como Presidenta de la ONG Malaria 40, dedicada a la infancia en Madagascar.</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Workfulness cuenta con una alianza estratégica con Cristina Cama García, referente internacional en mindfulness aplicado a organizaciones conscientes. Esta colaboración permite integrar experiencia ejecutiva, profundidad contemplativa y mirada académica internacional para diseñar programas de liderazgo consciente, coaching organizacional y transformación cultural.</p>
+        <div style="margin-top:8px">
+          <a href="alianza.html" class="btn-ghost-link">Conocer la alianza <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 EQUIPO WORKFULNESS ============ -->
+<section id="equipo">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow with-rule">08 / Equipo Workfulness</span>
+      <h2 class="h1" style="margin-top:20px">Equipo Workfulness</h2>
+    </div>
+
     <div class="founder-grid">
       <div>
         <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Christian Núñez Poveda">
@@ -781,17 +937,11 @@
         </div>
       </div>
       <div class="founder-bio">
-        <span class="eyebrow with-rule">05 / Fundador</span>
-        <h2 class="h1">Christian Núñez Poveda</h2>
-        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Fundador de Workfulness · Coach Organizacional · Ex Gerente Corporativo</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Ingeniero Comercial de la Pontificia Universidad Católica con más de veinte años liderando áreas de servicio, clientes y operaciones en compañías como Falabella Retail, Easy (Cencosud) y Entel S.A. Hoy acompaña a líderes y equipos a integrar mindfulness y coaching en su cultura organizacional.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Profesor del staff de la Certificación en Coaching Organizacional de la UAI, y Máster en Mindfulness en Organizaciones Conscientes (Universidad de Barcelona). Combina experiencia corporativa con prácticas de atención plena, liderazgo consciente y transformación sistémica.</p>
-        <ul class="credentials">
-          <li>Ingeniero Comercial · Pontificia Universidad Católica de Chile</li>
-          <li>Máster en Mindfulness en Organizaciones Conscientes · Universidad de Barcelona</li>
-          <li>Staff académico · Certificación en Coaching Organizacional UAI</li>
-          <li>Trayectoria ejecutiva en Falabella Retail, Easy (Cencosud) y Entel S.A.</li>
-        </ul>
+        <h3 class="h1" style="font-size:36px">Christian Núñez Poveda</h3>
+        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Fundador de Workfulness | Modelo AIL™ — Arquitectura Interna del Liderazgo</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Ingeniero Comercial UC, Coach Organizacional certificado y Máster en Mindfulness en Organizaciones Conscientes por la Universidad de Barcelona.</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Cuenta con más de 20 años de experiencia ejecutiva liderando áreas de servicio, clientes y operaciones en compañías como Falabella, Cencosud y Entel. Es parte del equipo docente de la Certificación en Coaching Organizacional de la Universidad Adolfo Ibáñez.</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Su trabajo integra experiencia corporativa, coaching organizacional, mindfulness aplicado y práctica contemplativa internacional, incluyendo procesos de profundización en Plum Village, Francia. Desde ahí desarrolla el Modelo AIL™ para acompañar a líderes y equipos en contextos de alta exigencia.</p>
         <div class="founder-meta">
           <a href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a href="mailto:cnunez@workfulness.cl">cnunez@workfulness.cl</a>
@@ -801,56 +951,30 @@
   </div>
 </section>
 
-<!-- ============ EQUIPO ASOCIADO ============ -->
+<!-- ============ EQUIPO — PAULA ============ -->
 <section style="background:var(--bg-secondary);padding-top:80px;padding-bottom:80px">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">06 / Equipo asociado</span>
-      <h2 class="h2" style="margin-top:20px">Consultores que acompañan los procesos</h2>
-    </div>
     <div class="founder-grid">
       <div>
-        <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Paula Riffo Carrillo">
-          [Retrato editorial de Paula Riffo Carrillo · 4:5]
+        <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Paula Riffo">
+          [Retrato editorial de Paula Riffo · 4:5]
         </div>
       </div>
       <div class="founder-bio">
-        <h3 class="h2">Paula Riffo Carrillo</h3>
-        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Consultora · Psicóloga · Coach Ejecutiva</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Más de trece años de experiencia en gestión de personas en el mundo del retail. Especialista en liderazgo consciente, bienestar organizacional y neurociencia, con formación en la UAI, Universidad Complutense de Madrid y la Escuela Europea de Coaching.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Forma parte del staff académico de la Certificación en Coaching Organizacional UAI y acompaña a equipos y líderes en procesos de transformación, colaboración efectiva y desarrollo sistémico.</p>
+        <h3 class="h1" style="font-size:36px">Paula Riffo</h3>
+        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Consultora asociada Workfulness</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Psicóloga y Coach Ejecutiva con más de 13 años de experiencia en gestión de personas en el mundo del retail.</p>
+        <p class="body" style="font-size:17px;line-height:1.65">Especialista en liderazgo consciente, desarrollo de equipos, bienestar organizacional y neurociencia aplicada. Forma parte del staff académico de la Certificación en Coaching Organizacional UAI y acompaña a líderes y equipos en procesos de transformación, colaboración efectiva y desarrollo sistémico.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 07 ALIANZA INTERNACIONAL ============ -->
+<!-- ============ 09 TESTIMONIOS ============ -->
 <section>
   <div class="container">
-    <div class="alianza-grid">
-      <div>
-        <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Cristina Cama García">
-          [Retrato editorial de Cristina Cama García · 4:5]
-        </div>
-      </div>
-      <div class="text">
-        <span class="eyebrow with-rule">07 / Alianza internacional</span>
-        <h2 class="h1">Cristina Cama García</h2>
-        <p class="body-l" style="margin-top:8px;color:var(--text-secondary)">Directora del Máster en Mindfulness en Organizaciones Conscientes — Universidad de Barcelona</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Workfulness mantiene una alianza estratégica con Cristina Cama García, referente internacional en mindfulness aplicado a organizaciones conscientes. Esta colaboración integra experiencia local, trayectoria ejecutiva y mirada académica internacional.</p>
-        <div style="margin-top:8px">
-          <a href="alianza.html" class="btn-ghost-link">Conocer la alianza <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 08 TESTIMONIOS ============ -->
-<section style="background:var(--bg-secondary)">
-  <div class="container">
     <div class="section-head">
-      <span class="eyebrow">08 / Testimonios</span>
+      <span class="eyebrow">09 / Testimonios</span>
       <h2 class="h1" style="margin-top:20px">Lo que dicen quienes han trabajado con nosotros</h2>
     </div>
 
@@ -883,7 +1007,7 @@
         <blockquote>"Christian destacó por su enfoque estratégico, claridad de comunicación y capacidad para vincular mindfulness con desafíos organizacionales. Su perfil profesional aporta valor real a entornos laborales que buscan una transformación consciente."</blockquote>
         <cite>
           <strong>Cristina Cama García</strong>
-          Directora Máster Mindfulness en Organizaciones Conscientes · Universidad de Barcelona
+          Directora del Máster en Mindfulness en Organizaciones Conscientes · Universidad de Barcelona
         </cite>
       </figure>
 
@@ -898,14 +1022,15 @@
   </div>
 </section>
 
-<!-- ============ 08 CTA FINAL ============ -->
-<section class="cta-final">
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="contacto">
   <div class="container">
     <div class="inner">
-      <h2 class="h1">Conversemos sobre el liderazgo que tu organización necesita.</h2>
-      <p class="body-l lead" style="margin-top:16px">Diseñamos procesos a medida de cada organización.</p>
+      <span class="eyebrow with-rule" style="justify-content:center;margin-bottom:20px">10 / Contacto</span>
+      <h2 class="h1">Conversemos</h2>
+      <p class="body-l lead" style="margin-top:16px">Si tu organización quiere desarrollar líderes más presentes, equipos mejor coordinados y conversaciones de mayor calidad, conversemos.</p>
       <div style="margin-top:32px">
-        <a href="contacto.html" class="btn btn-primary">Agendar una conversación</a>
+        <a href="contacto.html" class="btn btn-primary">Agendar conversación</a>
       </div>
       <p class="meta">contacto@workfulness.cl &nbsp;·&nbsp; +56 9 9346 0760</p>
     </div>
@@ -920,13 +1045,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <a href="index.html" class="logo">
-          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M16 9v15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M16 13c-2-2.5-4.5-2.5-6.5-1M16 13c2-2.5 4.5-2.5 6.5-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M16 18c-3-3-6.5-3-9-1M16 18c3-3 6.5-3 9-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-          <span>Workfulness</span>
+          <img src="assets/logo/workfulness-logo-full.png" alt="Workfulness" class="logo-img" />
         </a>
         <p class="tagline">Arquitectura interna del liderazgo. Mindfulness aplicado, coaching ejecutivo, desarrollo organizacional.</p>
         <ul>
@@ -939,12 +1058,11 @@
       <div class="footer-col">
         <h4>Navegación</h4>
         <ul>
-          <li><a href="modelo-ail.html">Modelo AIL</a></li>
+          <li><a href="modelo-ail.html">Modelo AIL™</a></li>
           <li><a href="programas.html">Programas</a></li>
-          <li><a href="coaching-ejecutivo.html">Coaching Ejecutivo</a></li>
-          <li><a href="coaching-equipos.html">Coaching de Equipos</a></li>
           <li><a href="clientes.html">Clientes</a></li>
           <li><a href="alianza.html">Alianza</a></li>
+          <li><a href="index.html#equipo">Equipo</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </div>
