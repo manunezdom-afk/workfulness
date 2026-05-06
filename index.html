@@ -1,1180 +1,699 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Workfulness — Mindfulness y coaching aplicados al desempeño sostenible</title>
-<meta name="description" content="Consultora chilena especializada en mindfulness aplicado a organizaciones, coaching ejecutivo y desarrollo de liderazgo consciente." />
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workfulness — Arquitectura Interna del Liderazgo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    /* Fondos */
-    --bg-primary:#FFFFFF;
-    --bg-secondary:#F1F0E2;
-    --bg-accent-soft:#E8E6D4;
+:root{
+  --forest-900:#2a3530; --forest-800:#3a4942; --forest-700:#485851;
+  --forest-600:#506058; --forest-500:#6c7d74; --forest-400:#8c9a92;
+  --forest-300:#b3bcb6; --forest-200:#d4dad6; --forest-100:#e8ebe9; --forest-50:#f3f5f4;
+  --graphite-900:#1f1f1f; --graphite-700:#404040; --graphite-500:#6b6b6b; --graphite-400:#8c8c8c; --graphite-300:#b8b8b8;
+  --paper:#f7f5f0; --paper-2:#efece4; --bone:#fbfaf6; --line:#e0ddd5; --line-strong:#c9c5bb;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --container:1240px;
+  --serif:'Fraunces','Times New Roman',Georgia,serif;
+  --sans:'Inter Tight','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--graphite-700);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--graphite-900);margin:0;letter-spacing:-.015em;line-height:1.1;text-wrap:balance}
 
-    /* Texto */
-    --text-primary:#4C4B4B;
-    --text-secondary:#666666;
-    --text-tertiary:#8A8A8A;
+.container{max-width:var(--container);margin:0 auto;padding:0 32px}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--forest-600);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--forest-600)}
+.lead{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.5;color:var(--graphite-900)}
+section{padding:140px 0;position:relative}
+.section-tight{padding:104px 0}
 
-    /* Bordes */
-    --border-subtle:#E0DDD0;
-    --border-medium:#C8C5B5;
+/* ======= HEADER ======= */
+.header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);background:rgba(247,245,240,.78);border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.header.scrolled{border-bottom-color:var(--line);background:rgba(247,245,240,.92)}
+.header-inner{display:flex;align-items:center;height:72px;gap:48px}
+.logo{display:flex;align-items:center;gap:8px;height:30px}
+.logo img{height:30px;width:auto}
+.nav{display:flex;gap:32px;margin-left:auto}
+.nav a{font-size:14px;color:var(--graphite-700);font-weight:500;position:relative;padding:6px 0;transition:color .2s var(--ease)}
+.nav a::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--forest-600);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover{color:var(--graphite-900)}
+.nav a:hover::after{transform:scaleX(1)}
+.cta-header{font-size:13px;font-weight:500;background:var(--graphite-900);color:var(--paper);padding:10px 18px;border-radius:6px;transition:background .2s var(--ease)}
+.cta-header:hover{background:var(--forest-700)}
 
-    /* Acento */
-    --accent-primary:#6C7E77;
-    --accent-hover:#59675A;
-    --accent-bright:#5A7268;
+/* ======= BTN ======= */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:15px;font-weight:500;padding:16px 28px;border-radius:8px;border:0;cursor:pointer;transition:all .2s var(--ease);letter-spacing:.005em}
+.btn-primary{background:var(--forest-600);color:var(--paper)}
+.btn-primary:hover{background:var(--forest-700);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--graphite-900);border:1px solid var(--line-strong)}
+.btn-secondary:hover{border-color:var(--forest-600);background:var(--forest-50)}
+.btn-ghost{padding:0;background:transparent;color:var(--graphite-900);font-weight:500}
+.btn-ghost .arrow{transition:transform .3s var(--ease);display:inline-block}
+.btn-ghost:hover .arrow{transform:translateX(6px)}
+.btn-ghost:hover{color:var(--forest-600)}
 
-    --success:#3D5A50;
+/* ======= HERO ======= */
+.hero{padding:200px 0 140px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:end}
+.hero h1{font-size:clamp(56px,7.2vw,108px);line-height:.96;letter-spacing:-.025em;font-weight:300}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--forest-600)}
+.hero .sub{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.5;color:var(--graphite-700);max-width:520px;margin-top:36px}
+.hero .body{font-size:16px;color:var(--graphite-500);max-width:480px;margin-top:24px;line-height:1.65}
+.hero-actions{display:flex;gap:14px;margin-top:48px;flex-wrap:wrap}
+.hero-meta{padding-bottom:8px}
+.hero-meta .stat{padding:18px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:baseline}
+.hero-meta .stat:last-child{border-bottom:1px solid var(--line)}
+.hero-meta .num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--forest-600);line-height:1}
+.hero-meta .lbl{font-size:13px;color:var(--graphite-500);line-height:1.45}
+.hero-meta .lbl b{color:var(--graphite-900);font-weight:600;display:block;font-size:14px;margin-bottom:2px}
 
-    --container:1200px;
-  }
+/* Subtle sage tint behind hero */
+.hero::before{content:"";position:absolute;top:-200px;right:-150px;width:700px;height:700px;background:radial-gradient(circle at center,var(--forest-50) 0%,transparent 60%);z-index:-1;pointer-events:none}
 
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    font-family:'Poppins',system-ui,-apple-system,sans-serif;
-    font-size:16px;
-    line-height:1.65;
-    color:var(--text-primary);
-    background:var(--bg-primary);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    text-rendering:optimizeLegibility;
-  }
+/* ======= AIL MODEL ======= */
+.section-ail{background:var(--paper-2)}
+.ail-head{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;margin-bottom:80px;align-items:end}
+.ail-head h2{font-size:clamp(42px,4.8vw,68px);line-height:1.02}
+.ail-head .right{padding-bottom:8px}
+.ail-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ail-card{background:var(--bone);border:1px solid var(--line);border-radius:10px;padding:36px 32px;min-height:300px;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.ail-card:hover{transform:translateY(-4px);box-shadow:0 1px 1px rgba(40,50,45,.04),0 24px 48px -20px rgba(40,50,45,.18);border-color:var(--forest-300)}
+.ail-card .num{font-family:var(--serif);font-size:14px;font-weight:400;color:var(--forest-600);letter-spacing:.04em}
+.ail-card h3{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.15;margin-top:auto;color:var(--graphite-900)}
+.ail-card p{font-size:14.5px;color:var(--graphite-500);line-height:1.55;margin-top:14px}
+.ail-card .glyph{width:36px;height:36px;border-radius:50%;border:1px solid var(--forest-300);display:flex;align-items:center;justify-content:center;margin-top:24px}
+.ail-card .glyph svg{width:18px;height:18px;stroke:var(--forest-600);stroke-width:1.4;fill:none}
 
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
+/* ======= PLUM VILLAGE ======= */
+.plum-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:center}
+.plum-text h2{font-size:clamp(40px,4.4vw,60px);line-height:1.05;margin-top:24px}
+.plum-text .body{margin-top:28px;font-size:17px;line-height:1.7;color:var(--graphite-700)}
+.plum-cap{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--graphite-500);letter-spacing:.02em;font-style:italic;font-family:var(--serif)}
+.plum-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 280px;gap:14px;position:relative}
+.photo{background:var(--forest-100);border-radius:8px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.photo .ph-label{position:absolute;bottom:14px;left:14px;font-size:11px;color:var(--graphite-500);letter-spacing:.08em;text-transform:uppercase;font-weight:500;background:rgba(247,245,240,.92);padding:6px 10px;border-radius:4px;backdrop-filter:blur(4px)}
+.photo .ph-icon{width:48px;height:48px;opacity:.45;stroke:var(--forest-600);stroke-width:1.2;fill:none}
+.plum-photos .p1{grid-column:1;grid-row:1/3;background:linear-gradient(135deg,#9faaa3 0%,#5e6b65 100%)}
+.plum-photos .p2{grid-column:2;grid-row:1;background:linear-gradient(135deg,#cbd1cc 0%,#9aa49d 100%)}
+.plum-photos .p3{grid-column:2;grid-row:2;background:linear-gradient(135deg,#aab3ad 0%,#727f78 100%)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(20,28,24,.25) 100%);pointer-events:none}
 
-  /* ---------- Tipografía ---------- */
-  .serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;letter-spacing:-0.02em}
-  .display{font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;color:var(--text-primary)}
-  .h1{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:38px;line-height:1.15;letter-spacing:-0.015em;margin:0}
-  .h1.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto}
-  .h2{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:28px;line-height:1.2;letter-spacing:-0.015em;margin:0}
-  .h3{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1.3;letter-spacing:-0.01em;margin:0}
-  @media (max-width:768px){.display{font-size:36px}.h1{font-size:28px}.h2{font-size:24px}.h3{font-size:18px}}
-  .body-l{font-size:19px;line-height:1.6;color:var(--text-secondary);letter-spacing:-0.005em}
-  .body{font-size:16px;line-height:1.65;color:var(--text-secondary)}
-  .eyebrow{
-    font-family:'Inter',sans-serif;
-    font-weight:500;
-    font-size:12px;
-    line-height:1.4;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--text-secondary);
-  }
-  .eyebrow.with-rule{
-    display:inline-flex;
-    align-items:center;
-    gap:14px;
-    color:var(--text-primary);
-  }
-  .eyebrow.with-rule::before{
-    content:"";
-    display:inline-block;
-    width:2px;
-    height:24px;
-    background:var(--accent-primary);
-  }
+/* ======= CÓMO TRABAJAMOS ======= */
+.section-process{background:var(--forest-900);color:var(--paper)}
+.section-process h2{color:var(--paper)}
+.process-head{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;margin-bottom:88px;align-items:end}
+.process-head h2{font-size:clamp(42px,4.8vw,68px);line-height:1.02}
+.process-head .lead{color:rgba(247,245,240,.78);font-size:20px}
+.process-head .eyebrow{color:var(--forest-300)}
+.process-head .eyebrow::before{background:var(--forest-300)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(247,245,240,.12)}
+.step{padding:40px 28px 40px 0;border-right:1px solid rgba(247,245,240,.12);position:relative}
+.step:last-child{border-right:0}
+.step .stp-num{font-family:var(--serif);font-size:13px;color:var(--forest-300);letter-spacing:.1em;font-weight:400}
+.step h3{color:var(--paper);font-size:22px;font-weight:400;line-height:1.2;margin-top:48px;font-family:var(--serif)}
+.step p{font-size:14.5px;color:rgba(247,245,240,.7);line-height:1.6;margin-top:16px}
+.step::before{content:"";position:absolute;top:-1px;left:0;width:32px;height:1px;background:rgba(247,245,240,.45);transition:width .5s var(--ease),background .5s var(--ease)}
+.step:hover::before{width:60%;background:var(--paper)}
 
-  @media (max-width:768px){
-    .display{font-size:40px;line-height:1.05}
-    .h1{font-size:34px}
-    .h2{font-size:28px}
-    .h3{font-size:21px}
-    .body-l{font-size:17px}
-  }
+/* ======= PROGRAMAS ======= */
+.programs-head{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;margin-bottom:80px;align-items:end}
+.programs-head h2{font-size:clamp(42px,4.8vw,68px);line-height:1.02}
+.programs-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.program{display:grid;grid-template-columns:80px 1.2fr 2fr 200px;gap:40px;padding:36px 0;border-bottom:1px solid var(--line);align-items:center;cursor:pointer;transition:background .25s var(--ease),padding .25s var(--ease)}
+.program:hover{background:var(--paper-2);padding-left:24px;padding-right:24px}
+.program .pn{font-family:var(--serif);font-size:14px;color:var(--forest-600);letter-spacing:.04em}
+.program h3{font-family:var(--serif);font-size:26px;font-weight:400;line-height:1.15}
+.program .desc{font-size:15px;color:var(--graphite-500);line-height:1.55}
+.program .meta{font-size:12px;color:var(--graphite-500);text-align:right}
+.program .meta b{display:block;color:var(--graphite-900);font-weight:500;margin-bottom:4px;font-size:13px}
+.program .arrow-small{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);display:inline-flex;align-items:center;justify-content:center;margin-left:auto;transition:all .25s var(--ease)}
+.program:hover .arrow-small{background:var(--forest-600);border-color:var(--forest-600);color:var(--paper)}
 
-  /* ---------- Layout ---------- */
-  .container{max-width:var(--container);margin:0 auto;padding:0 24px}
-  @media (min-width:768px){.container{padding:0 48px}}
-  section{padding:72px 0}
-  @media (min-width:900px){section{padding:120px 0}}
+/* ======= CLIENTES & CASOS ======= */
+.section-clients{background:var(--paper-2)}
+.clients-head{margin-bottom:64px}
+.clients-head h2{font-size:clamp(42px,4.8vw,60px);line-height:1.05;max-width:760px}
+.client-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:80px}
+.client-logo{padding:48px 32px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);font-family:var(--serif);font-size:28px;font-weight:300;color:var(--graphite-700);letter-spacing:-.01em;transition:color .25s var(--ease)}
+.client-logo:last-child{border-right:0}
+.client-logo:hover{color:var(--forest-600)}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.case-card{background:var(--bone);border:1px solid var(--line);border-radius:10px;padding:48px;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -20px rgba(40,50,45,.18)}
+.case-card .tag{display:inline-flex;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--forest-600);background:var(--forest-50);padding:5px 10px;border-radius:999px;width:fit-content}
+.case-card h3{font-family:var(--serif);font-size:28px;font-weight:400;margin-top:20px;line-height:1.2}
+.case-card .who{font-size:13px;color:var(--graphite-500);margin-top:8px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.case-card p{font-size:15px;color:var(--graphite-500);line-height:1.65;margin-top:24px}
+.case-card .cta-row{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
 
-  /* ---------- Header ---------- */
-  .site-header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter:saturate(1.2) blur(8px);
-    -webkit-backdrop-filter:saturate(1.2) blur(8px);
-    border-bottom:1px solid transparent;
-    transition:border-color 200ms ease;
-  }
-  .site-header.scrolled{border-bottom-color:var(--border-subtle)}
-  .header-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    height:72px;
-  }
-  .logo{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:400;
-    font-size:22px;
-    letter-spacing:-0.02em;
-    color:var(--text-primary);
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-  }
-  .logo-img{height:36px;width:auto;display:block}
-  @media (max-width:600px){.logo-img{height:30px}}
-  .logo-mark{width:38px;height:38px;color:var(--accent-primary);flex-shrink:0}
-  @keyframes leafShimmer{0%,100%{opacity:1}50%{opacity:0.45}}
-  @keyframes treeSway{0%,100%{transform:rotate(-0.8deg)}50%{transform:rotate(0.8deg)}}
-  .logo-mark .branches{transform-origin:32px 52px;animation:treeSway 6s ease-in-out infinite}
-  .logo-mark .leaves circle{animation:leafShimmer 4s ease-in-out infinite;transform-origin:center}
-  .logo-mark .leaves circle:nth-child(2){animation-delay:0.3s}
-  .logo-mark .leaves circle:nth-child(3){animation-delay:0.6s}
-  .logo-mark .leaves circle:nth-child(4){animation-delay:0.9s}
-  .logo-mark .leaves circle:nth-child(5){animation-delay:1.2s}
-  .logo-mark .leaves circle:nth-child(6){animation-delay:1.5s}
-  .logo-mark .leaves circle:nth-child(7){animation-delay:1.8s}
-  .logo-mark .leaves circle:nth-child(8){animation-delay:2.1s}
-  .logo-mark .leaves circle:nth-child(9){animation-delay:2.4s}
-  .logo-mark .leaves circle:nth-child(10){animation-delay:2.7s}
-  .logo-mark .leaves circle:nth-child(11){animation-delay:3s}
-  .logo-mark .leaves circle:nth-child(12){animation-delay:3.3s}
-  .logo-mark .leaves circle:nth-child(13){animation-delay:0.15s}
-  .logo-mark .leaves circle:nth-child(14){animation-delay:1.05s}
-  .logo-mark .leaves circle:nth-child(15){animation-delay:2.55s}
-  @media(prefers-reduced-motion:reduce){.logo-mark .branches,.logo-mark .leaves circle{animation:none}}
-  .nav-primary{display:none;align-items:center;gap:20px}
-  @media (min-width:1024px){.nav-primary{display:flex}}
-  .nav-primary a{
-    font-size:14px;
-    color:var(--text-secondary);
-    transition:color 200ms ease;
-    letter-spacing:-0.005em;
-  }
-  .nav-primary a:hover{color:var(--text-primary)}
-  .nav-primary a.active{color:var(--text-primary)}
-  .nav-primary .btn{margin-left:8px}
+/* ======= ALIANZA ======= */
+.alianza-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:96px;align-items:center}
+.alianza-photo{aspect-ratio:4/5;background:linear-gradient(135deg,#a8b0a9 0%,#5d6a63 100%);border-radius:10px;position:relative;overflow:hidden}
+.alianza-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,28,24,.4) 100%)}
+.alianza-photo .ph-label{position:absolute;bottom:20px;left:20px;font-size:11px;color:var(--graphite-500);letter-spacing:.08em;text-transform:uppercase;font-weight:500;background:rgba(247,245,240,.92);padding:8px 12px;border-radius:4px;z-index:2}
+.alianza-text h2{font-size:clamp(40px,4.4vw,58px);line-height:1.05;margin-top:24px}
+.alianza-text .who-block{margin-top:36px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.alianza-text .who-name{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--graphite-900)}
+.alianza-text .who-role{font-size:14px;color:var(--graphite-500);margin-top:6px;line-height:1.5}
+.alianza-text p{margin-top:28px;font-size:16.5px;color:var(--graphite-700);line-height:1.7}
+.alianza-cap{margin-top:24px;font-size:13px;color:var(--graphite-500);font-style:italic;font-family:var(--serif)}
 
-  /* ---------- Botones ---------- */
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    font-family:'Inter',sans-serif;
-    font-size:15px;
-    font-weight:500;
-    letter-spacing:-0.005em;
-    padding:14px 24px;
-    border-radius:6px;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:background 200ms ease, color 200ms ease, border-color 200ms ease;
-    text-align:center;
-    white-space:nowrap;
-  }
-  .btn-primary{background:#fff;color:var(--accent-primary);border-color:var(--accent-primary)}
-  .btn-primary:hover{background:var(--bg-accent-soft)}
-  .btn-secondary{
-    background:transparent;color:var(--accent-primary);
-    padding:14px 0;
-    border-radius:0;
-  }
-  .btn-secondary .arrow{transition:transform 200ms ease}
-  .btn-secondary:hover{text-decoration:underline;text-underline-offset:4px}
-  .btn-secondary:hover .arrow{transform:translateX(3px)}
+/* ======= EQUIPO ======= */
+.section-team{background:var(--paper-2)}
+.team-head{margin-bottom:72px}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.member{background:var(--bone);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:280px 1fr;gap:0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.member:hover{transform:translateY(-4px);box-shadow:0 24px 48px -20px rgba(40,50,45,.18)}
+.member .photo-col{background:linear-gradient(135deg,#9aa49d 0%,#5d6a63 100%);min-height:340px;position:relative}
+.member .photo-col::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,28,24,.35) 100%)}
+.member .photo-col .ph-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;opacity:.5;stroke:var(--paper);stroke-width:1.2;fill:none}
+.member .info{padding:36px 36px 36px 36px;display:flex;flex-direction:column}
+.member .role-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--forest-600);font-weight:500}
+.member h3{font-family:var(--serif);font-size:26px;margin-top:14px;line-height:1.15;font-weight:400}
+.member .credentials{font-size:13.5px;color:var(--graphite-500);margin-top:8px;line-height:1.5;font-style:italic;font-family:var(--serif)}
+.member .bio{font-size:14.5px;color:var(--graphite-700);line-height:1.65;margin-top:18px}
 
-  .btn-ghost-link{
-    color:var(--accent-primary);
-    font-size:15px;
-    font-weight:500;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .btn-ghost-link:hover{text-decoration:underline;text-underline-offset:4px}
+/* ======= TESTIMONIOS ======= */
+.testimonials-head{margin-bottom:72px;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:end}
+.testimonials-head h2{font-size:clamp(42px,4.8vw,60px);line-height:1.05}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.testimonial{background:var(--bone);border:1px solid var(--line);border-radius:10px;padding:36px;display:flex;flex-direction:column;min-height:340px}
+.testimonial .quote-mark{font-family:var(--serif);font-size:64px;line-height:.6;color:var(--forest-600);font-weight:300;margin-bottom:8px}
+.testimonial p{font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--graphite-900);font-weight:300}
+.testimonial .attr{margin-top:auto;padding-top:24px;border-top:1px solid var(--line)}
+.testimonial .attr .name{font-size:14px;font-weight:600;color:var(--graphite-900)}
+.testimonial .attr .role{font-size:13px;color:var(--graphite-500);margin-top:3px}
 
-  /* ---------- Hamburger ---------- */
-  .menu-toggle{
-    display:inline-flex;
-    align-items:center;justify-content:center;
-    width:40px;height:40px;
-    border:1px solid var(--border-subtle);
-    background:transparent;border-radius:6px;
-    cursor:pointer;
-  }
-  @media (min-width:1024px){.menu-toggle{display:none}}
-  .menu-toggle span{display:block;width:18px;height:1.5px;background:var(--text-primary);position:relative}
-  .menu-toggle span::before,.menu-toggle span::after{
-    content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--text-primary);
-  }
-  .menu-toggle span::before{top:-6px}
-  .menu-toggle span::after{top:6px}
+/* ======= CONTACTO ======= */
+.section-contact{background:var(--forest-900);color:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:96px;align-items:center}
+.contact-grid h2{color:var(--paper);font-size:clamp(48px,6vw,84px);line-height:1.02}
+.contact-grid h2 em{color:var(--forest-300);font-style:italic}
+.contact-grid .lead{color:rgba(247,245,240,.78);margin-top:32px;font-size:21px;max-width:540px}
+.contact-cta{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap}
+.contact-cta .btn-primary{background:var(--paper);color:var(--graphite-900)}
+.contact-cta .btn-primary:hover{background:var(--bone)}
+.contact-cta .btn-secondary{color:var(--paper);border-color:rgba(247,245,240,.3)}
+.contact-cta .btn-secondary:hover{border-color:var(--paper);background:rgba(247,245,240,.08)}
+.contact-info{padding:32px 0;border-top:1px solid rgba(247,245,240,.18);border-bottom:1px solid rgba(247,245,240,.18)}
+.contact-info .row{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.contact-info .row + .row{border-top:1px solid rgba(247,245,240,.12)}
+.contact-info .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,245,240,.55);font-weight:500}
+.contact-info .val{font-family:var(--serif);font-size:20px;color:var(--paper);font-weight:300}
 
-  .drawer{
-    position:fixed;inset:0 0 0 auto;
-    width:min(86vw,360px);
-    background:#fff;
-    border-left:1px solid var(--border-subtle);
-    transform:translateX(100%);
-    transition:transform 240ms ease;
-    z-index:60;
-    display:flex;flex-direction:column;
-    padding:24px;
-  }
-  .drawer.open{transform:translateX(0)}
-  .drawer-backdrop{
-    position:fixed;inset:0;background:rgba(15,15,18,0.32);
-    opacity:0;pointer-events:none;transition:opacity 240ms ease;z-index:55;
-  }
-  .drawer-backdrop.open{opacity:1;pointer-events:auto}
-  .drawer .close{
-    align-self:flex-end;
-    width:40px;height:40px;border:1px solid var(--border-subtle);background:#fff;border-radius:6px;cursor:pointer;
-    font-size:18px;color:var(--text-primary);
-  }
-  .drawer nav{display:flex;flex-direction:column;gap:4px;margin-top:24px}
-  .drawer nav a{
-    padding:14px 4px;font-size:18px;color:var(--text-primary);
-    border-bottom:1px solid var(--border-subtle);
-    font-family:'Fraunces',Georgia,serif;letter-spacing:-0.01em;
-  }
-  .drawer .btn{margin-top:24px}
+/* ======= FOOTER ======= */
+.footer{background:var(--graphite-900);color:rgba(247,245,240,.7);padding:80px 0 48px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(247,245,240,.12)}
+.footer .logo-mini img{height:30px;filter:brightness(0) invert(1);opacity:.95}
+.footer .ft-tag{font-size:13px;color:rgba(247,245,240,.5);margin-top:16px;line-height:1.6;max-width:280px}
+.footer h4{font-family:var(--sans);color:var(--paper);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{font-size:14px;color:rgba(247,245,240,.7);transition:color .2s var(--ease)}
+.footer ul a:hover{color:var(--paper)}
+.footer-bottom{padding-top:32px;display:flex;justify-content:space-between;font-size:12px;color:rgba(247,245,240,.45)}
 
-  /* ---------- Hero ---------- */
-  .hero{padding-top:80px;padding-bottom:120px}
-  @media (max-width:900px){.hero{padding-top:48px;padding-bottom:72px}}
-  .hero-grid{
-    display:grid;grid-template-columns:1fr;gap:48px;align-items:center;
-  }
-  @media (min-width:900px){
-    .hero-grid{grid-template-columns:60fr 40fr;gap:80px;align-items:start}
-  }
-  .hero-cta{display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-top:40px}
-  .hero-eyebrow{margin-bottom:32px}
-  .hero p.lead{margin-top:32px;max-width:54ch}
+/* ======= REVEAL ANIMS ======= */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal-stagger > *{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-stagger.in > *{opacity:1;transform:none}
+.reveal-stagger.in > *:nth-child(1){transition-delay:0ms}
+.reveal-stagger.in > *:nth-child(2){transition-delay:80ms}
+.reveal-stagger.in > *:nth-child(3){transition-delay:160ms}
+.reveal-stagger.in > *:nth-child(4){transition-delay:240ms}
+.reveal-stagger.in > *:nth-child(5){transition-delay:320ms}
 
-  /* ---- Hero entrance animation ---- */
-  @keyframes heroIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-  .hero-animate>*{animation:heroIn 800ms cubic-bezier(0.22,1,0.36,1) both}
-  .hero-animate>*:nth-child(1){animation-delay:60ms}
-  .hero-animate>*:nth-child(2){animation-delay:180ms}
-  .hero-animate>*:nth-child(3){animation-delay:300ms}
-  .hero-animate>*:nth-child(4){animation-delay:420ms}
-  .hero-animate>*:nth-child(5){animation-delay:540ms}
-
-  /* ---- AIL intro card ---- */
-  .ail-intro-card{
-    background:var(--bg-secondary);border:1px solid var(--border-subtle);
-    border-radius:6px;padding:36px 32px;
-    animation:heroIn 800ms cubic-bezier(0.22,1,0.36,1) 480ms both;
-  }
-  .ail-intro-heading{
-    font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;
-    font-size:28px;line-height:1.2;letter-spacing:-0.015em;
-    color:var(--text-primary);margin:12px 0 14px;
-  }
-  @media (min-width:1100px){.ail-intro-heading{font-size:32px}}
-  .ail-pillars{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 24px}
-  .ail-pillars span{
-    background:var(--bg-primary);border:1px solid var(--border-medium);border-radius:4px;
-    padding:9px 12px;font-size:12px;font-weight:500;color:var(--accent-primary);
-    letter-spacing:-0.005em;display:block;
-  }
-
-  /* ---------- Placeholder de imagen ---------- */
-  .img-ph{
-    background:var(--border-subtle);
-    color:var(--text-secondary);
-    display:flex;align-items:center;justify-content:center;
-    text-align:center;
-    font-size:13px;
-    line-height:1.5;
-    padding:24px;
-    border-radius:6px;
-  }
-  .img-ph.r-4-5{aspect-ratio:4/5}
-  .img-ph.r-16-9{aspect-ratio:16/9}
-  .img-ph.r-3-2{aspect-ratio:3/2}
-  .img-ph.r-1-1{aspect-ratio:1/1}
-
-  /* ---------- Section header (eyebrow + h2) ---------- */
-  .section-head{margin-bottom:64px;max-width:760px}
-  .section-head .eyebrow{margin-bottom:20px;display:inline-block}
-
-  /* ---------- Contexto: 3 columnas con número ---------- */
-  /* ---------- Steps timeline ---------- */
-  .steps-2x2{
-    display:grid;grid-template-columns:1fr;
-    gap:1px;background:var(--border-subtle);
-    border:1px solid var(--border-subtle);border-radius:6px;overflow:hidden;
-    margin-top:56px;
-  }
-  @media (min-width:600px){.steps-2x2{grid-template-columns:repeat(2,1fr)}}
-  @media (min-width:1100px){.steps-2x2{grid-template-columns:repeat(4,1fr)}}
-  .step-card{
-    background:var(--bg-primary);padding:36px 28px;
-    position:relative;overflow:hidden;
-    transition:background 220ms ease;
-  }
-  .step-card:nth-child(even){background:var(--bg-accent-soft)}
-  .step-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--accent-primary);
-    transform:scaleX(0);transform-origin:left;
-    transition:transform 400ms cubic-bezier(0.25,0.46,0.45,0.94);
-  }
-  .step-card:hover::before{transform:scaleX(1)}
-  .step-card:hover{background:var(--bg-secondary)!important}
-  .step-n{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-primary);margin:0 0 20px}
-  .step-card h4{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
-  .step-card p{margin:0;font-size:14px;line-height:1.6;color:var(--text-secondary)}
-
-  /* ---------- Logros list ---------- */
-  .logros-list{border-top:1px solid var(--border-subtle);margin-top:0}
-  .logro-row{
-    display:grid;grid-template-columns:52px 1fr 24px;align-items:center;gap:24px;
-    padding:22px 0;border-bottom:1px solid var(--border-subtle);cursor:default;
-  }
-  @media (min-width:768px){.logro-row{grid-template-columns:72px 1fr 24px;gap:40px;padding:28px 0}}
-  .logro-num{font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--accent-primary);text-align:right;opacity:0.5;transition:opacity 200ms ease}
-  .logro-row:hover .logro-num{opacity:1}
-  .logro-text{margin:0;font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
-  @media (min-width:768px){.logro-text{font-size:24px}}
-  .logro-row:hover .logro-text{color:var(--accent-primary)}
-  .logro-arrow{font-size:16px;color:var(--accent-primary);opacity:0;transform:translateX(-6px);transition:opacity 200ms ease,transform 200ms ease}
-  .logro-row:hover .logro-arrow{opacity:1;transform:none}
-
-  /* ---------- Reveal on scroll ---------- */
-  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity 750ms cubic-bezier(0.22,1,0.36,1),transform 750ms cubic-bezier(0.22,1,0.36,1);transition-delay:var(--delay,0ms)}
-  [data-reveal].is-visible{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){[data-reveal],[data-reveal].is-visible{opacity:1;transform:none;transition:none}.hero-animate>*{animation:none;opacity:1}}
-
-  /* ---------- AIL Teaser ---------- */
-  .ail-section{background:var(--bg-secondary)}
-  .ail-grid{
-    display:grid;grid-template-columns:1fr;gap:64px;align-items:start;
-  }
-  @media (min-width:900px){.ail-grid{grid-template-columns:5fr 7fr;gap:96px}}
-  .ail-cards{
-    display:grid;grid-template-columns:1fr;gap:16px;
-  }
-  @media (min-width:600px){.ail-cards{grid-template-columns:repeat(3,1fr)}}
-  @media (min-width:768px){.ail-cards-4{grid-template-columns:repeat(2,1fr)}}
-  @media (min-width:1100px){.ail-cards-4{grid-template-columns:repeat(4,1fr)}}
-  .ail-card{
-    border:1px solid var(--border-subtle);
-    background:var(--bg-primary);
-    border-radius:6px;
-    padding:24px;
-    min-height:140px;
-    display:flex;align-items:flex-start;
-    transition:box-shadow 200ms ease, border-color 200ms ease;
-  }
-  .ail-card:hover{box-shadow:0 1px 2px rgba(0,0,0,0.04);border-color:var(--border-medium)}
-  .ail-card .label{
-    font-family:'Poppins',system-ui,sans-serif;
-    font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);
-    display:block;
-  }
-  .ail-card .ail-desc{
-    margin:10px 0 0;
-    font-size:14px;line-height:1.5;color:var(--text-secondary);
-  }
-
-  /* ---------- Servicios ---------- */
-  .services-stack{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-subtle)}
-  .service-row{
-    display:grid;grid-template-columns:1fr;gap:24px;
-    padding:40px 0;
-    border-bottom:1px solid var(--border-subtle);
-    align-items:start;
-  }
-  @media (min-width:900px){
-    .service-row{grid-template-columns:1fr 2fr auto;gap:64px;padding:48px 0;align-items:center}
-  }
-  .service-row .num{
-    font-family:'Fraunces',Georgia,serif;
-    font-size:14px;letter-spacing:0.04em;color:var(--text-tertiary);
-    text-transform:uppercase;
-  }
-  .service-row .name{
-    font-family:'Poppins',system-ui,sans-serif;
-    font-weight:700;
-    font-size:26px;line-height:1.2;letter-spacing:-0.015em;
-    color:var(--text-primary);
-    margin:0 0 8px;
-  }
-  .service-row .desc{margin:0;color:var(--text-secondary);font-size:16px;max-width:62ch}
-  .service-row .cta{justify-self:start}
-  @media (min-width:900px){.service-row .cta{justify-self:end}}
-
-  /* ---------- Logos ---------- */
-  .logos-section{padding-top:80px;padding-bottom:80px}
-  .logos-head{text-align:center;margin-bottom:64px}
-  .logos-head .eyebrow{display:inline-block;margin-bottom:12px}
-  .logos-head h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--text-secondary);margin:0;letter-spacing:-0.005em}
-  .logos-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:0;
-    border-top:1px solid var(--border-subtle);
-    border-left:1px solid var(--border-subtle);
-  }
-  @media (min-width:768px){.logos-grid{grid-template-columns:repeat(3,1fr)}}
-  .logo-cell{
-    border-right:1px solid var(--border-subtle);
-    border-bottom:1px solid var(--border-subtle);
-    aspect-ratio:3/1.4;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--text-tertiary);
-    font-size:13px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    font-weight:500;
-    transition:color 200ms ease;
-  }
-  .logo-cell:hover{color:var(--text-primary)}
-
-  /* ---------- Casos ---------- */
-  .cases-grid{
-    display:grid;grid-template-columns:1fr;gap:32px;
-  }
-  @media (min-width:900px){.cases-grid{grid-template-columns:repeat(2,1fr);gap:40px}}
-  .case-card{
-    background:var(--bg-primary);
-    border:1px solid var(--border-subtle);
-    border-radius:6px;
-    padding:32px;
-  }
-
-  /* ---------- Alianza ---------- */
-  .alianza-grid{
-    display:grid;grid-template-columns:1fr;gap:48px;align-items:start;
-  }
-  @media (min-width:900px){.alianza-grid{grid-template-columns:5fr 7fr;gap:80px}}
-  .alianza-grid .text > *+*{margin-top:20px}
-  .alianza-grid h2{margin-top:24px}
-  .alianza-photo{
-    width:100%;
-    aspect-ratio:4/5;
-    object-fit:cover;
-    border-radius:6px;
-    border:1px solid var(--border-subtle);
-    display:block;
-  }
-
-  /* ---------- Testimonios ---------- */
-  .testimonials-grid{
-    display:grid;grid-template-columns:1fr;gap:32px;
-  }
-  @media (min-width:900px){.testimonials-grid{grid-template-columns:repeat(3,1fr);gap:32px}}
-  .testimonial{
-    border-top:1px solid var(--border-subtle);
-    padding-top:32px;
-    display:flex;flex-direction:column;
-    gap:24px;
-  }
-  .testimonial blockquote{
-    margin:0;
-    font-family:'Fraunces',Georgia,serif;
-    font-style:italic;
-    font-weight:400;
-    font-size:21px;
-    line-height:1.45;
-    letter-spacing:-0.01em;
-    color:var(--text-primary);
-  }
-  .testimonial cite{
-    font-style:normal;
-    font-family:'Inter',sans-serif;
-    font-size:13px;
-    color:var(--text-secondary);
-    line-height:1.5;
-    display:block;
-  }
-  .testimonial cite strong{font-weight:500;color:var(--text-primary);display:block;margin-bottom:2px}
-
-  /* ---------- CTA cierre ---------- */
-  .cta-final{background:var(--bg-accent-soft)}
-  .cta-final .inner{max-width:780px;margin:0 auto;text-align:center}
-  .cta-final h2{margin:0 0 16px}
-  .cta-final .lead{margin:0 0 32px}
-  .cta-final .meta{
-    margin-top:24px;
-    font-size:14px;color:var(--text-secondary);
-  }
-
-  /* ---------- Footer ---------- */
-  .site-footer{border-top:1px solid var(--border-subtle);padding:64px 0 40px}
-  .footer-grid{
-    display:grid;grid-template-columns:1fr;gap:48px;
-  }
-  @media (min-width:900px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr;gap:80px}}
-  .footer-col h4{
-    font-family:'Inter',sans-serif;
-    font-size:12px;font-weight:500;letter-spacing:0.12em;
-    text-transform:uppercase;color:var(--text-primary);
-    margin:0 0 20px;
-  }
-  .footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
-  .footer-col a, .footer-col p{font-size:14px;color:var(--text-secondary);margin:0}
-  .footer-col a:hover{color:var(--text-primary)}
-  .footer-brand .logo{display:inline-block;margin-bottom:16px}
-  .footer-brand .tagline{font-size:14px;color:var(--text-secondary);max-width:30ch;margin:0 0 24px}
-  .footer-bottom{
-    margin-top:48px;padding-top:24px;border-top:1px solid var(--border-subtle);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    font-size:12px;color:var(--text-tertiary);letter-spacing:0.02em;
-  }
-
-  /* ---------- Stats ---------- */
-  .stats-section{background:#3D4B44;padding:80px 0}
-  .stats-grid{display:grid;grid-template-columns:1fr;gap:48px}
-  @media (min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
-  .stat-item{text-align:left}
-  .stat-item .num{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:56px;line-height:1;letter-spacing:-0.025em;color:#fff;margin:0}
-  .stat-item .label{font-size:14px;line-height:1.45;color:rgba(255,255,255,0.65);margin-top:12px;max-width:24ch}
-
-  /* ---------- Programas detallados ---------- */
-  .programs-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle)}
-  @media (min-width:768px){.programs-grid{grid-template-columns:repeat(2,1fr)}}
-  .program-card{background:var(--bg-primary);padding:40px 32px;display:flex;flex-direction:column;transition:background 200ms ease}
-  .program-card:hover{background:var(--bg-accent-soft)}
-  .program-card .num{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px}
-  .program-card .name{font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-0.015em;margin:0 0 16px;color:var(--text-primary)}
-  .program-card .pitch{font-size:15px;line-height:1.55;color:var(--text-secondary);margin:0 0 24px}
-  .program-card .meta{margin-top:auto;padding-top:24px;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text-secondary)}
-  .program-card .meta span{display:grid;grid-template-columns:88px 1fr;gap:8px;align-items:baseline}
-  .program-card .meta strong{color:var(--text-primary);font-weight:500;display:block}
-
-  /* ---------- ¿Qué incluyen? ---------- */
-  .includes-grid{display:grid;grid-template-columns:1fr;gap:32px}
-  @media (min-width:768px){.includes-grid{grid-template-columns:repeat(2,1fr);gap:40px}}
-  @media (min-width:1024px){.includes-grid{grid-template-columns:repeat(4,1fr);gap:32px}}
-  @media (min-width:1024px){.includes-grid-6{grid-template-columns:repeat(3,1fr);gap:40px}}
-
-  /* ---------- Contemplativo ---------- */
-  .contemplativo-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:12px;
-  }
-  .contemplativo-grid .img-ph:first-child{grid-column:1/-1}
-  .contemplativo-caption{
-    margin:16px 0 0;
-    font-size:13px;color:var(--text-tertiary);letter-spacing:0.02em;text-align:center;
-    font-style:italic;
-  }
-  .include-item{padding-top:24px;border-top:1px solid var(--border-subtle)}
-  .include-item .num{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--accent-primary);margin-bottom:16px;letter-spacing:0.02em}
-  .include-item h4{font-family:'Poppins',system-ui,sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
-  .include-item p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0}
-
-  /* ---------- Founder section ---------- */
-  .founder-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
-  @media (min-width:900px){.founder-grid{grid-template-columns:5fr 7fr;gap:80px}}
-  .founder-bio>*+*{margin-top:20px}
-  .founder-bio .credentials{display:flex;flex-direction:column;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border-subtle)}
-  .founder-bio .credentials li{font-size:14px;color:var(--text-secondary);line-height:1.5;list-style:none;padding-left:18px;position:relative}
-  .founder-bio .credentials li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--accent-primary)}
-  .founder-bio .credentials ul{padding:0;margin:0}
-  .founder-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:13px;color:var(--text-secondary)}
-  .founder-meta a{color:var(--accent-primary)}
-  .founder-meta a:hover{text-decoration:underline;text-underline-offset:3px}
-
-  /* ---------- WhatsApp FAB ---------- */
-  .whatsapp-fab{position:fixed;bottom:24px;right:24px;z-index:40;display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;background:#25D366;color:#fff;border-radius:999px;box-shadow:0 6px 16px rgba(37,211,102,0.3);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;transition:transform 200ms ease,box-shadow 200ms ease}
-  .whatsapp-fab:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.4)}
-  .whatsapp-fab svg{width:20px;height:20px;flex-shrink:0}
-  @media (max-width:600px){.whatsapp-fab span{display:none}.whatsapp-fab{padding:14px;border-radius:50%}}
-
-  /* ---------- A11y ---------- */
-  :focus-visible{outline:2px solid var(--accent-primary);outline-offset:2px;border-radius:4px}
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
-  }
+/* ======= RESPONSIVE ======= */
+@media (max-width:1024px){
+  .hero-grid,.ail-head,.process-head,.programs-head,.plum-grid,.alianza-grid,.contact-grid,.testimonials-head{grid-template-columns:1fr;gap:48px}
+  .ail-cards,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(2n){border-right:0}
+  .cases,.team-grid{grid-template-columns:1fr}
+  .program{grid-template-columns:60px 1fr 200px;gap:24px}
+  .program .desc{display:none}
+  .nav{display:none}
+  section{padding:96px 0}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:640px){
+  .container{padding:0 20px}
+  .ail-cards,.testimonials-grid,.client-logos{grid-template-columns:1fr}
+  .client-logo{border-right:0;border-bottom:1px solid var(--line)}
+  .process-steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid rgba(247,245,240,.12)}
+  .program{grid-template-columns:48px 1fr 40px;gap:16px}
+  .program .meta{display:none}
+  .member{grid-template-columns:1fr}
+  .member .photo-col{min-height:240px}
+  .hero{padding:140px 0 80px}
+}
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="siteHeader">
+<!-- ============= HEADER ============= -->
+<header class="header" id="header">
   <div class="container header-inner">
-    <a href="index.html" class="logo" aria-label="Workfulness — inicio">
-      <img src="assets/logo/workfulness-logo-full.png" alt="Workfulness" class="logo-img" />
-    </a>
-
-    <nav class="nav-primary" aria-label="Principal">
-      <a href="modelo-ail.html">Modelo AIL™</a>
-      <a href="programas.html">Programas</a>
-      <a href="clientes.html">Clientes</a>
-      <a href="alianza.html">Alianza</a>
-      <a href="index.html#equipo">Equipo</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="contacto.html" class="btn btn-primary" style="padding:10px 18px;font-size:14px">Agendar conversación</a>
+    <a href="#" class="logo"><img src="assets/workfulness-logo-full.png" alt="Workfulness"></a>
+    <nav class="nav">
+      <a href="#ail">Modelo AIL™</a>
+      <a href="#programas">Programas</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#alianza">Alianza</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
     </nav>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
-      <span></span>
-    </button>
+    <a href="#contacto" class="cta-header">Agendar conversación</a>
   </div>
 </header>
 
-<div class="drawer-backdrop" id="drawerBackdrop"></div>
-<aside class="drawer" id="drawer" aria-hidden="true">
-  <button class="close" id="drawerClose" aria-label="Cerrar menú">×</button>
-  <nav aria-label="Móvil">
-    <a href="modelo-ail.html">Modelo AIL™</a>
-    <a href="programas.html">Programas</a>
-    <a href="clientes.html">Clientes</a>
-    <a href="alianza.html">Alianza</a>
-    <a href="index.html#equipo">Equipo</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <a href="contacto.html" class="btn btn-primary">Agendar conversación</a>
-</aside>
-
-<main>
-
-<!-- ============ 01 HERO ============ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-animate">
-        <span class="eyebrow with-rule hero-eyebrow">Workfulness</span>
-        <h1 class="display">Arquitectura Interna del Liderazgo</h1>
-        <p class="body-l lead" style="margin-top:24px">Mindfulness y coaching organizacional aplicados al liderazgo, los equipos y la cultura.</p>
-        <p class="body" style="font-size:17px;line-height:1.65;margin-top:20px;max-width:58ch">En Workfulness acompañamos a organizaciones a desarrollar líderes más conscientes, presentes y efectivos. Integramos coaching organizacional, mindfulness aplicado y liderazgo contemplativo para fortalecer la forma en que las personas observan, deciden, conversan e impactan en sus equipos.</p>
-        <div class="hero-cta">
-          <a href="programas.html" class="btn btn-primary">Conocer programas</a>
-          <a href="contacto.html" class="btn btn-secondary">Agendar conversación <span class="arrow">→</span></a>
-        </div>
+<!-- ============= HERO ============= -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Workfulness · Consultoría boutique</div>
+      <h1 style="margin-top:32px">Arquitectura<br><em>Interna</em> del<br>Liderazgo.</h1>
+      <p class="sub">Mindfulness y coaching organizacional aplicados al liderazgo, los equipos y la cultura.</p>
+      <p class="body">En Workfulness acompañamos a organizaciones a desarrollar líderes más conscientes, presentes y efectivos. Integramos coaching organizacional, mindfulness aplicado y liderazgo contemplativo para fortalecer la forma en que las personas observan, deciden, conversan e impactan en sus equipos.</p>
+      <div class="hero-actions">
+        <a href="#programas" class="btn btn-primary">Conocer programas</a>
+        <a href="#contacto" class="btn btn-secondary">Agendar conversación</a>
       </div>
-      <div class="ail-intro-card">
-        <span class="eyebrow">Modelo propio</span>
-        <h2 class="ail-intro-heading">Arquitectura Interna del Liderazgo</h2>
-        <p style="margin:0 0 0;font-size:15px;line-height:1.65;color:var(--text-secondary)">Metodología propia de Workfulness que trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden y actúan.</p>
-        <div class="ail-pillars">
-          <span>Liderar bajo presión</span>
-          <span>Conversar con presencia</span>
-          <span>Observar sistémicamente</span>
-          <span>Actuar con conciencia</span>
-        </div>
-        <a href="modelo-ail.html" class="btn-ghost-link" style="display:inline-flex;align-items:center;gap:6px">Conocer el Modelo AIL™ <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hero-meta reveal" style="transition-delay:.15s">
+      <div class="stat"><div class="num">20+</div><div class="lbl"><b>Años de experiencia ejecutiva</b>en empresas como Falabella, Cencosud y Entel.</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl"><b>Disciplinas integradas</b>Coaching organizacional, mindfulness aplicado y liderazgo contemplativo.</div></div>
+      <div class="stat"><div class="num">UB</div><div class="lbl"><b>Alianza internacional</b>Máster en Mindfulness en Organizaciones Conscientes — Universidad de Barcelona.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= MODELO AIL ============= -->
+<section class="section-ail" id="ail" data-screen-label="02 Modelo AIL">
+  <div class="container">
+    <div class="ail-head">
+      <div class="reveal">
+        <div class="eyebrow">Modelo AIL™</div>
+        <h2 style="margin-top:24px">Arquitectura Interna del Liderazgo.</h2>
+      </div>
+      <div class="right reveal" style="transition-delay:.1s">
+        <p class="lead">Una metodología propia para desarrollar líderes y equipos capaces de sostener claridad, presencia y efectividad en contextos de alta exigencia.</p>
+        <p style="margin-top:20px;color:var(--graphite-500);font-size:15.5px;line-height:1.65">Trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden, conversan y actúan. Su aplicación permite fortalecer capacidades críticas para el liderazgo actual: autorregulación, calidad conversacional, toma de decisiones e impacto sistémico.</p>
+      </div>
+    </div>
+    <div class="ail-cards reveal-stagger">
+      <div class="ail-card">
+        <span class="num">01 / Presión</span>
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h3>Liderar bajo presión</h3>
+        <p>Responder con mayor claridad en escenarios exigentes.</p>
+      </div>
+      <div class="ail-card">
+        <span class="num">02 / Conversación</span>
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3>Conversar con presencia</h3>
+        <p>Mejorar escucha, feedback, confianza y coordinación.</p>
+      </div>
+      <div class="ail-card">
+        <span class="num">03 / Sistema</span>
+        <div class="glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg></div>
+        <h3>Observar sistémicamente</h3>
+        <p>Comprender cómo el liderazgo impacta en equipos, cultura y resultados.</p>
+      </div>
+      <div class="ail-card">
+        <span class="num">04 / Acción</span>
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h3>Actuar con conciencia</h3>
+        <p>Tomar decisiones más lúcidas, responsables y sostenibles.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 02 MODELO AIL TEASER ============ -->
-<section class="ail-section" id="modelo-ail">
-  <div class="container">
-    <div class="ail-grid">
-      <div>
-        <span class="eyebrow">02 / Modelo propio</span>
-        <h2 class="h1 serif" style="margin-top:20px">Modelo AIL™</h2>
-        <p class="body-l" style="margin-top:16px;color:var(--text-secondary)">Arquitectura Interna del Liderazgo</p>
-        <p class="body" style="margin-top:16px;font-size:15px;line-height:1.55;color:var(--text-tertiary)">Una metodología propia para sostener claridad, presencia y efectividad en contextos exigentes.</p>
+<!-- ============= PLUM VILLAGE ============= -->
+<section data-screen-label="03 Plum Village">
+  <div class="container plum-grid">
+    <div class="plum-text reveal">
+      <div class="eyebrow">Liderazgo contemplativo aplicado</div>
+      <h2>Una mirada formada en silencio, aplicada al trabajo real.</h2>
+      <p class="body">Parte del desarrollo de Workfulness se ha nutrido de experiencias de profundización en mindfulness y práctica contemplativa en espacios internacionales como <em style="font-style:italic;color:var(--forest-600)">Plum Village, Francia</em>.</p>
+      <p class="body" style="margin-top:18px">Esta experiencia fortalece una mirada de liderazgo basada en presencia, escucha profunda, regulación interna y acción consciente. En Workfulness llevamos estos aprendizajes al mundo organizacional de forma práctica, simple y aplicada a los desafíos reales de líderes y equipos.</p>
+      <p class="plum-cap">— Profundización en liderazgo contemplativo. Plum Village, Francia.</p>
+    </div>
+    <div class="plum-photos reveal" style="transition-delay:.1s">
+      <div class="photo p1">
+        <svg class="ph-icon" viewBox="0 0 24 24"><path d="M3 21l6-6M14 4l6 6M9 21l6-6M5 9l6-6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span class="ph-label">Christian en Plum Village</span>
       </div>
-      <div>
-        <p class="body-l" style="margin-top:0;color:var(--text-secondary)">El Modelo AIL™ es una metodología propia de Workfulness para desarrollar líderes y equipos capaces de sostener claridad, presencia y efectividad en contextos de alta exigencia.</p>
-        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">Trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden, conversan y actúan. Su aplicación permite fortalecer capacidades críticas para el liderazgo actual: autorregulación, calidad conversacional, toma de decisiones e impacto sistémico.</p>
-        <div class="ail-cards ail-cards-4" style="margin-top:40px">
-          <div class="ail-card">
-            <div>
-              <span class="label">Liderar bajo presión</span>
-              <p class="ail-desc">Responder con mayor claridad en escenarios exigentes.</p>
-            </div>
-          </div>
-          <div class="ail-card">
-            <div>
-              <span class="label">Conversar con presencia</span>
-              <p class="ail-desc">Mejorar escucha, feedback, confianza y coordinación.</p>
-            </div>
-          </div>
-          <div class="ail-card">
-            <div>
-              <span class="label">Observar sistémicamente</span>
-              <p class="ail-desc">Comprender cómo el liderazgo impacta en equipos, cultura y resultados.</p>
-            </div>
-          </div>
-          <div class="ail-card">
-            <div>
-              <span class="label">Actuar con conciencia</span>
-              <p class="ail-desc">Tomar decisiones más lúcidas, responsables y sostenibles.</p>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top:40px">
-          <a href="modelo-ail.html" class="btn-ghost-link">Conocer el Modelo AIL™ <span aria-hidden="true">→</span></a>
-        </div>
+      <div class="photo p2">
+        <svg class="ph-icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21V13h6v8"/></svg>
+        <span class="ph-label">Entorno · Plum Village</span>
+      </div>
+      <div class="photo p3">
+        <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M12 9v6M9 12h6M9 21l3-6 3 6"/></svg>
+        <span class="ph-label">Práctica contemplativa</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 03 LIDERAZGO CONTEMPLATIVO ============ -->
-<section id="contemplativo" style="padding:80px 0">
+<!-- ============= CÓMO TRABAJAMOS ============= -->
+<section class="section-process" data-screen-label="04 Como trabajamos">
   <div class="container">
-    <div class="founder-grid" style="align-items:center">
-      <div>
-        <span class="eyebrow with-rule">03 / Plum Village</span>
-        <h2 class="h1" style="margin-top:20px">Liderazgo contemplativo aplicado</h2>
-        <p class="body-l" style="margin-top:24px;color:var(--text-secondary)">Parte del desarrollo de Workfulness se ha nutrido de experiencias de profundización en mindfulness y práctica contemplativa en espacios internacionales como Plum Village, Francia.</p>
-        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">Esta experiencia fortalece una mirada de liderazgo basada en presencia, escucha profunda, regulación interna y acción consciente.</p>
-        <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65">En Workfulness llevamos estos aprendizajes al mundo organizacional de forma práctica, simple y aplicada a los desafíos reales de líderes y equipos.</p>
+    <div class="process-head">
+      <div class="reveal">
+        <div class="eyebrow">Cómo trabajamos</div>
+        <h2 style="margin-top:24px">Diagnóstico, diseño, entrenamiento, transferencia.</h2>
       </div>
-      <div>
-        <div class="contemplativo-grid">
-          <div class="img-ph r-3-2" role="img" aria-label="Christian en Plum Village, Francia">[Foto en Plum Village · 3:2]</div>
-          <div class="img-ph r-1-1" role="img" aria-label="Entorno de Plum Village">[Entorno Plum Village · 1:1]</div>
-          <div class="img-ph r-1-1" role="img" aria-label="Práctica contemplativa">[Práctica contemplativa · 1:1]</div>
-        </div>
-        <p class="contemplativo-caption">Profundización en liderazgo contemplativo — Plum Village, Francia.</p>
+      <div class="reveal" style="transition-delay:.1s">
+        <p class="lead">Diseñamos experiencias aplicadas para líderes y equipos, combinando diagnóstico, entrenamiento, coaching y transferencia al trabajo real.</p>
+        <p style="margin-top:20px;color:rgba(247,245,240,.6);font-size:15.5px;line-height:1.65">Nuestro enfoque permite llevar el mindfulness y el coaching organizacional a situaciones concretas: reuniones, feedback, conversaciones difíciles, toma de decisiones, gestión de presión y coordinación de equipos.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 04 CÓMO TRABAJAMOS ============ -->
-<section style="background:var(--bg-secondary);padding-top:96px;padding-bottom:96px">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">04 / Cómo trabajamos</span>
-      <h2 class="h1" style="margin-top:20px">Cómo trabajamos</h2>
-      <p class="body-l" style="margin-top:24px;max-width:62ch">Diseñamos experiencias aplicadas para líderes y equipos, combinando diagnóstico, entrenamiento, coaching y transferencia al trabajo real.</p>
-      <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65;max-width:62ch">Nuestro enfoque permite llevar el mindfulness y el coaching organizacional a situaciones concretas: reuniones, feedback, conversaciones difíciles, toma de decisiones, gestión de presión y coordinación de equipos.</p>
-    </div>
-    <div class="steps-2x2">
-      <div class="step-card" data-reveal>
-        <p class="step-n">01</p>
-        <h4>Diagnóstico organizacional</h4>
+    <div class="process-steps reveal-stagger">
+      <div class="step">
+        <span class="stp-num">01</span>
+        <h3>Diagnóstico organizacional</h3>
         <p>Levantamos desafíos de liderazgo, equipo, comunicación, presión operativa y cultura.</p>
       </div>
-      <div class="step-card" data-reveal style="--delay:100ms">
-        <p class="step-n">02</p>
-        <h4>Diseño de la experiencia</h4>
+      <div class="step">
+        <span class="stp-num">02</span>
+        <h3>Diseño de la experiencia</h3>
         <p>Diseñamos una intervención a medida basada en el Modelo AIL™, coaching organizacional y mindfulness aplicado.</p>
       </div>
-      <div class="step-card" data-reveal style="--delay:200ms">
-        <p class="step-n">03</p>
-        <h4>Entrenamiento aplicado</h4>
+      <div class="step">
+        <span class="stp-num">03</span>
+        <h3>Entrenamiento aplicado</h3>
         <p>Trabajamos con líderes y equipos sobre situaciones reales del trabajo.</p>
       </div>
-      <div class="step-card" data-reveal style="--delay:300ms">
-        <p class="step-n">04</p>
-        <h4>Transferencia y medición</h4>
+      <div class="step">
+        <span class="stp-num">04</span>
+        <h3>Transferencia y medición</h3>
         <p>Acompañamos la aplicación práctica y evaluamos avances en capacidades, hábitos e impacto percibido.</p>
       </div>
     </div>
-
-    <div class="section-head" style="margin-top:96px;margin-bottom:48px">
-      <span class="eyebrow">Qué logramos</span>
-      <h2 class="h2" style="margin-top:20px">Qué logramos</h2>
-    </div>
-    <div class="logros-list">
-      <div class="logro-row" data-reveal>
-        <span class="logro-num">01</span>
-        <p class="logro-text">Líderes con mayor claridad bajo presión.</p>
-        <span class="logro-arrow" aria-hidden="true">→</span>
-      </div>
-      <div class="logro-row" data-reveal style="--delay:80ms">
-        <span class="logro-num">02</span>
-        <p class="logro-text">Equipos con mejores conversaciones y coordinación.</p>
-        <span class="logro-arrow" aria-hidden="true">→</span>
-      </div>
-      <div class="logro-row" data-reveal style="--delay:160ms">
-        <span class="logro-num">03</span>
-        <p class="logro-text">Culturas con mayor conciencia, foco y efectividad.</p>
-        <span class="logro-arrow" aria-hidden="true">→</span>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ============ STATS ============ -->
-<section class="stats-section">
+<!-- ============= PROGRAMAS ============= -->
+<section id="programas" data-screen-label="05 Programas">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <p class="num"><span data-count="20" data-suffix="+">20+</span></p>
-        <p class="label">años liderando áreas ejecutivas en Falabella, Cencosud y Entel</p>
+    <div class="programs-head">
+      <div class="reveal">
+        <div class="eyebrow">Programas y acompañamientos</div>
+        <h2 style="margin-top:24px">Diseñados a medida, transferibles al trabajo real.</h2>
       </div>
-      <div class="stat-item">
-        <p class="num"><span data-count="5">5</span></p>
-        <p class="label">programas de desarrollo organizacional consciente</p>
-      </div>
-      <div class="stat-item">
-        <p class="num"><span data-count="3">3</span></p>
-        <p class="label">organizaciones de gran escala acompañadas</p>
-      </div>
-      <div class="stat-item">
-        <p class="num">UAI<span style="font-size:24px;color:rgba(255,255,255,0.4);margin-left:8px">·</span><span style="font-size:24px;color:rgba(255,255,255,0.75);font-style:italic">UB</span></p>
-        <p class="label">staff académico Universidad Adolfo Ibáñez y Universidad de Barcelona</p>
+      <div class="reveal" style="transition-delay:.1s">
+        <p class="lead">Desarrollamos programas para líderes, equipos y organizaciones que necesitan mejorar presencia, regulación, conversaciones críticas, coordinación y toma de decisiones.</p>
+        <p style="margin-top:20px;color:var(--graphite-500);font-size:15.5px;line-height:1.65">Cada experiencia se diseña a medida, integrando coaching organizacional, mindfulness aplicado, liderazgo contemplativo y transferencia al trabajo real.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 05 PROGRAMAS ============ -->
-<section id="programas">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">05 / Programas</span>
-      <h2 class="h1" style="margin-top:20px">Programas y acompañamientos</h2>
-      <p class="body-l" style="margin-top:24px;max-width:62ch">Desarrollamos programas para líderes, equipos y organizaciones que necesitan mejorar presencia, regulación, conversaciones críticas, coordinación y toma de decisiones.</p>
-      <p class="body" style="margin-top:16px;font-size:17px;line-height:1.65;max-width:62ch">Cada experiencia se diseña a medida, integrando coaching organizacional, mindfulness aplicado, liderazgo contemplativo y transferencia al trabajo real.</p>
-    </div>
-
-    <div class="programs-grid">
-      <article class="program-card">
-        <span class="num">A · Liderazgo</span>
-        <h3 class="name">Programas de Liderazgo AIL™</h3>
-        <p class="pitch"><strong>Para líderes que necesitan sostener claridad, presencia y efectividad en contextos exigentes.</strong></p>
-        <p class="pitch">Experiencias aplicadas para gerentes, jefaturas y mandos medios que buscan fortalecer autorregulación, foco, comunicación, feedback, toma de decisiones e impacto en sus equipos.</p>
+    <div class="programs-list">
+      <a class="program">
+        <span class="pn">P / 01</span>
+        <h3>Programas de Liderazgo AIL™</h3>
+        <p class="desc">Para líderes que necesitan sostener claridad, presencia y efectividad en contextos exigentes.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Programa modular + experiencias aplicadas + coaching individual opcional</span>
-          <span><strong>Duración</strong> Flexible según diagnóstico</span>
-          <span><strong>Dirigido a</strong> Equipos directivos, gerencias, jefaturas y mandos medios</span>
+          <b>Modular + experiencias</b>
+          Equipos directivos · Mandos medios
         </div>
-      </article>
-
-      <article class="program-card">
-        <span class="num">B · Coaching individual</span>
-        <h3 class="name">Coaching Ejecutivo Individual</h3>
-        <p class="pitch"><strong>Para líderes que necesitan fortalecer su claridad, presencia y capacidad de acción.</strong></p>
-        <p class="pitch">Procesos 1:1 orientados a desarrollar autoconciencia, regulación emocional, liderazgo conversacional y toma de decisiones. Acompañamos al líder a observar sus patrones, ampliar su mirada y actuar con mayor efectividad en situaciones críticas.</p>
+        <span class="arrow-small">→</span>
+      </a>
+      <a class="program">
+        <span class="pn">P / 02</span>
+        <h3>Coaching Ejecutivo Individual</h3>
+        <p class="desc">Procesos 1:1 para fortalecer claridad, presencia y capacidad de acción.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Sesiones individuales + plan de desarrollo</span>
-          <span><strong>Duración</strong> 6 a 10 sesiones</span>
-          <span><strong>Dirigido a</strong> Gerentes, líderes clave, talentos críticos y profesionales en transición de rol</span>
+          <b>6 a 10 sesiones</b>
+          Gerentes · Talentos críticos
         </div>
-      </article>
-
-      <article class="program-card">
-        <span class="num">C · Coaching de equipos</span>
-        <h3 class="name">Coaching de Equipos</h3>
-        <p class="pitch"><strong>Para equipos que necesitan mejorar coordinación, confianza y conversaciones críticas.</strong></p>
-        <p class="pitch">Acompañamos a equipos directivos, comités y áreas clave a observar cómo conversan, cómo deciden, cómo regulan la presión y cómo generan resultados juntos. El trabajo combina coaching sistémico, mindfulness aplicado y prácticas de presencia en situaciones reales del equipo.</p>
+        <span class="arrow-small">→</span>
+      </a>
+      <a class="program">
+        <span class="pn">P / 03</span>
+        <h3>Coaching de Equipos</h3>
+        <p class="desc">Acompañamos equipos directivos a observar cómo conversan, deciden y regulan la presión.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Diagnóstico de equipo + sesiones grupales + transferencia al trabajo real</span>
-          <span><strong>Duración</strong> 4 a 8 sesiones</span>
-          <span><strong>Dirigido a</strong> Comités ejecutivos, equipos directivos, áreas críticas y equipos en transformación</span>
+          <b>4 a 8 sesiones</b>
+          Comités · Áreas críticas
         </div>
-      </article>
-
-      <article class="program-card">
-        <span class="num">D · Conversación</span>
-        <h3 class="name">Conversaciones Conscientes</h3>
-        <p class="pitch"><strong>Eleva la calidad de las conversaciones en tu organización.</strong></p>
-        <p class="pitch">Entrenamiento aplicado para mejorar escucha, feedback, conversaciones difíciles, coordinación y confianza. Trabajamos la conversación como una capacidad crítica para liderar, alinear equipos y generar resultados.</p>
+        <span class="arrow-small">→</span>
+      </a>
+      <a class="program">
+        <span class="pn">P / 04</span>
+        <h3>Regulación emocional bajo presión</h3>
+        <p class="desc">Entrenamiento práctico para responder con lucidez en contextos de alta exigencia.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Entrenamiento práctico + ejercicios aplicados</span>
-          <span><strong>Duración</strong> 4 a 6 sesiones</span>
-          <span><strong>Dirigido a</strong> Líderes, equipos de alto desempeño, áreas de personas y equipos en cambio</span>
+          <b>Desde 4 sesiones</b>
+          Áreas operativas · Servicio
         </div>
-      </article>
-
-      <article class="program-card" style="grid-column:1/-1">
-        <span class="num">E · Regulación</span>
-        <h3 class="name">Regulación emocional bajo presión</h3>
-        <p class="pitch"><strong>Herramientas para responder con claridad en contextos de alta exigencia.</strong></p>
-        <p class="pitch">Entrenamiento práctico para reconocer señales de presión, regular el estado interno y responder con mayor lucidez en conversaciones, reuniones y decisiones relevantes.</p>
+        <span class="arrow-small">→</span>
+      </a>
+      <a class="program">
+        <span class="pn">P / 05</span>
+        <h3>Conversaciones Conscientes</h3>
+        <p class="desc">Eleva la calidad de las conversaciones: escucha, feedback y conversaciones difíciles.</p>
         <div class="meta">
-          <span><strong>Modalidad</strong> Experiencias breves o programa modular</span>
-          <span><strong>Duración</strong> Desde 4 sesiones</span>
-          <span><strong>Dirigido a</strong> Líderes, equipos operativos, áreas de servicio y equipos bajo alta presión</span>
+          <b>4 a 6 sesiones</b>
+          Líderes · Equipos en cambio
         </div>
-      </article>
+        <span class="arrow-small">→</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ ¿QUÉ INCLUYEN? ============ -->
-<section style="background:var(--bg-secondary);padding:80px 0">
+<!-- ============= CLIENTES & CASOS ============= -->
+<section class="section-clients" id="clientes" data-screen-label="06 Clientes">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">05b / Qué incluyen</span>
-      <h2 class="h2" style="margin-top:20px">¿Qué incluyen nuestros programas?</h2>
+    <div class="clients-head reveal">
+      <div class="eyebrow">Clientes y casos</div>
+      <h2 style="margin-top:24px">Aplicación en organizaciones que enfrentan contextos de alta exigencia.</h2>
+      <p style="max-width:700px;margin-top:24px;color:var(--graphite-500);font-size:16px;line-height:1.7">Workfulness ha acompañado procesos de liderazgo, coaching y mindfulness aplicado en organizaciones con coordinación operativa, alta exigencia y procesos de transformación cultural.</p>
     </div>
-    <div class="includes-grid includes-grid-6">
-      <div class="include-item">
-        <div class="num">01</div>
-        <h4>Diagnóstico inicial</h4>
-        <p>Diagnóstico inicial de liderazgo, equipo o cultura.</p>
+    <div class="client-logos reveal-stagger">
+      <div class="client-logo">Sodimac</div>
+      <div class="client-logo">Menzies Aviation</div>
+      <div class="client-logo">Agunsa</div>
+    </div>
+    <div class="cases reveal-stagger">
+      <div class="case-card">
+        <span class="tag">Caso aplicado</span>
+        <h3>Liderazgo Consciente en Logística</h3>
+        <div class="who">Sodimac · Unidad logística</div>
+        <p>Programa desarrollado con líderes de la unidad logística de Sodimac, orientado a fortalecer presencia, autorregulación, foco, comunicación consciente y conciencia sistémica en contextos operativos exigentes. La experiencia integró entrenamiento práctico, reflexión aplicada y herramientas transferibles al trabajo diario.</p>
+        <div class="cta-row"><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
       </div>
-      <div class="include-item">
-        <div class="num">02</div>
-        <h4>Diseño a medida</h4>
-        <p>Diseño a medida según desafíos reales de la organización.</p>
-      </div>
-      <div class="include-item">
-        <div class="num">03</div>
-        <h4>Experiencias aplicadas</h4>
-        <p>Experiencias aplicadas y prácticas transferibles al trabajo diario.</p>
-      </div>
-      <div class="include-item">
-        <div class="num">04</div>
-        <h4>Coaching individual o grupal</h4>
-        <p>Coaching individual o grupal según necesidad.</p>
-      </div>
-      <div class="include-item">
-        <div class="num">05</div>
-        <h4>Material práctico</h4>
-        <p>Material práctico para líderes y equipos.</p>
-      </div>
-      <div class="include-item">
-        <div class="num">06</div>
-        <h4>Seguimiento y medición</h4>
-        <p>Seguimiento y medición de avances.</p>
+      <div class="case-card">
+        <span class="tag">Programa</span>
+        <h3>Acompañamiento al equipo directivo</h3>
+        <div class="who">Menzies Aviation · Agunsa</div>
+        <p>Acompañamiento realizado con líderes de Menzies Aviation y Agunsa, orientado a fortalecer liderazgo, coordinación, conversaciones de equipo y capacidad de respuesta en contextos organizacionales exigentes.</p>
+        <div class="cta-row"><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 06 CLIENTES Y CASOS ============ -->
-<section id="clientes" class="logos-section">
-  <div class="container">
-    <div class="section-head" style="text-align:left;margin-bottom:48px">
-      <span class="eyebrow">06 / Clientes y casos</span>
-      <h2 class="h1" style="margin-top:20px">Aplicación en organizaciones</h2>
-      <p class="body-l" style="margin-top:24px;max-width:62ch">Workfulness ha acompañado procesos de liderazgo, coaching y mindfulness aplicado en organizaciones que enfrentan contextos de alta exigencia, coordinación operativa y transformación cultural.</p>
+<!-- ============= ALIANZA ============= -->
+<section id="alianza" data-screen-label="07 Alianza">
+  <div class="container alianza-grid">
+    <div class="alianza-photo reveal">
+      <span class="ph-label">Christian + Cristina Cama García</span>
     </div>
-    <div class="logos-grid" role="list" style="margin-bottom:64px">
-      <div class="logo-cell" role="listitem">Sodimac</div>
-      <div class="logo-cell" role="listitem">Menzies Aviation</div>
-      <div class="logo-cell" role="listitem">Agunsa</div>
-    </div>
-
-    <div class="cases-grid">
-      <article class="case-card">
-        <span class="eyebrow">Caso aplicado</span>
-        <h3 class="h3" style="margin-top:14px">Liderazgo Consciente en Logística</h3>
-        <p class="body" style="margin-top:16px;font-size:16px;line-height:1.65">Programa desarrollado con líderes de la unidad logística de Sodimac, orientado a fortalecer presencia, autorregulación, foco, comunicación consciente y conciencia sistémica en contextos operativos exigentes.</p>
-        <p class="body" style="margin-top:12px;font-size:16px;line-height:1.65">La experiencia integró entrenamiento práctico, reflexión aplicada y herramientas transferibles al trabajo diario.</p>
-      </article>
-      <article class="case-card">
-        <span class="eyebrow">Programa con equipo directivo</span>
-        <h3 class="h3" style="margin-top:14px">Menzies Aviation y Agunsa</h3>
-        <p class="body" style="margin-top:16px;font-size:16px;line-height:1.65">Acompañamiento realizado con líderes de Menzies Aviation y Agunsa, orientado a fortalecer liderazgo, coordinación, conversaciones de equipo y capacidad de respuesta en contextos organizacionales exigentes.</p>
-      </article>
-    </div>
-
-    <div style="margin-top:40px">
-      <a href="clientes.html" class="btn-ghost-link">Ver todos los clientes y casos <span aria-hidden="true">→</span></a>
+    <div class="alianza-text reveal" style="transition-delay:.1s">
+      <div class="eyebrow">Alianza internacional</div>
+      <h2>Profundidad académica y experiencia ejecutiva, en una sola conversación.</h2>
+      <div class="who-block">
+        <div class="who-name">Cristina Cama García</div>
+        <div class="who-role">Directora del Máster en Mindfulness en Organizaciones Conscientes — Universidad de Barcelona</div>
+      </div>
+      <p>Workfulness cuenta con una alianza estratégica con Cristina Cama García, referente internacional en mindfulness aplicado a organizaciones conscientes. Esta colaboración permite integrar experiencia ejecutiva, profundidad contemplativa y mirada académica internacional para diseñar programas de liderazgo consciente, coaching organizacional y transformación cultural.</p>
+      <p class="alianza-cap">Alianza Workfulness + Cristina Cama García para el desarrollo de liderazgo consciente y mindfulness organizacional en Latinoamérica.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ 07 ALIANZA INTERNACIONAL ============ -->
-<section id="alianza" style="background:var(--bg-secondary)">
+<!-- ============= EQUIPO ============= -->
+<section class="section-team" id="equipo" data-screen-label="08 Equipo">
   <div class="container">
-    <div class="alianza-grid">
-      <div class="text">
-        <span class="eyebrow with-rule">07 / Alianza internacional</span>
-        <h2 class="h1">Cristina Cama García</h2>
-        <p class="body-l" style="margin-top:8px;color:var(--text-secondary)">Directora del Máster en Mindfulness en Organizaciones Conscientes — Universidad de Barcelona</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Psicóloga empresarial, consultora y coach con más de 30 años de experiencia impulsando el talento humano. Como fundadora de DEYGEconsultores, lidera procesos de transformación organizacional que integran con éxito el bienestar personal con la eficacia profesional.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Combina su visión estratégica con la docencia como Directora del Máster de Mindfulness en Organizaciones Conscientes (Universidad de Barcelona) y su compromiso solidario como Presidenta de la ONG Malaria 40, dedicada a la infancia en Madagascar.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Workfulness cuenta con una alianza estratégica con Cristina Cama García, referente internacional en mindfulness aplicado a organizaciones conscientes. Esta colaboración permite integrar experiencia ejecutiva, profundidad contemplativa y mirada académica internacional para diseñar programas de liderazgo consciente, coaching organizacional y transformación cultural.</p>
-        <div style="margin-top:8px">
-          <a href="alianza.html" class="btn-ghost-link">Conocer la alianza <span aria-hidden="true">→</span></a>
+    <div class="team-head reveal">
+      <div class="eyebrow">Equipo Workfulness</div>
+      <h2 style="margin-top:24px;font-size:clamp(42px,4.8vw,60px)">Quienes acompañan los procesos.</h2>
+    </div>
+    <div class="team-grid reveal-stagger">
+      <div class="member">
+        <div class="photo-col">
+          <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <div class="info">
+          <div class="role-tag">Fundador · Modelo AIL™</div>
+          <h3>Christian Núñez Poveda</h3>
+          <div class="credentials">Ingeniero Comercial UC · Coach Organizacional · Máster en Mindfulness UB</div>
+          <p class="bio">Cuenta con más de 20 años de experiencia ejecutiva liderando áreas de servicio, clientes y operaciones en compañías como Falabella, Cencosud y Entel. Es parte del equipo docente de la Certificación en Coaching Organizacional UAI. Su trabajo integra experiencia corporativa, coaching organizacional, mindfulness aplicado y práctica contemplativa internacional —incluyendo procesos en Plum Village, Francia—. Desde ahí desarrolla el Modelo AIL™.</p>
+        </div>
+      </div>
+      <div class="member">
+        <div class="photo-col" style="background:linear-gradient(135deg,#b3bcb6 0%,#6c7d74 100%)">
+          <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <div class="info">
+          <div class="role-tag">Consultora asociada</div>
+          <h3>Paula Riffo</h3>
+          <div class="credentials">Psicóloga · Coach Ejecutiva · 13+ años en gestión de personas</div>
+          <p class="bio">Especialista en liderazgo consciente, desarrollo de equipos, bienestar organizacional y neurociencia aplicada. Forma parte del staff académico de la Certificación en Coaching Organizacional UAI y acompaña a líderes y equipos en procesos de transformación, colaboración efectiva y desarrollo sistémico.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 08 EQUIPO WORKFULNESS ============ -->
-<section id="equipo">
+<!-- ============= TESTIMONIOS ============= -->
+<section data-screen-label="09 Testimonios">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow with-rule">08 / Equipo Workfulness</span>
-      <h2 class="h1" style="margin-top:20px">Equipo Workfulness</h2>
+    <div class="testimonials-head">
+      <div class="reveal">
+        <div class="eyebrow">Testimonios</div>
+        <h2 style="margin-top:24px">Lo que dicen quienes han trabajado con nosotros.</h2>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <p class="lead">Líderes y referentes académicos que han acompañado o sido acompañados en procesos de Workfulness.</p>
+      </div>
     </div>
-
-    <div class="founder-grid">
-      <div>
-        <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Christian Núñez Poveda">
-          [Retrato editorial de Christian Núñez Poveda · 4:5]
+    <div class="testimonials-grid reveal-stagger">
+      <div class="testimonial">
+        <span class="quote-mark">“</span>
+        <p>Christian aporta una mirada poco común: profundidad contemplativa con sentido ejecutivo. Su trabajo eleva la calidad de las conversaciones en cualquier organización.</p>
+        <div class="attr">
+          <div class="name">Cristina Cama García</div>
+          <div class="role">Directora — Máster Mindfulness UB</div>
         </div>
       </div>
-      <div class="founder-bio">
-        <h3 class="h1" style="font-size:28px">Christian Núñez Poveda</h3>
-        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Fundador de Workfulness | Modelo AIL™ — Arquitectura Interna del Liderazgo</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Ingeniero Comercial UC, Coach Organizacional certificado y Máster en Mindfulness en Organizaciones Conscientes por la Universidad de Barcelona.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Cuenta con más de 20 años de experiencia ejecutiva liderando áreas de servicio, clientes y operaciones en compañías como Falabella, Cencosud y Entel. Es parte del equipo docente de la Certificación en Coaching Organizacional de la Universidad Adolfo Ibáñez.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Su trabajo integra experiencia corporativa, coaching organizacional, mindfulness aplicado y práctica contemplativa internacional, incluyendo procesos de profundización en Plum Village, Francia. Desde ahí desarrolla el Modelo AIL™ para acompañar a líderes y equipos en contextos de alta exigencia.</p>
-        <div class="founder-meta">
-          <a href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="mailto:cnunez@workfulness.cl">cnunez@workfulness.cl</a>
+      <div class="testimonial">
+        <span class="quote-mark">“</span>
+        <p>El programa nos permitió conversar distinto en el comité. Tomamos decisiones con más claridad y bajamos la reactividad en momentos de presión operativa.</p>
+        <div class="attr">
+          <div class="name">Gerencia de Operaciones</div>
+          <div class="role">Sodimac · Unidad logística</div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <span class="quote-mark">“</span>
+        <p>Workfulness no entrega teoría: entrega prácticas que se transfieren al trabajo diario. El equipo salió con herramientas concretas.</p>
+        <div class="attr">
+          <div class="name">Equipo directivo</div>
+          <div class="role">Menzies Aviation</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EQUIPO — PAULA ============ -->
-<section style="background:var(--bg-secondary);padding-top:80px;padding-bottom:80px">
-  <div class="container">
-    <div class="founder-grid">
-      <div>
-        <div class="img-ph r-4-5" role="img" aria-label="Retrato editorial de Paula Riffo">
-          [Retrato editorial de Paula Riffo · 4:5]
+<!-- ============= CONTACTO ============= -->
+<section class="section-contact" id="contacto" data-screen-label="10 Contacto">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--forest-300)"><span style="background:var(--forest-300)"></span>Conversemos</div>
+      <h2 style="margin-top:32px">Diseñemos un<br>acompañamiento <em>a medida</em>.</h2>
+      <p class="lead">Si tu organización quiere desarrollar líderes más presentes, equipos mejor coordinados y conversaciones de mayor calidad, conversemos.</p>
+      <div class="contact-cta">
+        <a class="btn btn-primary" href="mailto:contacto@workfulness.cl">Agendar conversación</a>
+        <a class="btn btn-secondary" href="#programas">Conocer programas</a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.1s">
+      <div class="contact-info">
+        <div class="row">
+          <span class="lbl">Email</span>
+          <span class="val">contacto@workfulness.cl</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Teléfono</span>
+          <span class="val">+56 9 9346 0760</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Ubicación</span>
+          <span class="val">Santiago, Chile</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Respuesta</span>
+          <span class="val">24 hrs hábiles</span>
         </div>
       </div>
-      <div class="founder-bio">
-        <h3 class="h1" style="font-size:28px">Paula Riffo</h3>
-        <p class="body-l" style="margin:8px 0 0;color:var(--text-secondary)">Consultora asociada Workfulness</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Psicóloga y Coach Ejecutiva con más de 13 años de experiencia en gestión de personas en el mundo del retail.</p>
-        <p class="body" style="font-size:17px;line-height:1.65">Especialista en liderazgo consciente, desarrollo de equipos, bienestar organizacional y neurociencia aplicada. Forma parte del staff académico de la Certificación en Coaching Organizacional UAI y acompaña a líderes y equipos en procesos de transformación, colaboración efectiva y desarrollo sistémico.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 09 TESTIMONIOS ============ -->
-<section>
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">09 / Testimonios</span>
-      <h2 class="h1" style="margin-top:20px">Lo que dicen quienes han trabajado con nosotros</h2>
-    </div>
-
-    <div class="testimonials-grid">
-      <figure class="testimonial">
-        <blockquote>"Christian integra de forma única el liderazgo emocional con una mirada estratégica de transformación organizacional. Su experiencia en cargos ejecutivos le da un enfoque muy aterrizado, convirtiéndolo en un verdadero catalizador de cambio positivo en las organizaciones."</blockquote>
-        <cite>
-          <strong>Marcelo Smith C.</strong>
-          Gerente de Pyme y Canales Digitales · Claro
-        </cite>
-      </figure>
-
-      <figure class="testimonial">
-        <blockquote>"Trabajar con Christian me permitió desarrollar habilidades claves para la toma de decisiones y la resolución efectiva de problemas. Su enfoque claro y práctico me entregó herramientas valiosas que sigo aplicando en mi día a día profesional."</blockquote>
-        <cite>
-          <strong>Paola Mardoff P.</strong>
-          Gerente · Holiday Inn Express
-        </cite>
-      </figure>
-
-      <figure class="testimonial">
-        <blockquote>"Destaco su habilidad para facilitar espacios desafiantes con una combinación precisa de claridad de negocio y gestión humana. Su integración del mindfulness no es solo técnica: es profunda, coherente y adaptada a las necesidades reales de los equipos."</blockquote>
-        <cite>
-          <strong>Cristián Arenas B.</strong>
-          Director de proyectos de innovación · IP-CFT Santo Tomás
-        </cite>
-      </figure>
-
-      <figure class="testimonial">
-        <blockquote>"Christian destacó por su enfoque estratégico, claridad de comunicación y capacidad para vincular mindfulness con desafíos organizacionales. Su perfil profesional aporta valor real a entornos laborales que buscan una transformación consciente."</blockquote>
-        <cite>
-          <strong>Cristina Cama García</strong>
-          Directora del Máster en Mindfulness en Organizaciones Conscientes · Universidad de Barcelona
-        </cite>
-      </figure>
-
-      <figure class="testimonial">
-        <blockquote>"Christian se distingue por su profunda vocación de servicio. Posee una notable capacidad para trabajar en equipo, creando espacios de confianza y colaboración. Su estilo cercano, empático y orientado a resultados lo convierte en un facilitador clave para la cohesión y la efectividad en entornos complejos."</blockquote>
-        <cite>
-          <strong>Luz Eugenia Mundaca</strong>
-          Directora Diploma Liderazgo y Certificación Coaching · Escuela de Negocios UAI
-        </cite>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA FINAL ============ -->
-<section class="cta-final" id="contacto">
-  <div class="container">
-    <div class="inner">
-      <span class="eyebrow with-rule" style="justify-content:center;margin-bottom:20px">10 / Contacto</span>
-      <h2 class="h1">Conversemos</h2>
-      <p class="body-l lead" style="margin-top:16px">Si tu organización quiere desarrollar líderes más presentes, equipos mejor coordinados y conversaciones de mayor calidad, conversemos.</p>
-      <div style="margin-top:32px">
-        <a href="contacto.html" class="btn btn-primary">Agendar conversación</a>
-      </div>
-      <p class="meta">contacto@workfulness.cl &nbsp;·&nbsp; +56 9 9346 0760</p>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
+<!-- ============= FOOTER ============= -->
+<footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <a href="index.html" class="logo">
-          <img src="assets/logo/workfulness-logo-full.png" alt="Workfulness" class="logo-img" />
-        </a>
-        <p class="tagline">Arquitectura interna del liderazgo. Mindfulness aplicado, coaching ejecutivo, desarrollo organizacional.</p>
+      <div>
+        <div class="logo-mini"><img src="assets/workfulness-logo-full.png" alt="Workfulness"></div>
+        <p class="ft-tag">Consultoría boutique en liderazgo, coaching organizacional y mindfulness aplicado a empresas. Arquitectura Interna del Liderazgo.</p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#ail">Modelo AIL™</a></li>
+          <li><a href="#programas">Programas</a></li>
+          <li><a href="#clientes">Clientes</a></li>
+          <li><a href="#alianza">Alianza</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Programas</h4>
+        <ul>
+          <li><a href="#programas">Liderazgo AIL™</a></li>
+          <li><a href="#programas">Coaching Ejecutivo</a></li>
+          <li><a href="#programas">Coaching de Equipos</a></li>
+          <li><a href="#programas">Conversaciones Conscientes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
         <ul>
           <li><a href="mailto:contacto@workfulness.cl">contacto@workfulness.cl</a></li>
-          <li><a href="mailto:cnunez@workfulness.cl">cnunez@workfulness.cl</a></li>
           <li><a href="tel:+56993460760">+56 9 9346 0760</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="modelo-ail.html">Modelo AIL™</a></li>
-          <li><a href="programas.html">Programas</a></li>
-          <li><a href="clientes.html">Clientes</a></li>
-          <li><a href="alianza.html">Alianza</a></li>
-          <li><a href="index.html#equipo">Equipo</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Conexión</h4>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener">LinkedIn de Christian Núñez</a></li>
-          <li><a href="#">Aviso legal</a></li>
-          <li><a href="#">Política de privacidad</a></li>
+          <li><a>Santiago · Chile</a></li>
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <span>© 2026 Workfulness. Todos los derechos reservados.</span>
-      <span>Santiago, Chile</span>
+      <span>© 2026 Workfulness · Todos los derechos reservados.</span>
+      <span>Modelo AIL™ es una metodología registrada de Workfulness.</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ WHATSAPP FAB ============ -->
-<a class="whatsapp-fab" href="https://wa.me/56993460760?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20Workfulness" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-  </svg>
-  <span>Contáctanos</span>
-</a>
-
 <script>
-  // Sticky header border on scroll
-  const header = document.getElementById('siteHeader');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+// Header shadow on scroll
+const header = document.getElementById('header');
+const onScroll = () => {
+  if (window.scrollY > 12) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
 
-  // Mobile drawer
-  const toggle = document.getElementById('menuToggle');
-  const drawer = document.getElementById('drawer');
-  const backdrop = document.getElementById('drawerBackdrop');
-  const close = document.getElementById('drawerClose');
-  const open = (v) => {
-    drawer.classList.toggle('open', v);
-    backdrop.classList.toggle('open', v);
-    drawer.setAttribute('aria-hidden', v ? 'false' : 'true');
-    toggle.setAttribute('aria-expanded', v ? 'true' : 'false');
-  };
-  toggle.addEventListener('click', () => open(true));
-  close.addEventListener('click', () => open(false));
-  backdrop.addEventListener('click', () => open(false));
+// Reveal on intersection
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  }
+}, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 </script>
-
 </body>
 </html>

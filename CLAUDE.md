@@ -1,30 +1,55 @@
 # Workfulness
 
-Sitio web de Workfulness — consultora chilena de mindfulness aplicado, coaching ejecutivo y liderazgo consciente.
+Consultoría boutique chilena en liderazgo consciente, coaching organizacional y mindfulness aplicado a empresas. Posicionamiento: **Arquitectura Interna del Liderazgo (AIL™)**.
 
 ## Stack
 - HTML5 + CSS3 + JS vanilla (sin frameworks)
-- Deploy: Vercel (conectar repo en vercel.com)
+- Single-page con navegación por anclas (#ail, #programas, #clientes, #alianza, #equipo, #contacto)
+- Deploy: Vercel auto-deploy desde rama `main`
 
-## Sistema visual
-- Tipografías: Fraunces (serif editorial) + Inter (sans-serif)
-- Fondo: `#FFFFFF` / `#F7F7F8` / `#F5F3FF`
-- Texto: `#0F0F12` / `#5B5B66` / `#8A8A95`
-- Acento: `#4C1D95` (morado) · hover `#3B0F75`
-- Bordes: `#E5E5EA` / `#D1D1D6`
-- Radio: 6px máximo
-- Sin sombras — solo bordes 1px
-- Sin emojis en UI
+## Estructura
+```
+.
+├── index.html           ← landing completa, todo inline (CSS y JS)
+├── assets/
+│   ├── workfulness-logo-full.png
+│   ├── workfulness-mark.png
+│   └── workfulness-wordmark.png
+├── vercel.json          ← security headers (no tocar sin revisar)
+├── .gitignore
+└── CLAUDE.md            ← este archivo
+```
+
+## Sistema visual (forest-graphite-paper)
+- **Tipografías**: Fraunces (serif display) + Inter Tight (sans body) — pareja, no se mezclan
+- **Forest** `#506058` — brand primary (sage muted del logo, nunca lime ni emerald)
+- **Graphite** `#484848` — texto principal
+- **Paper** `#f7f5f0` y **Bone** `#fbfaf6` — fondos cálidos (NUNCA `#fff` puro)
+- **Forest-900** `#2a3530` — fondo deep (sección AIL inverse, contacto)
+- **Líneas** `#e0ddd5` hairline
+- Radio: 8-10px en cards, 6px botones, sharp en inputs
+- Sombras casi inexistentes — solo bordes 1px y elevación sutil en hover
+- Sin emoji nunca · sin signos de exclamación marketing
+
+## Voz
+- **Español Chile**, plural ("acompañamos", "diseñamos", "trabajamos")
+- Sentence case en titulares · Title Case solo en nombres propios (Modelo AIL™, Plum Village, Cristina Cama García)
+- Verbos de acción y discernimiento: acompañamos, sostenemos, observamos, diseñamos, fortalecemos
+- **Modelo AIL™** siempre con la marca registrada (™)
+- ✗ NO wellness-speak ("armonía", "energía", "florecer", "vibra alto")
+- ✗ NO espiritual / místico / hippie
+- ✗ NO emoji, NO unicode glyphs como iconos (excepto ™)
+- ✗ NO colores naranjo / coral / terracota / clay / pastel mint
 
 ## Convenciones
-- Idioma: español neutro (tú, no voseo)
-- Numeración editorial: "01 / Sección"
-- Regla vertical morada 2px × 24px en eyebrows clave (clase `.eyebrow.with-rule`)
-- Placeholders de imagen: clase `.img-ph` con aspect-ratio explícito
+- Eyebrow: 12px uppercase + barra horizontal 24×1px en `--forest-600`
+- Sección padding: 140px (compacta 104px) — **mucho aire** es requisito
+- Container: 1240px max
+- Grid: 60/40 o 50/50 splits — no centrar todo
+- Animaciones: `cubic-bezier(.22,.61,.36,1)` — no bounces
+- Reveal on scroll con IntersectionObserver — clase `.reveal` y `.reveal-stagger`
 
-## Pendientes antes de publicar
-- Reemplazar placeholders de imagen (Christian Núñez 4:5, Cristina Cama García 4:5) por fotos reales
-- Confirmar grafía exacta "Cristina" vs "Christina"
-- Agregar logos reales de Sodimac, Menzies Aviation y Agunsa
-- Completar páginas secundarias: modelo-ail, programas, coaching-ejecutivo, coaching-equipos, clientes, alianza, contacto
-- Actualizar links legales del footer
+## Contenido pendiente (antes de publicar)
+- Reemplazar placeholders de fotos: Christian @ Plum Village, entorno Plum Village, práctica contemplativa, Christian + Cristina Cama García, retratos Christian y Paula
+- Logos reales de Sodimac, Menzies Aviation y Agunsa (actualmente en serif tipográfico)
+- Verificar email/teléfono finales en sección Contacto y Footer
