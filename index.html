@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -55,10 +55,11 @@
 
   /* ---------- Tipografía ---------- */
   .serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;letter-spacing:-0.02em}
-  .display{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;font-size:64px;line-height:1.05;letter-spacing:-0.025em;color:var(--text-primary)}
-  .h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;font-size:48px;line-height:1.1;letter-spacing:-0.02em;margin:0}
-  .h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;font-size:36px;line-height:1.15;letter-spacing:-0.015em;margin:0}
-  .h3{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto;font-size:24px;line-height:1.3;letter-spacing:-0.01em;margin:0}
+  .display{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-0.025em;color:var(--text-primary)}
+  .h1{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:48px;line-height:1.1;letter-spacing:-0.02em;margin:0}
+  .h1.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;font-optical-sizing:auto}
+  .h2{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:36px;line-height:1.15;letter-spacing:-0.02em;margin:0}
+  .h3{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:24px;line-height:1.3;letter-spacing:-0.01em;margin:0}
   .body-l{font-size:19px;line-height:1.6;color:var(--text-secondary);letter-spacing:-0.005em}
   .body{font-size:16px;line-height:1.65;color:var(--text-secondary)}
   .eyebrow{
@@ -298,7 +299,7 @@
   .step-card:hover::before{transform:scaleX(1)}
   .step-card:hover{background:var(--bg-secondary)!important}
   .step-n{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-primary);margin:0 0 20px}
-  .step-card h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:21px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
+  .step-card h4{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:18px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);margin:0 0 12px}
   .step-card p{margin:0;font-size:14px;line-height:1.6;color:var(--text-secondary)}
 
   /* ---------- Logros list ---------- */
@@ -310,8 +311,8 @@
   @media (min-width:768px){.logro-row{grid-template-columns:72px 1fr 24px;gap:40px;padding:28px 0}}
   .logro-num{font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--accent-primary);text-align:right;opacity:0.5;transition:opacity 200ms ease}
   .logro-row:hover .logro-num{opacity:1}
-  .logro-text{margin:0;font-family:'Fraunces',Georgia,serif;font-size:22px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
-  @media (min-width:768px){.logro-text{font-size:26px}}
+  .logro-text{margin:0;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1.35;letter-spacing:-0.01em;color:var(--text-primary);transition:color 200ms ease}
+  @media (min-width:768px){.logro-text{font-size:24px}}
   .logro-row:hover .logro-text{color:var(--accent-primary)}
   .logro-arrow{font-size:16px;color:var(--accent-primary);opacity:0;transform:translateX(-6px);transition:opacity 200ms ease,transform 200ms ease}
   .logro-row:hover .logro-arrow{opacity:1;transform:none}
@@ -344,8 +345,8 @@
   }
   .ail-card:hover{box-shadow:0 1px 2px rgba(0,0,0,0.04);border-color:var(--border-medium)}
   .ail-card .label{
-    font-family:'Fraunces',Georgia,serif;
-    font-size:20px;line-height:1.25;letter-spacing:-0.01em;color:var(--text-primary);
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-0.01em;color:var(--text-primary);
     display:block;
   }
   .ail-card .ail-desc{
@@ -370,9 +371,9 @@
     text-transform:uppercase;
   }
   .service-row .name{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:400;
-    font-size:28px;line-height:1.2;letter-spacing:-0.015em;
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:700;
+    font-size:26px;line-height:1.2;letter-spacing:-0.015em;
     color:var(--text-primary);
     margin:0 0 8px;
   }
@@ -511,7 +512,7 @@
   .program-card{background:var(--bg-primary);padding:40px 32px;display:flex;flex-direction:column;transition:background 200ms ease}
   .program-card:hover{background:var(--bg-accent-soft)}
   .program-card .num{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px}
-  .program-card .name{font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.2;letter-spacing:-0.015em;margin:0 0 16px;color:var(--text-primary)}
+  .program-card .name{font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-0.015em;margin:0 0 16px;color:var(--text-primary)}
   .program-card .pitch{font-size:15px;line-height:1.55;color:var(--text-secondary);margin:0 0 24px}
   .program-card .meta{margin-top:auto;padding-top:24px;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text-secondary)}
   .program-card .meta strong{color:var(--text-primary);font-weight:500;display:inline-block;min-width:88px}
@@ -534,7 +535,7 @@
   }
   .include-item{padding-top:24px;border-top:1px solid var(--border-subtle)}
   .include-item .num{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--accent-primary);margin-bottom:16px;letter-spacing:0.02em}
-  .include-item h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
+  .include-item h4{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text-primary);letter-spacing:-0.01em}
   .include-item p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0}
 
   /* ---------- Founder section ---------- */
