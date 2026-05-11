@@ -3,7 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Workfulness — Arquitectura Interna del Liderazgo</title>
+<title>Workfulness — Arquitectura Interna del Liderazgo | Consultoría Chile</title>
+<meta name="description" content="Consultoría boutique chilena en liderazgo consciente, coaching organizacional y mindfulness aplicado. Modelo AIL™ para empresas de alta exigencia.">
+<meta name="author" content="Workfulness">
+<meta name="theme-color" content="#506058">
+
+<link rel="icon" type="image/png" href="assets/workfulness-mark.png">
+<link rel="apple-touch-icon" href="assets/workfulness-mark.png">
+<link rel="canonical" href="https://workfulness.cl/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="Workfulness">
+<meta property="og:url" content="https://workfulness.cl/">
+<meta property="og:title" content="Workfulness — Arquitectura Interna del Liderazgo">
+<meta property="og:description" content="Consultoría boutique en liderazgo consciente, coaching organizacional y mindfulness aplicado a empresas. Modelo AIL™.">
+<meta property="og:image" content="https://workfulness.cl/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Workfulness — Arquitectura Interna del Liderazgo">
+<meta name="twitter:description" content="Consultoría boutique en liderazgo consciente, coaching organizacional y mindfulness aplicado a empresas.">
+<meta name="twitter:image" content="https://workfulness.cl/assets/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -218,6 +241,37 @@ section{padding:140px 0;position:relative}
 .footer ul a:hover{color:var(--paper)}
 .footer-bottom{padding-top:32px;display:flex;justify-content:space-between;font-size:12px;color:rgba(247,245,240,.45)}
 
+/* ======= MOBILE MENU ======= */
+.menu-toggle{display:none;background:transparent;border:0;padding:8px;margin-left:auto;cursor:pointer;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;border-radius:6px;transition:background .2s var(--ease)}
+.menu-toggle:hover{background:var(--forest-50)}
+.menu-toggle span{display:block;width:22px;height:1.5px;background:var(--graphite-900);transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.menu-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-toggle.open span:nth-child(2){opacity:0}
+.menu-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:72px 0 0 0;background:var(--paper);z-index:49;padding:40px 32px;display:none;flex-direction:column;gap:0;transform:translateY(-8px);opacity:0;transition:opacity .3s var(--ease),transform .35s var(--ease)}
+.mobile-nav.open{display:flex;opacity:1;transform:none}
+.mobile-nav a{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--graphite-900);padding:18px 0;border-bottom:1px solid var(--line);transition:color .2s var(--ease),padding-left .25s var(--ease)}
+.mobile-nav a:hover{color:var(--forest-600);padding-left:8px}
+.mobile-nav .mobile-cta{margin-top:32px;background:var(--graphite-900);color:var(--paper);font-family:var(--sans);font-size:15px;font-weight:500;padding:18px 24px;border-radius:8px;text-align:center;border-bottom:0}
+.mobile-nav .mobile-cta:hover{background:var(--forest-700);padding-left:24px}
+body.menu-open{overflow:hidden}
+
+/* ======= WHATSAPP FLOATING ======= */
+.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(20,28,24,.18),0 1px 3px rgba(20,28,24,.12);z-index:48;transition:transform .25s var(--ease),box-shadow .25s var(--ease);opacity:0;transform:translateY(12px) scale(.9);pointer-events:none}
+.wa-float.shown{opacity:1;transform:none;pointer-events:auto}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(20,28,24,.22),0 2px 4px rgba(20,28,24,.14)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:wa-pulse 2.2s var(--ease) infinite;opacity:.6}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.6}80%{transform:scale(1.45);opacity:0}100%{transform:scale(1.45);opacity:0}}
+
+/* ======= SOCIAL ICONS FOOTER ======= */
+[hidden]{display:none !important}
+.footer-social{display:flex;gap:12px;margin-top:24px}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(247,245,240,.18);display:flex;align-items:center;justify-content:center;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.footer-social a:hover{border-color:var(--paper);background:rgba(247,245,240,.06)}
+.footer-social svg{width:16px;height:16px;fill:rgba(247,245,240,.75);transition:fill .2s var(--ease)}
+.footer-social a:hover svg{fill:var(--paper)}
+
 /* ======= REVEAL ANIMS ======= */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -239,6 +293,8 @@ section{padding:140px 0;position:relative}
   .program{grid-template-columns:60px 1fr 200px;gap:24px}
   .program .desc{display:none}
   .nav{display:none}
+  .menu-toggle{display:flex}
+  .cta-header{display:none}
   section{padding:96px 0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
@@ -271,8 +327,20 @@ section{padding:140px 0;position:relative}
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="#contacto" class="cta-header">Agendar conversación</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="#ail">Modelo AIL™</a>
+  <a href="#programas">Programas</a>
+  <a href="#clientes">Clientes</a>
+  <a href="#alianza">Alianza</a>
+  <a href="#equipo">Equipo</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#contacto" class="mobile-cta">Agendar conversación</a>
+</nav>
 
 <!-- ============= HERO ============= -->
 <section class="hero" data-screen-label="01 Hero">
@@ -416,7 +484,7 @@ section{padding:140px 0;position:relative}
       </div>
     </div>
     <div class="programs-list">
-      <a class="program">
+      <a href="#contacto" class="program">
         <span class="pn">P / 01</span>
         <h3>Programas de Liderazgo AIL™</h3>
         <p class="desc">Para líderes que necesitan sostener claridad, presencia y efectividad en contextos exigentes.</p>
@@ -426,7 +494,7 @@ section{padding:140px 0;position:relative}
         </div>
         <span class="arrow-small">→</span>
       </a>
-      <a class="program">
+      <a href="#contacto" class="program">
         <span class="pn">P / 02</span>
         <h3>Coaching Ejecutivo Individual</h3>
         <p class="desc">Procesos 1:1 para fortalecer claridad, presencia y capacidad de acción.</p>
@@ -436,7 +504,7 @@ section{padding:140px 0;position:relative}
         </div>
         <span class="arrow-small">→</span>
       </a>
-      <a class="program">
+      <a href="#contacto" class="program">
         <span class="pn">P / 03</span>
         <h3>Coaching de Equipos</h3>
         <p class="desc">Acompañamos equipos directivos a observar cómo conversan, deciden y regulan la presión.</p>
@@ -446,7 +514,7 @@ section{padding:140px 0;position:relative}
         </div>
         <span class="arrow-small">→</span>
       </a>
-      <a class="program">
+      <a href="#contacto" class="program">
         <span class="pn">P / 04</span>
         <h3>Regulación emocional bajo presión</h3>
         <p class="desc">Entrenamiento práctico para responder con lucidez en contextos de alta exigencia.</p>
@@ -456,7 +524,7 @@ section{padding:140px 0;position:relative}
         </div>
         <span class="arrow-small">→</span>
       </a>
-      <a class="program">
+      <a href="#contacto" class="program">
         <span class="pn">P / 05</span>
         <h3>Conversaciones Conscientes</h3>
         <p class="desc">Eleva la calidad de las conversaciones: escucha, feedback y conversaciones difíciles.</p>
@@ -489,14 +557,14 @@ section{padding:140px 0;position:relative}
         <h3>Liderazgo Consciente en Logística</h3>
         <div class="who">Sodimac · Unidad logística</div>
         <p>Programa desarrollado con líderes de la unidad logística de Sodimac, orientado a fortalecer presencia, autorregulación, foco, comunicación consciente y conciencia sistémica en contextos operativos exigentes. La experiencia integró entrenamiento práctico, reflexión aplicada y herramientas transferibles al trabajo diario.</p>
-        <div class="cta-row"><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
+        <div class="cta-row" hidden><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
       </div>
       <div class="case-card">
         <span class="tag">Programa</span>
         <h3>Acompañamiento al equipo directivo</h3>
         <div class="who">Menzies Aviation · Agunsa</div>
         <p>Acompañamiento realizado con líderes de Menzies Aviation y Agunsa, orientado a fortalecer liderazgo, coordinación, conversaciones de equipo y capacidad de respuesta en contextos organizacionales exigentes.</p>
-        <div class="cta-row"><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
+        <div class="cta-row" hidden><a class="btn btn-ghost">Ver caso completo <span class="arrow">→</span></a></div>
       </div>
     </div>
   </div>
@@ -604,7 +672,7 @@ section{padding:140px 0;position:relative}
       <h2 style="margin-top:32px">Diseñemos un<br>acompañamiento <em>a medida</em>.</h2>
       <p class="lead">Si tu organización quiere desarrollar líderes más presentes, equipos mejor coordinados y conversaciones de mayor calidad, conversemos.</p>
       <div class="contact-cta">
-        <a class="btn btn-primary" href="mailto:contacto@workfulness.cl">Agendar conversación</a>
+        <a class="btn btn-primary" data-em="lc.ssenlufkrow@otcatnoc" href="#contacto">Agendar conversación</a>
         <a class="btn btn-secondary" href="#programas">Conocer programas</a>
       </div>
     </div>
@@ -612,7 +680,7 @@ section{padding:140px 0;position:relative}
       <div class="contact-info">
         <div class="row">
           <span class="lbl">Email</span>
-          <span class="val">contacto@workfulness.cl</span>
+          <a class="val" data-em="lc.ssenlufkrow@otcatnoc" href="#" style="color:inherit">contacto<span aria-hidden="true" style="display:none">.nospam</span>@workfulness.cl</a>
         </div>
         <div class="row">
           <span class="lbl">Teléfono</span>
@@ -638,6 +706,10 @@ section{padding:140px 0;position:relative}
       <div>
         <div class="logo-mini"><img src="assets/workfulness-logo-full.png" alt="Workfulness"></div>
         <p class="ft-tag">Consultoría boutique en liderazgo, coaching organizacional y mindfulness aplicado a empresas. Arquitectura Interna del Liderazgo.</p>
+        <div class="footer-social" id="footerSocial" hidden>
+          <a href="#" aria-label="LinkedIn" data-social="linkedin"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="#" aria-label="Instagram" data-social="instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.14.56 2.91.3.78.71 1.45 1.38 2.12.67.67 1.34 1.08 2.12 1.38.77.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.14-.27 2.91-.56a5.88 5.88 0 0 0 2.12-1.38 5.88 5.88 0 0 0 1.38-2.12c.3-.77.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.14-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63C19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>Navegar</h4>
@@ -660,7 +732,7 @@ section{padding:140px 0;position:relative}
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="mailto:contacto@workfulness.cl">contacto@workfulness.cl</a></li>
+          <li><a data-em="lc.ssenlufkrow@otcatnoc" href="#contacto">contacto<span aria-hidden="true" style="display:none">.nospam</span>@workfulness.cl</a></li>
           <li><a href="tel:+56993460760">+56 9 9346 0760</a></li>
           <li><a>Santiago · Chile</a></li>
         </ul>
@@ -668,20 +740,51 @@ section{padding:140px 0;position:relative}
     </div>
     <div class="footer-bottom">
       <span>© 2026 Workfulness · Todos los derechos reservados.</span>
-      <span>Modelo AIL™ es una metodología registrada de Workfulness.</span>
+      <span><a href="politica-privacidad.html" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(247,245,240,.25);text-underline-offset:3px">Política de privacidad</a> · Modelo AIL™ es una metodología registrada de Workfulness.</span>
     </div>
   </div>
 </footer>
 
+<!-- ============= WHATSAPP FLOATING ============= -->
+<a class="wa-float" id="waFloat" href="https://wa.me/56993460760?text=Hola%20Workfulness%2C%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20acompa%C3%B1amiento" target="_blank" rel="noopener" aria-label="Conversar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.2-.6-.4zM12 22a10 10 0 0 1-5.2-1.4L2 22l1.4-4.7A10 10 0 0 1 12 2a10 10 0 0 1 0 20zm0-18.3a8.3 8.3 0 0 0-7 12.7l-.8 2.8 2.9-.8a8.3 8.3 0 1 0 4.9-14.7z"/></svg>
+</a>
+
 <script>
 // Header shadow on scroll
 const header = document.getElementById('header');
+const waFloat = document.getElementById('waFloat');
 const onScroll = () => {
   if (window.scrollY > 12) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
+  if (window.scrollY > 320) waFloat.classList.add('shown');
+  else waFloat.classList.remove('shown');
 };
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+const toggleMenu = (force) => {
+  const open = typeof force === 'boolean' ? force : !menuToggle.classList.contains('open');
+  menuToggle.classList.toggle('open', open);
+  mobileNav.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', open);
+  mobileNav.setAttribute('aria-hidden', !open);
+};
+menuToggle.addEventListener('click', () => toggleMenu());
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+// Email obfuscation — build mailto: at runtime
+document.querySelectorAll('[data-em]').forEach(el => {
+  const email = el.dataset.em.split('').reverse().join('');
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = 'mailto:' + email;
+  });
+});
 
 // Reveal on intersection
 const io = new IntersectionObserver((entries) => {
@@ -694,6 +797,32 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
 
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+// Animated counter for numeric stats in hero
+const easeOutQuint = t => 1 - Math.pow(1 - t, 5);
+const animateCount = (el, target, suffix = '') => {
+  const duration = 1600;
+  const start = performance.now();
+  const tick = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const v = Math.round(target * easeOutQuint(p));
+    el.textContent = v + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+const heroNums = document.querySelectorAll('.hero-meta .num');
+const heroIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.textContent.trim();
+    const m = raw.match(/^(\d+)(\D*)$/);
+    if (m) animateCount(el, parseInt(m[1], 10), m[2]);
+    heroIO.unobserve(el);
+  });
+}, {threshold: 0.6});
+heroNums.forEach(el => heroIO.observe(el));
 </script>
 </body>
 </html>
