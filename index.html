@@ -113,49 +113,6 @@ section{padding:140px 0;position:relative}
 .ail-card .glyph{width:36px;height:36px;border-radius:50%;border:1px solid var(--forest-300);display:flex;align-items:center;justify-content:center;margin-top:24px}
 .ail-card .glyph svg{width:18px;height:18px;stroke:var(--forest-600);stroke-width:1.4;fill:none}
 
-/* ======= AIL TREE (interactive) ======= */
-.ail-tree-wrap{margin-top:96px;display:grid;grid-template-columns:1.05fr 1fr;gap:96px;align-items:center}
-.ail-tree-stage{position:relative}
-.ail-tree-svg{width:100%;height:auto;max-width:520px;margin:0 auto;display:block;overflow:visible}
-.ail-tree-svg .tree-anim{transform-box:fill-box;transform-origin:50% 100%;animation:ail-breathe 9s ease-in-out infinite}
-.ail-tree-svg .zone path,.ail-tree-svg .zone circle{stroke:var(--forest-600);fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5;transition:stroke-width .5s var(--ease),opacity .5s var(--ease)}
-.ail-tree-svg .zone .leaf{fill:var(--forest-600);stroke:none;transition:transform .5s var(--ease),opacity .5s var(--ease);transform-box:fill-box;transform-origin:center}
-.ail-tree-svg .ground{stroke:var(--line-strong);stroke-width:1;stroke-dasharray:3 6;opacity:.55;fill:none}
-.ail-tree-svg .zone-trigger{fill:transparent;cursor:pointer;pointer-events:all}
-.ail-tree-svg .zone-trigger:focus{outline:none}
-
-.ail-tree-wrap[data-active] .ail-tree-svg .zone path,
-.ail-tree-wrap[data-active] .ail-tree-svg .zone circle{opacity:.2;stroke-width:1.2}
-.ail-tree-wrap[data-active] .ail-tree-svg .zone .leaf{opacity:.2}
-.ail-tree-wrap[data-active="roots"] .ail-tree-svg .zone[data-zone="roots"] path{opacity:1;stroke-width:2.2}
-.ail-tree-wrap[data-active="trunk"] .ail-tree-svg .zone[data-zone="trunk"] path{opacity:1;stroke-width:2.8}
-.ail-tree-wrap[data-active="branches"] .ail-tree-svg .zone[data-zone="branches"] path{opacity:1;stroke-width:2.2}
-.ail-tree-wrap[data-active="canopy"] .ail-tree-svg .zone[data-zone="canopy"] .leaf{opacity:1;transform:scale(1.5)}
-
-.ail-tree-info{position:relative;min-height:240px}
-.ail-tree-default,.ail-label{position:absolute;inset:0;transition:opacity .4s var(--ease),transform .4s var(--ease)}
-.ail-tree-default{opacity:1}
-.ail-tree-wrap[data-active] .ail-tree-default{opacity:0;pointer-events:none}
-.ail-label{opacity:0;transform:translateY(8px);pointer-events:none}
-.ail-tree-wrap[data-active="roots"] .ail-label[data-zone="roots"],
-.ail-tree-wrap[data-active="trunk"] .ail-label[data-zone="trunk"],
-.ail-tree-wrap[data-active="branches"] .ail-label[data-zone="branches"],
-.ail-tree-wrap[data-active="canopy"] .ail-label[data-zone="canopy"]{opacity:1;transform:translateY(0)}
-.ail-tree-default .ail-side-eyebrow,.ail-label-pre{font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--forest-600);font-weight:500;display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.ail-tree-default .ail-side-eyebrow::before,.ail-label-pre::before{content:"";width:24px;height:1px;background:var(--forest-600)}
-.ail-tree-default h4,.ail-label h4{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--graphite-900);margin:0 0 18px;line-height:1.1;letter-spacing:-.01em}
-.ail-tree-default p,.ail-label p{font-size:15.5px;color:var(--graphite-500);line-height:1.65;margin:0;max-width:420px}
-.ail-tree-default .hint{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite-400);margin-top:24px;display:flex;align-items:center;gap:10px}
-.ail-tree-default .hint::before{content:"";width:18px;height:1px;background:var(--graphite-400)}
-
-@keyframes ail-breathe{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.02)}
-}
-@media (prefers-reduced-motion: reduce){
-  .ail-tree-svg .tree-anim{animation:none}
-}
-
 /* ======= PLUM VILLAGE ======= */
 .plum-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:center}
 .plum-text h2{font-size:clamp(40px,4.4vw,60px);line-height:1.05;margin-top:24px}
@@ -244,9 +201,12 @@ section{padding:140px 0;position:relative}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .member{background:var(--bone);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:280px 1fr;gap:0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .member:hover{transform:translateY(-4px);box-shadow:0 24px 48px -20px rgba(40,50,45,.18)}
-.member .photo-col{background:linear-gradient(135deg,#9aa49d 0%,#5d6a63 100%);min-height:340px;position:relative}
+.member .photo-col{background:linear-gradient(135deg,#9aa49d 0%,#5d6a63 100%);min-height:340px;position:relative;overflow:hidden}
 .member .photo-col::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,28,24,.35) 100%)}
 .member .photo-col .ph-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;opacity:.5;stroke:var(--paper);stroke-width:1.2;fill:none}
+.member .photo-col.has-photo{background:#e0ddd5}
+.member .photo-col.has-photo::after{display:none}
+.member .photo-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .member .info{padding:36px 36px 36px 36px;display:flex;flex-direction:column}
 .member .role-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--forest-600);font-weight:500}
 .member h3{font-family:var(--serif);font-size:26px;margin-top:14px;line-height:1.15;font-weight:400}
@@ -430,99 +390,6 @@ body.menu-open{overflow:hidden}
         <p style="margin-top:20px;color:var(--graphite-500);font-size:15.5px;line-height:1.65">Trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden, conversan y actúan. Su aplicación permite fortalecer capacidades críticas para el liderazgo actual: autorregulación, calidad conversacional, toma de decisiones e impacto sistémico.</p>
       </div>
     </div>
-
-    <div class="ail-tree-wrap reveal" id="ailTree">
-      <div class="ail-tree-stage">
-        <svg viewBox="0 0 480 520" class="ail-tree-svg" aria-label="Modelo AIL™ visualizado como un árbol de cuatro capacidades">
-          <g class="tree-anim">
-            <line x1="40" y1="300" x2="440" y2="300" class="ground" />
-
-            <g class="zone" data-zone="roots">
-              <path d="M240 300 Q230 360 200 410" />
-              <path d="M240 300 Q250 360 280 410" />
-              <path d="M240 300 Q200 350 130 395" />
-              <path d="M240 300 Q280 350 350 395" />
-              <path d="M240 300 Q240 380 240 460" />
-              <path d="M240 300 Q170 365 95 425" />
-              <path d="M240 300 Q310 365 385 425" />
-            </g>
-
-            <g class="zone" data-zone="trunk">
-              <path d="M240 300 C238 270 242 240 240 200" stroke-width="2.2" />
-            </g>
-
-            <g class="zone" data-zone="branches">
-              <path d="M240 230 Q205 215 165 180" />
-              <path d="M240 215 Q280 200 320 165" />
-              <path d="M240 195 Q215 165 175 135" />
-              <path d="M240 180 Q270 150 305 120" />
-              <path d="M240 200 Q240 165 240 130" />
-              <path d="M240 240 Q220 240 195 230" />
-              <path d="M240 240 Q260 240 285 230" />
-            </g>
-
-            <g class="zone" data-zone="canopy">
-              <circle cx="165" cy="180" r="3.5" class="leaf" />
-              <circle cx="320" cy="165" r="3.5" class="leaf" />
-              <circle cx="175" cy="135" r="3.5" class="leaf" />
-              <circle cx="305" cy="120" r="3.5" class="leaf" />
-              <circle cx="195" cy="115" r="3.5" class="leaf" />
-              <circle cx="285" cy="105" r="3.5" class="leaf" />
-              <circle cx="240" cy="95" r="3.5" class="leaf" />
-              <circle cx="220" cy="80" r="3.5" class="leaf" />
-              <circle cx="265" cy="80" r="3.5" class="leaf" />
-              <circle cx="150" cy="155" r="2.5" class="leaf" />
-              <circle cx="335" cy="140" r="2.5" class="leaf" />
-              <circle cx="200" cy="155" r="2.5" class="leaf" />
-              <circle cx="280" cy="145" r="2.5" class="leaf" />
-              <circle cx="240" cy="125" r="2.5" class="leaf" />
-              <circle cx="195" cy="92" r="2.5" class="leaf" />
-              <circle cx="290" cy="90" r="2.5" class="leaf" />
-            </g>
-          </g>
-
-          <g class="triggers">
-            <rect class="zone-trigger" data-zone="canopy" x="60" y="60" width="360" height="120" tabindex="0" role="button" aria-label="Capacidad: copa, impacto sistémico" />
-            <rect class="zone-trigger" data-zone="branches" x="80" y="180" width="320" height="65" tabindex="0" role="button" aria-label="Capacidad: ramas, toma de decisiones" />
-            <rect class="zone-trigger" data-zone="trunk" x="205" y="245" width="70" height="55" tabindex="0" role="button" aria-label="Capacidad: tronco, calidad conversacional" />
-            <rect class="zone-trigger" data-zone="roots" x="40" y="300" width="400" height="180" tabindex="0" role="button" aria-label="Capacidad: raíces, autorregulación" />
-          </g>
-        </svg>
-      </div>
-
-      <div class="ail-tree-info" aria-live="polite">
-        <div class="ail-tree-default">
-          <div class="ail-side-eyebrow">Cuatro capacidades</div>
-          <h4>Una arquitectura entrenable.</h4>
-          <p>Cada parte del árbol corresponde a una capacidad del Modelo AIL™. Pasa el cursor o toca cada zona para conocerlas.</p>
-          <div class="hint">Raíces · Tronco · Ramas · Copa</div>
-        </div>
-
-        <div class="ail-label" data-zone="roots">
-          <div class="ail-label-pre">01 · Raíces</div>
-          <h4>Autorregulación.</h4>
-          <p>El líder reconoce y regula su estado interno antes de actuar. Es la base que sostiene todo lo demás —presencia, atención y consciencia de sí.</p>
-        </div>
-
-        <div class="ail-label" data-zone="trunk">
-          <div class="ail-label-pre">02 · Tronco</div>
-          <h4>Calidad conversacional.</h4>
-          <p>El canal por donde la organización se ordena: cómo se escucha, cómo se habla, cómo se construye sentido compartido entre personas y equipos.</p>
-        </div>
-
-        <div class="ail-label" data-zone="branches">
-          <div class="ail-label-pre">03 · Ramas</div>
-          <h4>Toma de decisiones.</h4>
-          <p>Discernir con presencia, no desde la urgencia. Decidir con consciencia del impacto y de los marcos invisibles que orientan la acción.</p>
-        </div>
-
-        <div class="ail-label" data-zone="canopy">
-          <div class="ail-label-pre">04 · Copa</div>
-          <h4>Impacto sistémico.</h4>
-          <p>Lo que se proyecta hacia la cultura: resultados sostenibles, equipos saludables y organizaciones más conscientes en el largo plazo.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -691,8 +558,8 @@ body.menu-open{overflow:hidden}
     </div>
     <div class="team-grid reveal-stagger">
       <div class="member">
-        <div class="photo-col">
-          <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <div class="photo-col has-photo">
+          <img src="assets/christian-nunez.jpg" alt="Christian Núñez Poveda" style="object-position:55% 25%">
         </div>
         <div class="info">
           <div class="role-tag">Fundador · Modelo AIL™</div>
@@ -944,32 +811,6 @@ const heroIO = new IntersectionObserver((entries) => {
   });
 }, {threshold: 0.6});
 heroNums.forEach(el => heroIO.observe(el));
-
-// AIL Tree interactive zones
-(() => {
-  const wrap = document.getElementById('ailTree');
-  if (!wrap) return;
-  const stage = wrap.querySelector('.ail-tree-stage');
-  const triggers = wrap.querySelectorAll('.zone-trigger');
-  const activate = (zone) => { wrap.dataset.active = zone; };
-  const deactivate = () => { delete wrap.dataset.active; };
-  let activeTouch = false;
-  triggers.forEach(t => {
-    const zone = t.dataset.zone;
-    t.addEventListener('mouseenter', () => { if (!activeTouch) activate(zone); });
-    t.addEventListener('focus', () => activate(zone));
-    t.addEventListener('blur', deactivate);
-    t.addEventListener('click', (e) => { e.stopPropagation(); activeTouch = true; activate(zone); });
-    t.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(zone); }
-      if (e.key === 'Escape') deactivate();
-    });
-  });
-  stage.addEventListener('mouseleave', () => { if (!activeTouch) deactivate(); });
-  document.addEventListener('click', (e) => {
-    if (!wrap.contains(e.target)) { activeTouch = false; deactivate(); }
-  });
-})();
 </script>
 </body>
 </html>
