@@ -113,6 +113,49 @@ section{padding:140px 0;position:relative}
 .ail-card .glyph{width:36px;height:36px;border-radius:50%;border:1px solid var(--forest-300);display:flex;align-items:center;justify-content:center;margin-top:24px}
 .ail-card .glyph svg{width:18px;height:18px;stroke:var(--forest-600);stroke-width:1.4;fill:none}
 
+/* ======= AIL TREE (interactive) ======= */
+.ail-tree-wrap{margin-top:96px;display:grid;grid-template-columns:1.05fr 1fr;gap:96px;align-items:center}
+.ail-tree-stage{position:relative}
+.ail-tree-svg{width:100%;height:auto;max-width:520px;margin:0 auto;display:block;overflow:visible}
+.ail-tree-svg .tree-anim{transform-box:fill-box;transform-origin:50% 100%;animation:ail-breathe 9s ease-in-out infinite}
+.ail-tree-svg .zone path,.ail-tree-svg .zone circle{stroke:var(--forest-600);fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5;transition:stroke-width .5s var(--ease),opacity .5s var(--ease)}
+.ail-tree-svg .zone .leaf{fill:var(--forest-600);stroke:none;transition:transform .5s var(--ease),opacity .5s var(--ease);transform-box:fill-box;transform-origin:center}
+.ail-tree-svg .ground{stroke:var(--line-strong);stroke-width:1;stroke-dasharray:3 6;opacity:.55;fill:none}
+.ail-tree-svg .zone-trigger{fill:transparent;cursor:pointer;pointer-events:all}
+.ail-tree-svg .zone-trigger:focus{outline:none}
+
+.ail-tree-wrap[data-active] .ail-tree-svg .zone path,
+.ail-tree-wrap[data-active] .ail-tree-svg .zone circle{opacity:.2;stroke-width:1.2}
+.ail-tree-wrap[data-active] .ail-tree-svg .zone .leaf{opacity:.2}
+.ail-tree-wrap[data-active="roots"] .ail-tree-svg .zone[data-zone="roots"] path{opacity:1;stroke-width:2.2}
+.ail-tree-wrap[data-active="trunk"] .ail-tree-svg .zone[data-zone="trunk"] path{opacity:1;stroke-width:2.8}
+.ail-tree-wrap[data-active="branches"] .ail-tree-svg .zone[data-zone="branches"] path{opacity:1;stroke-width:2.2}
+.ail-tree-wrap[data-active="canopy"] .ail-tree-svg .zone[data-zone="canopy"] .leaf{opacity:1;transform:scale(1.5)}
+
+.ail-tree-info{position:relative;min-height:240px}
+.ail-tree-default,.ail-label{position:absolute;inset:0;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.ail-tree-default{opacity:1}
+.ail-tree-wrap[data-active] .ail-tree-default{opacity:0;pointer-events:none}
+.ail-label{opacity:0;transform:translateY(8px);pointer-events:none}
+.ail-tree-wrap[data-active="roots"] .ail-label[data-zone="roots"],
+.ail-tree-wrap[data-active="trunk"] .ail-label[data-zone="trunk"],
+.ail-tree-wrap[data-active="branches"] .ail-label[data-zone="branches"],
+.ail-tree-wrap[data-active="canopy"] .ail-label[data-zone="canopy"]{opacity:1;transform:translateY(0)}
+.ail-tree-default .ail-side-eyebrow,.ail-label-pre{font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--forest-600);font-weight:500;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ail-tree-default .ail-side-eyebrow::before,.ail-label-pre::before{content:"";width:24px;height:1px;background:var(--forest-600)}
+.ail-tree-default h4,.ail-label h4{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--graphite-900);margin:0 0 18px;line-height:1.1;letter-spacing:-.01em}
+.ail-tree-default p,.ail-label p{font-size:15.5px;color:var(--graphite-500);line-height:1.65;margin:0;max-width:420px}
+.ail-tree-default .hint{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite-400);margin-top:24px;display:flex;align-items:center;gap:10px}
+.ail-tree-default .hint::before{content:"";width:18px;height:1px;background:var(--graphite-400)}
+
+@keyframes ail-breathe{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.02)}
+}
+@media (prefers-reduced-motion: reduce){
+  .ail-tree-svg .tree-anim{animation:none}
+}
+
 /* ======= PLUM VILLAGE ======= */
 .plum-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:center}
 .plum-text h2{font-size:clamp(40px,4.4vw,60px);line-height:1.05;margin-top:24px}
@@ -387,6 +430,99 @@ body.menu-open{overflow:hidden}
         <p style="margin-top:20px;color:var(--graphite-500);font-size:15.5px;line-height:1.65">Trabaja sobre la arquitectura interna desde donde las personas observan, interpretan, deciden, conversan y actúan. Su aplicación permite fortalecer capacidades críticas para el liderazgo actual: autorregulación, calidad conversacional, toma de decisiones e impacto sistémico.</p>
       </div>
     </div>
+
+    <div class="ail-tree-wrap reveal" id="ailTree">
+      <div class="ail-tree-stage">
+        <svg viewBox="0 0 480 520" class="ail-tree-svg" aria-label="Modelo AIL™ visualizado como un árbol de cuatro capacidades">
+          <g class="tree-anim">
+            <line x1="40" y1="300" x2="440" y2="300" class="ground" />
+
+            <g class="zone" data-zone="roots">
+              <path d="M240 300 Q230 360 200 410" />
+              <path d="M240 300 Q250 360 280 410" />
+              <path d="M240 300 Q200 350 130 395" />
+              <path d="M240 300 Q280 350 350 395" />
+              <path d="M240 300 Q240 380 240 460" />
+              <path d="M240 300 Q170 365 95 425" />
+              <path d="M240 300 Q310 365 385 425" />
+            </g>
+
+            <g class="zone" data-zone="trunk">
+              <path d="M240 300 C238 270 242 240 240 200" stroke-width="2.2" />
+            </g>
+
+            <g class="zone" data-zone="branches">
+              <path d="M240 230 Q205 215 165 180" />
+              <path d="M240 215 Q280 200 320 165" />
+              <path d="M240 195 Q215 165 175 135" />
+              <path d="M240 180 Q270 150 305 120" />
+              <path d="M240 200 Q240 165 240 130" />
+              <path d="M240 240 Q220 240 195 230" />
+              <path d="M240 240 Q260 240 285 230" />
+            </g>
+
+            <g class="zone" data-zone="canopy">
+              <circle cx="165" cy="180" r="3.5" class="leaf" />
+              <circle cx="320" cy="165" r="3.5" class="leaf" />
+              <circle cx="175" cy="135" r="3.5" class="leaf" />
+              <circle cx="305" cy="120" r="3.5" class="leaf" />
+              <circle cx="195" cy="115" r="3.5" class="leaf" />
+              <circle cx="285" cy="105" r="3.5" class="leaf" />
+              <circle cx="240" cy="95" r="3.5" class="leaf" />
+              <circle cx="220" cy="80" r="3.5" class="leaf" />
+              <circle cx="265" cy="80" r="3.5" class="leaf" />
+              <circle cx="150" cy="155" r="2.5" class="leaf" />
+              <circle cx="335" cy="140" r="2.5" class="leaf" />
+              <circle cx="200" cy="155" r="2.5" class="leaf" />
+              <circle cx="280" cy="145" r="2.5" class="leaf" />
+              <circle cx="240" cy="125" r="2.5" class="leaf" />
+              <circle cx="195" cy="92" r="2.5" class="leaf" />
+              <circle cx="290" cy="90" r="2.5" class="leaf" />
+            </g>
+          </g>
+
+          <g class="triggers">
+            <rect class="zone-trigger" data-zone="canopy" x="60" y="60" width="360" height="120" tabindex="0" role="button" aria-label="Capacidad: copa, impacto sistémico" />
+            <rect class="zone-trigger" data-zone="branches" x="80" y="180" width="320" height="65" tabindex="0" role="button" aria-label="Capacidad: ramas, toma de decisiones" />
+            <rect class="zone-trigger" data-zone="trunk" x="205" y="245" width="70" height="55" tabindex="0" role="button" aria-label="Capacidad: tronco, calidad conversacional" />
+            <rect class="zone-trigger" data-zone="roots" x="40" y="300" width="400" height="180" tabindex="0" role="button" aria-label="Capacidad: raíces, autorregulación" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="ail-tree-info" aria-live="polite">
+        <div class="ail-tree-default">
+          <div class="ail-side-eyebrow">Cuatro capacidades</div>
+          <h4>Una arquitectura entrenable.</h4>
+          <p>Cada parte del árbol corresponde a una capacidad del Modelo AIL™. Pasa el cursor o toca cada zona para conocerlas.</p>
+          <div class="hint">Raíces · Tronco · Ramas · Copa</div>
+        </div>
+
+        <div class="ail-label" data-zone="roots">
+          <div class="ail-label-pre">01 · Raíces</div>
+          <h4>Autorregulación.</h4>
+          <p>El líder reconoce y regula su estado interno antes de actuar. Es la base que sostiene todo lo demás —presencia, atención y consciencia de sí.</p>
+        </div>
+
+        <div class="ail-label" data-zone="trunk">
+          <div class="ail-label-pre">02 · Tronco</div>
+          <h4>Calidad conversacional.</h4>
+          <p>El canal por donde la organización se ordena: cómo se escucha, cómo se habla, cómo se construye sentido compartido entre personas y equipos.</p>
+        </div>
+
+        <div class="ail-label" data-zone="branches">
+          <div class="ail-label-pre">03 · Ramas</div>
+          <h4>Toma de decisiones.</h4>
+          <p>Discernir con presencia, no desde la urgencia. Decidir con consciencia del impacto y de los marcos invisibles que orientan la acción.</p>
+        </div>
+
+        <div class="ail-label" data-zone="canopy">
+          <div class="ail-label-pre">04 · Copa</div>
+          <h4>Impacto sistémico.</h4>
+          <p>Lo que se proyecta hacia la cultura: resultados sostenibles, equipos saludables y organizaciones más conscientes en el largo plazo.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -473,7 +609,7 @@ body.menu-open{overflow:hidden}
       <a href="#contacto" class="program">
         <span class="pn">P / 02</span>
         <h3>Formación de Mentores en Mindfulness Organizacional</h3>
-        <p class="desc">Para organizaciones que quieren instalar el mindfulness como cultura desde adentro, a través de sus propias personas. Diseñado junto a Cristina Cama García y avalado por su dirección del Máster en Mindfulness en Organizaciones Conscientes de la Universidad de Barcelona.</p>
+        <p class="desc">Para organizaciones que quieren instalar el mindfulness como cultura desde adentro, a través de sus propias personas. Diseñado junto a Cristina Cama García y avalado por su dirección del Máster de Mindfulness en Organizaciones Conscientes de la Universidad de Barcelona.</p>
         <div class="meta">
           <b>Modular + certificación</b>
           Líderes · HR · Agentes de cambio interno
@@ -561,7 +697,7 @@ body.menu-open{overflow:hidden}
         <div class="info">
           <div class="role-tag">Fundador · Modelo AIL™</div>
           <h3>Christian Núñez Poveda</h3>
-          <div class="credentials">Ingeniero Comercial UC · Coach Organizacional · Máster en Mindfulness UB</div>
+          <div class="credentials">Ingeniero Comercial UC · Coach Organizacional · Máster de Mindfulness UB</div>
           <p class="bio">Cuenta con más de 20 años de experiencia ejecutiva liderando áreas de servicio, clientes y operaciones en compañías como Falabella, Cencosud y Entel. Es parte del equipo docente de la Certificación en Coaching Organizacional UAI. Su trabajo integra experiencia corporativa, coaching organizacional, mindfulness aplicado y práctica contemplativa internacional —incluyendo procesos en Plum Village, Francia—. Desde ahí desarrolla el Modelo AIL™.</p>
           <a class="li-link" href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> Ver perfil en LinkedIn</a>
         </div>
@@ -591,11 +727,11 @@ body.menu-open{overflow:hidden}
       <div class="eyebrow">Alianza internacional</div>
       <h2>Workfulness + DEYGEconsultores.</h2>
       <p class="lead" style="margin-top:24px;font-size:21px">Una alianza para instalar el mindfulness como cultura organizacional.</p>
-      <p>La relación entre Christian y Cristina Cama García nació durante el Máster en Mindfulness en Organizaciones Conscientes de la Universidad de Barcelona. De ahí surgió una alianza estratégica entre Workfulness y DEYGEconsultores para llevar el liderazgo consciente y el mindfulness organizacional a empresas en Latinoamérica con profundidad y aplicación real.</p>
+      <p>La relación entre Christian y Cristina Cama García nació durante el Máster de Mindfulness en Organizaciones Conscientes de la Universidad de Barcelona. De ahí surgió una alianza estratégica entre Workfulness y DEYGEconsultores para llevar el liderazgo consciente y el mindfulness organizacional a empresas en Latinoamérica con profundidad y aplicación real.</p>
       <div class="who-block">
         <div class="who-name">¿Qué significa esto para tu organización?</div>
       </div>
-      <p>Accedes a programas de liderazgo con la participación directa de Cristina como relatora, y a la posibilidad de formar mentores internos bajo una metodología respaldada por su experiencia de 30 años y su dirección del Máster en Mindfulness de la Universidad de Barcelona.</p>
+      <p>Accedes a programas de liderazgo con la participación directa de Cristina como relatora, y a la posibilidad de formar mentores internos bajo una metodología respaldada por su experiencia de 30 años y su dirección del Máster de Mindfulness de la Universidad de Barcelona.</p>
     </div>
   </div>
 </section>
@@ -808,6 +944,32 @@ const heroIO = new IntersectionObserver((entries) => {
   });
 }, {threshold: 0.6});
 heroNums.forEach(el => heroIO.observe(el));
+
+// AIL Tree interactive zones
+(() => {
+  const wrap = document.getElementById('ailTree');
+  if (!wrap) return;
+  const stage = wrap.querySelector('.ail-tree-stage');
+  const triggers = wrap.querySelectorAll('.zone-trigger');
+  const activate = (zone) => { wrap.dataset.active = zone; };
+  const deactivate = () => { delete wrap.dataset.active; };
+  let activeTouch = false;
+  triggers.forEach(t => {
+    const zone = t.dataset.zone;
+    t.addEventListener('mouseenter', () => { if (!activeTouch) activate(zone); });
+    t.addEventListener('focus', () => activate(zone));
+    t.addEventListener('blur', deactivate);
+    t.addEventListener('click', (e) => { e.stopPropagation(); activeTouch = true; activate(zone); });
+    t.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(zone); }
+      if (e.key === 'Escape') deactivate();
+    });
+  });
+  stage.addEventListener('mouseleave', () => { if (!activeTouch) deactivate(); });
+  document.addEventListener('click', (e) => {
+    if (!wrap.contains(e.target)) { activeTouch = false; deactivate(); }
+  });
+})();
 </script>
 </body>
 </html>
