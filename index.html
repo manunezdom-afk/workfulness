@@ -201,6 +201,9 @@ section{padding:140px 0;position:relative}
 .member h3{font-family:var(--serif);font-size:26px;margin-top:14px;line-height:1.15;font-weight:400}
 .member .credentials{font-size:13.5px;color:var(--graphite-500);margin-top:8px;line-height:1.5;font-style:italic;font-family:var(--serif)}
 .member .bio{font-size:14.5px;color:var(--graphite-700);line-height:1.65;margin-top:18px}
+.member .li-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:13px;color:var(--forest-600);font-weight:500;letter-spacing:.01em;text-decoration:none;align-self:flex-start;transition:color .2s var(--ease)}
+.member .li-link:hover{color:var(--forest-700)}
+.member .li-link svg{width:14px;height:14px;fill:currentColor}
 
 /* ======= TESTIMONIOS ======= */
 .testimonials-head{margin-bottom:72px;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:end}
@@ -587,6 +590,7 @@ body.menu-open{overflow:hidden}
           <h3>Christian Núñez Poveda</h3>
           <div class="credentials">Ingeniero Comercial UC · Coach Organizacional · Máster en Mindfulness UB</div>
           <p class="bio">Cuenta con más de 20 años de experiencia ejecutiva liderando áreas de servicio, clientes y operaciones en compañías como Falabella, Cencosud y Entel. Es parte del equipo docente de la Certificación en Coaching Organizacional UAI. Su trabajo integra experiencia corporativa, coaching organizacional, mindfulness aplicado y práctica contemplativa internacional —incluyendo procesos en Plum Village, Francia—. Desde ahí desarrolla el Modelo AIL™.</p>
+          <a class="li-link" href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> Ver perfil en LinkedIn</a>
         </div>
       </div>
       <div class="member">
@@ -715,9 +719,8 @@ body.menu-open{overflow:hidden}
       <div>
         <div class="logo-mini"><img src="assets/workfulness-logo-full.png" alt="Workfulness"></div>
         <p class="ft-tag">Consultoría boutique en liderazgo, coaching organizacional y mindfulness aplicado a empresas. Arquitectura Interna del Liderazgo.</p>
-        <div class="footer-social" id="footerSocial" hidden>
-          <a href="#" aria-label="LinkedIn" data-social="linkedin"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="#" aria-label="Instagram" data-social="instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.14.56 2.91.3.78.71 1.45 1.38 2.12.67.67 1.34 1.08 2.12 1.38.77.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.14-.27 2.91-.56a5.88 5.88 0 0 0 2.12-1.38 5.88 5.88 0 0 0 1.38-2.12c.3-.77.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.14-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63C19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+        <div class="footer-social" id="footerSocial">
+          <a href="https://www.linkedin.com/in/christian-nu%C3%B1ez-poveda-1159837/" target="_blank" rel="noopener" aria-label="LinkedIn de Christian Núñez Poveda" data-social="linkedin"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
         </div>
       </div>
       <div>
