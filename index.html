@@ -165,6 +165,8 @@ section{padding:140px 0;position:relative}
 .client-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:80px}
 .client-logo{padding:48px 32px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);font-family:var(--serif);font-size:28px;font-weight:300;color:var(--graphite-700);letter-spacing:-.01em;transition:color .25s var(--ease)}
 .client-logo:last-child{border-right:0}
+.client-logo-img{height:auto;filter:grayscale(100%);opacity:.6;transition:filter .35s var(--ease),opacity .35s var(--ease)}
+.client-logo:hover .client-logo-img{filter:grayscale(0%);opacity:1}
 .client-logo:hover{color:var(--forest-600)}
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .case-card{background:var(--bone);border:1px solid var(--line);border-radius:10px;padding:48px;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
@@ -550,9 +552,9 @@ body.menu-open{overflow:hidden}
       <p style="max-width:700px;margin-top:24px;color:var(--graphite-500);font-size:16px;line-height:1.7">Workfulness ha acompañado procesos de liderazgo, coaching y mindfulness aplicado en organizaciones con coordinación operativa, alta exigencia y procesos de transformación cultural.</p>
     </div>
     <div class="client-logos reveal-stagger">
-      <div class="client-logo"><img src="assets/logo-sodimac.svg" alt="Sodimac" style="max-width:140px;height:auto;filter:grayscale(100%);opacity:.75;transition:filter .3s,opacity .3s" onmouseover="this.style.filter='grayscale(0%)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)';this.style.opacity='.75'"></div>
-      <div class="client-logo">Menzies Aviation</div>
-      <div class="client-logo">Agunsa</div>
+      <div class="client-logo"><img src="assets/logo-sodimac.svg" alt="Sodimac" class="client-logo-img" style="max-width:130px"></div>
+      <div class="client-logo"><img src="assets/logo-menzies.svg" alt="Menzies Aviation" class="client-logo-img" style="max-width:160px"></div>
+      <div class="client-logo"><img src="assets/logo-agunsa.png" alt="Agunsa" class="client-logo-img" style="max-width:120px"></div>
     </div>
     <div class="cases reveal-stagger">
       <div class="case-card">
