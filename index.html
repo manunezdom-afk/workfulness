@@ -44,7 +44,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--graphite-700);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0;font-variant-ligatures:no-common-ligatures no-discretionary-ligatures;font-variation-settings:"WONK" 0}
+body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--graphite-700);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0;font-variant-ligatures:no-common-ligatures no-discretionary-ligatures;font-variation-settings:"WONK" 0;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--graphite-900);margin:0;letter-spacing:-.015em;line-height:1.1;text-wrap:balance;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0;font-variant-ligatures:no-common-ligatures no-discretionary-ligatures;font-variation-settings:"WONK" 0}
@@ -321,8 +321,91 @@ body.menu-open{overflow:hidden}
   .program{grid-template-columns:48px 1fr 40px;gap:16px}
   .program .meta{display:none}
   .member{grid-template-columns:1fr}
-  .member .photo-col{min-height:240px}
-  .hero{padding:140px 0 80px}
+  .member .photo-col{min-height:280px}
+  .hero{padding:128px 0 72px}
+  section{padding:80px 0}
+
+  /* Typography rescale */
+  body{font-size:16px}
+  h1,h2,h3,h4,p{overflow-wrap:break-word;word-wrap:break-word}
+  .hero h1{font-size:clamp(42px,11.5vw,58px);line-height:1.02;letter-spacing:-.02em}
+  .hero .sub{font-size:18px;margin-top:24px}
+  .hero .body{font-size:15px;margin-top:20px}
+  .hero-actions{margin-top:32px}
+  .ail-head h2,.process-head h2,.programs-head h2{font-size:clamp(32px,8.5vw,42px);line-height:1.06}
+  .plum-text h2,.alianza-text h2,.testimonials-head h2,.clients-head h2{font-size:clamp(30px,8vw,40px);line-height:1.08}
+  .contact-grid h2{font-size:clamp(34px,9.2vw,46px);line-height:1.05}
+  .section-team h2{font-size:clamp(32px,8.5vw,42px)}
+  .lead{font-size:18px}
+  .eyebrow{font-size:11px}
+
+  /* Grid items: avoid intrinsic min-content overflow */
+  .container,.container > *,.ail-head > *,.contact-grid > *,.plum-grid > *,
+  .alianza-grid > *,.process-head > *,.testimonials-head > *,.programs-head > *,
+  .hero-grid > *,.team-grid > *,.member > *,.ail-cards > *,
+  .process-steps > *,.programs-list > *,.cases > *,.testimonials-grid > *,
+  .footer-grid > *{min-width:0}
+
+  /* Hero: stats compact */
+  .hero-meta .stat{padding:14px 0;gap:14px}
+  .hero-meta .num{font-size:28px;min-width:44px}
+  .stat .num[style*="DEYGE"]{font-size:20px!important}
+
+  /* Program cards: tighter */
+  .program{padding:24px 0}
+  .program .pn{font-size:11px}
+  .program h3{font-size:20px}
+  .program .arrow-small{width:32px;height:32px}
+
+  /* AIL section padding */
+  .ail-head{margin-bottom:48px;gap:32px}
+
+  /* Process: dark section */
+  .process-steps .step{padding:32px 0}
+  .step h3{font-size:22px}
+
+  /* Plum Village photos: stack better */
+  .plum-photos{grid-template-columns:1fr;grid-template-rows:auto;gap:12px}
+  .plum-photos .p1,.plum-photos .p2,.plum-photos .p3{grid-column:1;grid-row:auto;aspect-ratio:4/3;min-height:220px}
+  .plum-photos .p1{aspect-ratio:3/4;min-height:340px}
+
+  /* Alianza */
+  .alianza-photo{max-width:100%}
+
+  /* Testimonials cards */
+  .testimonial{padding:32px 24px}
+  .testimonial p{font-size:15px}
+
+  /* Member card photo positioning */
+  .member .info{padding:28px 24px}
+  .member h3{font-size:24px}
+
+  /* Contact */
+  .section-contact{padding:80px 0}
+  .contact-grid{gap:32px}
+  .contact-info{padding:24px 0}
+  .contact-cta{flex-direction:column;align-items:stretch}
+  .contact-cta .btn{justify-content:center;text-align:center;width:100%}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer{padding:64px 0 32px}
+
+  /* WhatsApp float: smaller */
+  .wa-float{width:48px;height:48px;bottom:18px;right:18px}
+  .wa-float svg{width:24px;height:24px}
+
+  /* Header: tighter logo */
+  .logo img{height:26px}
+  .header-inner{height:64px}
+  .mobile-nav{inset:64px 0 0 0;padding:32px 20px}
+  .mobile-nav a{font-size:24px;padding:14px 0}
+}
+
+@media (max-width:380px){
+  .container{padding:0 16px}
+  .hero h1{font-size:clamp(38px,11vw,48px)}
+  .contact-grid h2{font-size:clamp(32px,9vw,42px)}
 }
 </style>
 </head>
