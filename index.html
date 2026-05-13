@@ -183,6 +183,9 @@ section{padding:140px 0;position:relative}
 .alianza-photo{aspect-ratio:4/5;background:linear-gradient(135deg,#a8b0a9 0%,#5d6a63 100%);border-radius:10px;position:relative;overflow:hidden}
 .alianza-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,28,24,.4) 100%)}
 .alianza-photo .ph-label{position:absolute;bottom:20px;left:20px;font-size:11px;color:var(--graphite-500);letter-spacing:.08em;text-transform:uppercase;font-weight:500;background:rgba(247,245,240,.92);padding:8px 12px;border-radius:4px;z-index:2}
+.alianza-photo.has-photo{background:#e0ddd5}
+.alianza-photo.has-photo::after{display:none}
+.alianza-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .alianza-text h2{font-size:clamp(40px,4.4vw,58px);line-height:1.05;margin-top:24px}
 .alianza-text .who-block{margin-top:36px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .alianza-text .who-name{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--graphite-900)}
@@ -582,8 +585,8 @@ body.menu-open{overflow:hidden}
 <!-- ============= ALIANZA ============= -->
 <section id="alianza" data-screen-label="08 Alianza">
   <div class="container alianza-grid">
-    <div class="alianza-photo reveal">
-      <span class="ph-label">Cristina Cama García · DEYGEconsultores</span>
+    <div class="alianza-photo has-photo reveal">
+      <img src="assets/cristina-cama-garcia.png" alt="Cristina Cama García · DEYGEconsultores">
     </div>
     <div class="alianza-text reveal" style="transition-delay:.1s">
       <div class="eyebrow">Alianza internacional</div>
