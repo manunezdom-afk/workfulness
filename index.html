@@ -44,7 +44,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--graphite-700);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--graphite-700);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0;font-variant-ligatures:no-common-ligatures no-discretionary-ligatures}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--graphite-900);margin:0;letter-spacing:-.015em;line-height:1.1;text-wrap:balance;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0;font-variant-ligatures:no-common-ligatures no-discretionary-ligatures}
@@ -452,15 +452,9 @@ body.menu-open{overflow:hidden}
 <!-- ============= PROGRAMAS ============= -->
 <section id="programas" data-screen-label="05 Programas">
   <div class="container">
-    <div class="programs-head">
-      <div class="reveal">
-        <div class="eyebrow">Programas y acompañamientos</div>
-        <h2 style="margin-top:24px">Diseñados a medida, transferibles al trabajo real.</h2>
-      </div>
-      <div class="reveal" style="transition-delay:.1s">
-        <p class="lead">Desarrollamos programas para líderes, equipos y organizaciones que necesitan mejorar presencia, regulación, conversaciones críticas, coordinación y toma de decisiones.</p>
-        <p style="margin-top:20px;color:var(--graphite-500);font-size:15.5px;line-height:1.65">Cada experiencia se diseña a medida, integrando coaching organizacional, mindfulness aplicado, liderazgo contemplativo y transferencia al trabajo real.</p>
-      </div>
+    <div class="reveal" style="margin-bottom:64px;max-width:760px">
+      <div class="eyebrow">Programas y acompañamientos</div>
+      <h2 style="margin-top:24px">Diseñados a medida.</h2>
     </div>
     <div class="programs-list">
       <a href="#contacto" class="program">
