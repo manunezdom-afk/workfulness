@@ -120,6 +120,10 @@ section{padding:140px 0;position:relative}
 .plum-text .body{margin-top:28px;font-size:17px;line-height:1.7;color:var(--graphite-700)}
 .plum-cap{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--graphite-500);letter-spacing:.02em;font-style:italic;font-family:var(--serif)}
 .plum-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 280px;gap:14px;position:relative}
+.photo{position:relative;overflow:hidden;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo.has-photo{background:#e0ddd5}
+.photo.has-photo .ph-icon,.photo.has-photo .ph-label{display:none}
 .photo{background:var(--forest-100);border-radius:8px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
 .photo .ph-label{position:absolute;bottom:14px;left:14px;font-size:11px;color:var(--graphite-500);letter-spacing:.08em;text-transform:uppercase;font-weight:500;background:rgba(247,245,240,.92);padding:6px 10px;border-radius:4px;backdrop-filter:blur(4px)}
 .photo .ph-icon{width:48px;height:48px;opacity:.45;stroke:var(--forest-600);stroke-width:1.2;fill:none}
@@ -437,17 +441,14 @@ body.menu-open{overflow:hidden}
       <p class="plum-cap">— Profundización en liderazgo contemplativo. Plum Village, Francia.</p>
     </div>
     <div class="plum-photos reveal" style="transition-delay:.1s">
-      <div class="photo p1">
-        <svg class="ph-icon" viewBox="0 0 24 24"><path d="M3 21l6-6M14 4l6 6M9 21l6-6M5 9l6-6"/><circle cx="12" cy="12" r="2"/></svg>
-        <span class="ph-label">Christian en Plum Village</span>
+      <div class="photo p1 has-photo">
+        <img src="assets/plum-village-monje.jpg" alt="Práctica de meditación en Plum Village">
       </div>
-      <div class="photo p2">
-        <svg class="ph-icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21V13h6v8"/></svg>
-        <span class="ph-label">Entorno · Plum Village</span>
+      <div class="photo p2 has-photo">
+        <img src="assets/plum-village-entorno.jpg" alt="Entorno de Plum Village, Francia">
       </div>
-      <div class="photo p3">
-        <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M12 9v6M9 12h6M9 21l3-6 3 6"/></svg>
-        <span class="ph-label">Práctica contemplativa</span>
+      <div class="photo p3 has-photo">
+        <img src="assets/plum-village-sangha.jpg" alt="Sangha en práctica contemplativa">
       </div>
     </div>
   </div>
