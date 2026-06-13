@@ -134,9 +134,9 @@ section{padding:140px 0;position:relative}
 .plum-photos .p2{grid-column:2;grid-row:1;background:linear-gradient(135deg,#cbd1cc 0%,#9aa49d 100%)}
 .plum-photos .p3{grid-column:2;grid-row:2;background:linear-gradient(135deg,#aab3ad 0%,#727f78 100%)}
 .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(20,28,24,.25) 100%);pointer-events:none}
-.plum-photos .p1.is-doc{background:var(--bone)}
-.plum-photos .p1.is-doc img{object-fit:contain}
-.plum-photos .p1.is-doc::after{display:none}
+.plum-photos .photo.is-doc{background:var(--bone)}
+.plum-photos .photo.is-doc img{object-fit:contain}
+.plum-photos .photo.is-doc::after{display:none}
 
 /* ======= CÓMO TRABAJAMOS ======= */
 .section-process{background:var(--forest-900);color:var(--paper)}
@@ -535,11 +535,11 @@ body.menu-open{overflow:hidden}
       <p class="plum-cap">— Profundización en liderazgo contemplativo. Plum Village, Francia.</p>
     </div>
     <div class="plum-photos reveal" style="transition-delay:.1s">
-      <div class="photo p1 has-photo is-doc">
-        <img src="assets/christian-certificado-plum-village.jpg" alt="Certificado de los Cinco Entrenamientos de Mindfulness de Christian Núñez, Plum Village, Francia">
+      <div class="photo p1 has-photo">
+        <img src="assets/plum-village-monje.jpg" alt="Práctica de meditación en Plum Village">
       </div>
-      <div class="photo p2 has-photo">
-        <img src="assets/plum-village-entorno.jpg" alt="Entorno de Plum Village, Francia">
+      <div class="photo p2 has-photo is-doc">
+        <img src="assets/christian-certificado-plum-village.jpg" alt="Certificado de los Cinco Entrenamientos de Mindfulness de Christian Núñez, Plum Village, Francia">
       </div>
       <div class="photo p3 has-photo">
         <img src="assets/plum-village-sangha.jpg" alt="Sangha en práctica contemplativa">
