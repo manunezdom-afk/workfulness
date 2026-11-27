@@ -273,7 +273,7 @@ section{padding:140px 0;position:relative}
 .menu-toggle.open span:nth-child(2){opacity:0}
 .menu-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .mobile-nav{position:fixed;inset:72px 0 0 0;background:var(--paper);z-index:49;padding:40px 32px;display:none;flex-direction:column;gap:0;transform:translateY(-8px);opacity:0;transition:opacity .3s var(--ease),transform .35s var(--ease)}
-.mobile-nav.open{display:flex;opacity:1;transform:none}
+.mobile-nav.open{display:flex;opacity:1;transform:none;overflow-y:auto}
 .mobile-nav a{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--graphite-900);padding:18px 0;border-bottom:1px solid var(--line);transition:color .2s var(--ease),padding-left .25s var(--ease)}
 .mobile-nav a:hover{color:var(--forest-600);padding-left:8px}
 .mobile-nav .mobile-cta{margin-top:32px;background:var(--graphite-900);color:var(--paper);font-family:var(--sans);font-size:15px;font-weight:500;padding:18px 24px;border-radius:8px;text-align:center;border-bottom:0}
@@ -308,6 +308,10 @@ body.menu-open{overflow:hidden}
 .reveal-stagger.in > *:nth-child(5){transition-delay:320ms}
 
 /* ======= RESPONSIVE ======= */
+@media (min-width:1025px) and (max-width:1200px){
+  .header-inner{gap:24px}
+  .nav{gap:18px}
+}
 @media (max-width:1024px){
   .hero-grid,.ail-head,.process-head,.programs-head,.plum-grid,.alianza-grid,.contact-grid,.testimonials-head{grid-template-columns:1fr;gap:48px}
   .ail-cards,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
@@ -432,6 +436,7 @@ body.menu-open{overflow:hidden}
       <a href="#equipo">Equipo</a>
       <a href="#alianza">Alianza</a>
       <a href="#contacto">Contacto</a>
+      <a href="https://ai.workfulness.cl">Habla con tu IA</a>
     </nav>
     <a href="#contacto" class="cta-header">Agendar conversación</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
@@ -446,6 +451,7 @@ body.menu-open{overflow:hidden}
   <a href="#equipo">Equipo</a>
   <a href="#alianza">Alianza</a>
   <a href="#contacto">Contacto</a>
+  <a href="https://ai.workfulness.cl">Habla con tu IA</a>
   <a href="#contacto" class="mobile-cta">Agendar conversación</a>
 </nav>
 
@@ -460,6 +466,7 @@ body.menu-open{overflow:hidden}
       <div class="hero-actions">
         <a href="#programas" class="btn btn-primary">Conocer programas</a>
         <a href="#contacto" class="btn btn-secondary">Agendar conversación</a>
+        <a href="https://ai.workfulness.cl" class="btn btn-secondary">Habla con tu IA</a>
       </div>
     </div>
     <div class="hero-meta reveal" style="transition-delay:.15s">
